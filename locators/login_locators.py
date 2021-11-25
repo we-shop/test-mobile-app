@@ -14,3 +14,4 @@ PROFILE_USERNAME = "com.socialsuperstore:id/usernameTextView"
 SIGN_OUT_BTN = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[3]/android.view.ViewGroup[2]/android.widget.TextView"
 ACCEPT_MODAL_BTN_LOGOUT = "com.socialsuperstore:id/positiveButton"
 LOGIN_SCREEN_TITLE = "com.socialsuperstore:id/body"
+
