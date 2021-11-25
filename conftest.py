@@ -4,7 +4,7 @@ from appium import webdriver
 #from selenium import webdriver
 from ui_page_objects.login_page_object import LoginPage
 from ui_page_objects.search_page_object import SearchPage
-
+from ui_page_objects.debug_page_object import DebugPage
 
 # Read from file function
 def get_data(data):
@@ -50,7 +50,11 @@ def login_model(request):
 	return fixture
 
 @pytest.fixture()
-def track_model(request):
-	fixture = SearchPage()
+def debug_model(request):
+	fixture = DebugPage()
 	return fixture
 
+@pytest.fixture()
+def search_model(request):
+  fixture = SearchPage()
+  return fixture

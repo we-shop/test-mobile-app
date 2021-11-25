@@ -15,11 +15,3 @@ SIGN_OUT_BTN = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayou
 ACCEPT_MODAL_BTN_LOGOUT = "com.socialsuperstore:id/positiveButton"
 LOGIN_SCREEN_TITLE = "com.socialsuperstore:id/body"
 
-
-
-
-# SEARCH LOCATORS
-SEARCH_INPUT_FIELD = "com.socialsuperstore:id/searchInput"
-SELECT_SUGGESTED_ITEM_SEARCH = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView"
-FIRST_ITEM_NAME_SEARCH = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]"
-CLEAR_SEARCH_BTN = "com.socialsuperstore:id/searchClear"
