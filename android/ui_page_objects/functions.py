@@ -10,65 +10,78 @@ from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
 
 
-#FUCTIONS:
-# for mobile
-def mob_id_wait_n_click(driver, locator):
+
+# FUCTIONS FOR MOBILE
+def id_click(driver, locator):
 	try: 
 		WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, locator)))
 		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, locator))).click()
 	except:
-		print(f"Element to click {locator} is not found")
+		print(f"Element to click by ID: {locator} is not found!")
 		print(f"{ERROR}")
 
-
-# just wait
-def wait(driver, locator):
-	try:
-		WebDriverWait(driver, 20).until(EC.presence_of_element_located(locator))
-	except:
-		print(f"Element to wait {locator} is not found")
-
-def short_wait(driver, locator):
-	try:
-		WebDriverWait(driver, 5).until(EC.presence_of_element_located(locator))
-	except:
-		print(f"Element to SHORT wait {locator} is not found, not critical, can be ignored")
-
-def long_wait(driver, locator):
-	try:
-		WebDriverWait(driver, 100).until(EC.element_to_be_clickable(locator))
-	except:
-		print(f"Element to LONG wait {locator} is not found")
-
-
-def long_wait_visible(driver, locator):
-	try:
-		WebDriverWait(driver, 100).until(EC.visibility_of_element_located(locator))
-	except:
-		print(f"Element to LONG wait visibility {locator} is not found")
-
-def wait_clickable(driver, locator):
-	try:
-		WebDriverWait(driver, 100).until(EC.element_to_be_clickable(locator))
-	except:
-		print(f"Element to wait {locator} is not found")
-
-#waits until element will be clickable and click on it
-def wait_n_click(driver, locator):
+def xpath_click(driver, locator):
 	try: 
-		WebDriverWait(driver, 20).until(EC.presence_of_element_located(locator))
-		WebDriverWait(driver, 20).until(EC.element_to_be_clickable(locator)).click()
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((MobileBy.XPATH, locator)))
+		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((MobileBy.XPATH, locator))).click()
 	except:
-		print(f"Element to click {locator} is not found")
+		print(f"Element to click by XPATH: {locator} is not found!")
+		print(f"{ERROR}")
 
-#waits until element will be clickable, sends keywords
-def send_keyz(driver, locator, keyz):
+def acc_id_click(driver, locator):
 	try: 
-		WebDriverWait(driver, 20).until(EC.presence_of_element_located(locator)).send_keys(keyz)
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((MobileBy.ACCESSIBILITY_ID, locator)))
+		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((MobileBy.ACCESSIBILITY_ID, locator))).click()
 	except:
-		print(f"Element to enter value {locator} is not found")
+		print(f"Element to click by ACCESSIBILITY ID: {locator} is not found!")
+		print(f"{ERROR}")
 
+def el_id(driver, locator):
+	try:
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, locator)))
+		return driver.find_element(By.ID, locator)
+	except:
+		print(f"Element to find by ID: {locator} is not found!")
+		print(f"{ERROR}")
 
+def el_xpath(driver, locator):
+	try:
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((MobileBy.XPATH, locator)))
+		return driver.find_element(MobileBy.XPATH, locator)
+	except:
+		print(f"Element to find by XPATH: {locator} is not found!")
+		print(f"{ERROR}")
+
+def el_acc_id(driver, locator):
+	try:
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((MobileBy.ACCESSIBILITY_ID, locator)))
+		return driver.find_element(MobileBy.ACCESSIBILITY_ID, locator)
+	except:
+		print(f"Element to find by ACCESSIBILITY ID: {locator} is not found!")
+		print(f"{ERROR}")
+
+def id_keys(driver, locator, keys):
+	try: 
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, locator))).send_keys(keys)
+	except:
+		print(f"Element to enter value by ID: {locator} is not found!")
+
+def xpath_keys(driver, locator, keys):
+	try: 
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((MobileBy.XPATH, locator))).send_keys(keys)
+	except:
+		print(f"Element to enter value by XPATH: {locator} is not found!")
+
+def acc_id_keys(driver, locator, keys):
+	try: 
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((MobileBy.ACCESSIBILITY_ID, locator))).send_keys(keys)
+	except:
+		print(f"Element to enter value by ACCESSIBILITY ID: {locator} is not found!")
+
+def get_toast_msg(driver):
+	return driver.find_element(MobileBy.XPATH, "/hierarchy/android.widget.Toast").text
+
+# NOT IN USE NOW
 def click_few_times(locator, clicks):
 	if clicks == 1:
 		locator.click()

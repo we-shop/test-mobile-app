@@ -11,30 +11,25 @@ from ui_page_objects.functions import *
 from locators.login_locators import *
 from locators.search_locators import *
 from locators.debug_locators import *
-from appium.webdriver.common.mobileby import By
-from appium.webdriver.common.mobileby import MobileBy
-from appium.webdriver.common.touch_action import TouchAction
+
 
 
 class SearchPage:
 	def search_and_clear_field(self, driver):
 		# search request
-		make_request_in_search_field = driver.find_element(By.ID, SEARCH_INPUT_FIELD).send_keys("Adidas")
-		select_suggested_search_item = driver.find_element(MobileBy.XPATH, SELECT_SUGGESTED_ITEM_SEARCH).click()
+		make_request_in_search_field = id_keys(driver, SEARCH_INPUT_FIELD, "Adidas")
+		select_suggested_search_item = xpath_click(driver, SELECT_SUGGESTED_ITEM_SEARCH)
 
 		# verify that we have search result
-		first_item_in_search_result_text = driver.find_element(MobileBy.XPATH, FIRST_ITEM_NAME_SEARCH).text
+		first_item_in_search_result_text = el_xpath(driver, FIRST_ITEM_NAME_SEARCH).text
 
 		assert "Adidas" in first_item_in_search_result_text
 
 		# clear search result
-		#mob_wait_n_click(driver, CLEAR_SEARCH_BTN)
-		#WebDriverWait(driver, 10).until(EC.element_to_be_clickable(By.ID, CLEAR_SEARCH_BTN)).click()
-		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, CLEAR_SEARCH_BTN))).click()
-		#clear_field = driver.find_element(By.ID, CLEAR_SEARCH_BTN).click()
-		
+		clear_field = id_click(driver, CLEAR_SEARCH_BTN)
+
 		# asserting recent search name
-		recent_search_item_text = driver.find_element(By.ID, RECENT_SEARCH_ITEM_TEXT).text
+		recent_search_item_text = el_id(driver, RECENT_SEARCH_ITEM_TEXT).text
 		assert recent_search_item_text == "Adidas"
 
 

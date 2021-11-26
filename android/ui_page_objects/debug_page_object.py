@@ -17,37 +17,37 @@ from appium.webdriver.common.touch_action import TouchAction
 
 class DebugPage:
 	def switch_to_uat(self, driver):
-		debug_btn_click = driver.find_element(By.ID, DEBUG_BTN).click()
-		change_configuration_menu_click = driver.find_element(MobileBy.XPATH, CHANGE_CONFIG_MENU).click()
-		change_env_to_uat_click = driver.find_element(MobileBy.XPATH, UAT_ENV_RADIO_BTN).click()
-		toast_msg_env_config = driver.find_element(MobileBy.XPATH, "/hierarchy/android.widget.Toast").text # need to change it in future
+		debug_btn_click = id_click(driver, DEBUG_BTN)
+		change_configuration_menu_click = xpath_click(driver, CHANGE_CONFIG_MENU)
+		change_env_to_uat_click = xpath_click(driver, UAT_ENV_RADIO_BTN)
+		toast_msg_env_config = get_toast_msg(driver)
 		
 		# asserting toast env config message
 		assert toast_msg_env_config == "Webapp configuration switched to uat"
 
-		change_api_to_uat_click = driver.find_element(MobileBy.XPATH, UAT_API_RADIO_BTN).click()
-		toast_msg_api_config = driver.find_element(MobileBy.XPATH, "/hierarchy/android.widget.Toast").text # need to change it in future
+		change_api_to_uat_click = xpath_click(driver, UAT_API_RADIO_BTN)
+		toast_msg_api_config = get_toast_msg(driver)
 		
 		# asserting toast api config message
 		assert toast_msg_api_config == "API configuration switched to uat"
 
-		go_to_login_screen_click = driver.find_element(By.ID, GO_TO_LOG_SCR).click()
+		go_to_login_screen_click = id_click(driver, GO_TO_LOG_SCR)
 
 	def switch_to_int(self, driver):
-		debug_btn_click = driver.find_element(By.ID, DEBUG_BTN).click()
-		change_configuration_menu_click = driver.find_element(MobileBy.XPATH, CHANGE_CONFIG_MENU).click()
-		change_env_to_int_click = driver.find_element(MobileBy.XPATH, INT_ENV_RADIO_BTN).click()
-		toast_msg_env_config = driver.find_element(MobileBy.XPATH, "/hierarchy/android.widget.Toast").text # need to change it in future
+		debug_btn_click = id_click(driver, DEBUG_BTN)
+		change_configuration_menu_click = xpath_click(driver, CHANGE_CONFIG_MENU)
+		change_env_to_int_click = xpath_click(driver, INT_ENV_RADIO_BTN)
+		toast_msg_env_config = get_toast_msg(driver)
 		
 		# asserting toast env config message
 		assert toast_msg_env_config == "Webapp configuration switched to int"
 
-		change_api_to_int_click = driver.find_element(MobileBy.XPATH, INT_API_RADIO_BTN).click()
-		toast_msg_api_config = driver.find_element(MobileBy.XPATH, "/hierarchy/android.widget.Toast").text # need to change it in future
+		change_api_to_int_click = xpath_click(driver, INT_API_RADIO_BTN)
+		toast_msg_api_config = get_toast_msg(driver)
 
 		# asserting toast api config message
 		assert toast_msg_api_config == "API configuration switched to int"
 
-		go_to_login_screen_click = driver.find_element(By.ID, GO_TO_LOG_SCR).click()
+		go_to_login_screen_click = id_click(driver, GO_TO_LOG_SCR)
 
 
