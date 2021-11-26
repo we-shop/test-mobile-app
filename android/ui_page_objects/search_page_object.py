@@ -28,7 +28,10 @@ class SearchPage:
 		assert "Adidas" in first_item_in_search_result_text
 
 		# clear search result
-		clear_field = driver.find_element(By.ID, CLEAR_SEARCH_BTN).click()
+		#mob_wait_n_click(driver, CLEAR_SEARCH_BTN)
+		#WebDriverWait(driver, 10).until(EC.element_to_be_clickable(By.ID, CLEAR_SEARCH_BTN)).click()
+		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, CLEAR_SEARCH_BTN))).click()
+		#clear_field = driver.find_element(By.ID, CLEAR_SEARCH_BTN).click()
 		
 		# asserting recent search name
 		recent_search_item_text = driver.find_element(By.ID, RECENT_SEARCH_ITEM_TEXT).text

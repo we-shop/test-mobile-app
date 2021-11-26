@@ -99,3 +99,6 @@ class LoginPage:
 		login_screen_title_text = driver.find_element(By.ID, LOGIN_SCREEN_TITLE).text
 		assert login_screen_title_text == "We’re so glad to have you around."
 
+
+
+

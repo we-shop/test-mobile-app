@@ -12,12 +12,13 @@ from appium.webdriver.common.mobileby import MobileBy
 
 #FUCTIONS:
 # for mobile
-def mob_wait_n_click(driver, locator):
+def mob_id_wait_n_click(driver, locator):
 	try: 
-		WebDriverWait(driver, 10).until(EC.presence_of_element_located(locator))
-		WebDriverWait(driver, 10).until(EC.element_to_be_clickable(locator)).click()
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, locator)))
+		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, locator))).click()
 	except:
 		print(f"Element to click {locator} is not found")
+		print(f"{ERROR}")
 
 
 # just wait
