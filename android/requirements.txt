@@ -9,3 +9,4 @@ pytest-variables==1.9.0
 pytest-xdist==2.4.0
 requests==2.26.0
 selenium==4.0.0
+python-dotenv==0.19.2

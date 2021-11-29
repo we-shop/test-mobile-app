@@ -5,18 +5,17 @@ from appium import webdriver
 from ui_page_objects.login_page_object import LoginPage
 from ui_page_objects.search_page_object import SearchPage
 from ui_page_objects.debug_page_object import DebugPage
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Read from file function
 def get_data(data):
 	return data.split("#")[0]
 
-# Open settings file
-f = open("cred.config", "r")
-lines = f.readlines()
-LOGIN = get_data(lines[0])
-PASSWORD = get_data(lines[1])
-LOGIN_URL = get_data(lines[2])
-f.close()
+LOGIN = os.getenv("LOGIN")
+PASSWORD = os.getenv("PASSWORD")
+LOGIN_URL = os.getenv("LOGIN_URL")
 
 
 prefs = {"download.default_directory": os.getcwd() + "/"}
