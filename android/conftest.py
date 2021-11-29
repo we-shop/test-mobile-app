@@ -11,7 +11,7 @@ def get_data(data):
 	return data.split("#")[0]
 
 # Open settings file
-f = open("credentials.txt", "r")
+f = open("cred.config", "r")
 lines = f.readlines()
 LOGIN = get_data(lines[0])
 PASSWORD = get_data(lines[1])
