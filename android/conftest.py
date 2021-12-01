@@ -1,10 +1,11 @@
 import pytest
 import os
-from appium import webdriver
-#from selenium import webdriver
 from ui_page_objects.login_page_object import LoginPage
 from ui_page_objects.search_page_object import SearchPage
 from ui_page_objects.debug_page_object import DebugPage
+from ui_page_objects.product_detail_page_object import ProductDetailPage
+from ui_page_objects.profile_page_object import ProfilePage
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -56,4 +57,14 @@ def debug_model(request):
 @pytest.fixture()
 def search_model(request):
   fixture = SearchPage()
+  return fixture
+
+@pytest.fixture()
+def product_page_model(request):
+  fixture = ProductDetailPage()
+  return fixture
+
+@pytest.fixture()
+def profile_model(request):
+  fixture = ProfilePage()
   return fixture

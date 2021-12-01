@@ -1,4 +1,3 @@
-#from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import Select
@@ -8,12 +7,8 @@ import time
 import pytest
 import random
 from ui_page_objects.functions import *
-from locators.login_locators import *
-from locators.search_locators import *
 from locators.debug_locators import *
-from appium.webdriver.common.mobileby import By
-from appium.webdriver.common.mobileby import MobileBy
-from appium.webdriver.common.touch_action import TouchAction
+
 
 class DebugPage:
 	def switch_to_uat(self, driver):

@@ -79,6 +79,7 @@ def acc_id_keys(driver, locator, keys):
 		print(f"Element to enter value by ACCESSIBILITY ID: {locator} is not found!")
 
 def get_toast_msg(driver):
+	time.sleep(1) # obligatory wait, needed for script pause, between reading of 2 or more toast messages.
 	return driver.find_element(MobileBy.XPATH, "/hierarchy/android.widget.Toast").text
 
 # NOT IN USE NOW
