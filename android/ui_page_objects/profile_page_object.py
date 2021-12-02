@@ -12,95 +12,20 @@ from locators.profile_locators import *
 
 
 class ProfilePage:
-	def add_product_to_wishlist(self, driver):
-		# add product to wishlist
-		click_on_star_btn = id_click(driver, WISHLIST_START_BUTTON)
-		get_add_btn_text = el_xpath(driver, ADD_BUTTON_IN_WISHLIST).text
+	def followings_followers_count(self, driver):
+		# read count of followers and following
+		profile_followers = int(el_id(driver, FOLLOWERS_COUNT).text)
+		profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
 
-		is_removed = None
+		# going to followers/following and reading real count of followers/following
+		click_on_followers_btn = id_click(driver, FOLLOWERS_LABEL_PROFILE)
+		total_count_of_existing_followers = len(elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS))
+		click_on_following_tab = acc_id_click(driver, PROFILE_FOLLOWERS_TAB_FOLLOWINGS_TAB)
+		total_count_of_existing_following = len(elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS))
 
-		if get_add_btn_text == "Remove":
-			is_removed = True
-			click_on_remove_from_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-			toast_msg_wishlist_removed = get_toast_msg(driver)
-			assert toast_msg_wishlist_removed == "Product removed from your wishlist!"
-		elif get_add_btn_text == "Add":
-			click_on_add_to_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-			toast_msg_wishlist_added = get_toast_msg(driver)
-			assert toast_msg_wishlist_added == "Product added to your wishlist!"	
-		else:
-			print(get_add_btn_text)
-			print(f"{ERROR}")
+		# assertion of real and readed count of followers/following
+		assert profile_followers == total_count_of_existing_followers
+		assert profile_following == total_count_of_existing_following
 
-		if is_removed:
-			# add product to wishlist
-			click_on_star_btn = id_click(driver, WISHLIST_START_BUTTON)
-			click_on_add_to_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-			toast_msg_wishlist_added = get_toast_msg(driver)
-			assert toast_msg_wishlist_added == "Product added to your wishlist!"
-			
-			# remove product from wishlist
-			click_on_star_btn = id_click(driver, WISHLIST_START_BUTTON)
-			get_remove_btn_text = el_xpath(driver, ADD_BUTTON_IN_WISHLIST).text
-			assert get_remove_btn_text == "Remove"	
-
-			click_on_remove_from_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-			toast_msg_wishlist_removed = get_toast_msg(driver)
-			assert toast_msg_wishlist_removed == "Product removed from your wishlist!"
-		else:
-			# remove product from wishlist
-			click_on_star_btn = id_click(driver, WISHLIST_START_BUTTON)
-			get_remove_btn_text = el_xpath(driver, ADD_BUTTON_IN_WISHLIST).text
-			assert get_remove_btn_text == "Remove"
-
-			click_on_remove_from_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-			toast_msg_wishlist_removed = get_toast_msg(driver)
-			assert toast_msg_wishlist_removed == "Product removed from your wishlist!"
-
-	def add_product_to_wishlist_and_check_in_profile(self, driver):
-		# add product to wishlist
-		click_on_star_btn = id_click(driver, WISHLIST_START_BUTTON)
-		get_add_btn_text = el_xpath(driver, ADD_BUTTON_IN_WISHLIST).text
-
-		is_removed = None
-
-		if get_add_btn_text == "Remove":
-			is_removed = True
-			click_on_remove_from_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-			toast_msg_wishlist_removed = get_toast_msg(driver)
-			assert toast_msg_wishlist_removed == "Product removed from your wishlist!"
-		elif get_add_btn_text == "Add":
-			click_on_add_to_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-			toast_msg_wishlist_added = get_toast_msg(driver)
-			assert toast_msg_wishlist_added == "Product added to your wishlist!"	
-		else:
-			print(get_add_btn_text)
-			print(f"{ERROR}")
-
-		if is_removed:
-			# add product to wishlist
-			click_on_star_btn = id_click(driver, WISHLIST_START_BUTTON)
-			click_on_add_to_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-			toast_msg_wishlist_added = get_toast_msg(driver)
-			assert toast_msg_wishlist_added == "Product added to your wishlist!"
-			
-		# 	# remove product from wishlist
-		# 	click_on_star_btn = id_click(driver, WISHLIST_START_BUTTON)
-		# 	get_remove_btn_text = el_xpath(driver, ADD_BUTTON_IN_WISHLIST).text
-		# 	assert get_remove_btn_text == "Remove"	
-
-		# 	click_on_remove_from_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-		# 	toast_msg_wishlist_removed = get_toast_msg(driver)
-		# 	assert toast_msg_wishlist_removed == "Product removed from your wishlist!"
-		# else:
-		# 	# remove product from wishlist
-		# 	click_on_star_btn = id_click(driver, WISHLIST_START_BUTTON)
-		# 	get_remove_btn_text = el_xpath(driver, ADD_BUTTON_IN_WISHLIST).text
-		# 	assert get_remove_btn_text == "Remove"
-
-		# 	click_on_remove_from_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-		# 	toast_msg_wishlist_removed = get_toast_msg(driver)
-		# 	assert toast_msg_wishlist_removed == "Product removed from your wishlist!"
-
-
-
+	def future_test(self, driver):
+		pass

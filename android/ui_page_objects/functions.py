@@ -60,6 +60,21 @@ def el_acc_id(driver, locator):
 		print(f"Element to find by ACCESSIBILITY ID: {locator} is not found!")
 		print(f"{ERROR}")
 
+def elems_xpath(driver, locator):
+	try:
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((MobileBy.XPATH, locator)))
+		return driver.find_elements(MobileBy.XPATH, locator)
+	except:
+		print(f"Elements to find by XPATH: {locator} is not found!")
+		print(f"{ERROR}")
+
+def id_until_gone(driver, locator):
+	try:
+		WebDriverWait(driver, 10).until(EC.invisibility_of_element_located((By.ID, locator)))
+	except:
+		print(f"Elements by ID: {locator} is not gone!")
+		print(f"{ERROR}")				
+
 def id_keys(driver, locator, keys):
 	try: 
 		WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, locator))).send_keys(keys)
@@ -79,7 +94,7 @@ def acc_id_keys(driver, locator, keys):
 		print(f"Element to enter value by ACCESSIBILITY ID: {locator} is not found!")
 
 def get_toast_msg(driver):
-	time.sleep(1) # obligatory wait, needed for script pause, between reading of 2 or more toast messages.
+	time.sleep(1.38) # obligatory wait, needed for script pause, between reading of 2 or more toast messages.
 	return driver.find_element(MobileBy.XPATH, "/hierarchy/android.widget.Toast").text
 
 # NOT IN USE NOW

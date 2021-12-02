@@ -44,5 +44,3 @@ class DebugPage:
 		assert toast_msg_api_config == "API configuration switched to int"
 
 		go_to_login_screen_click = id_click(driver, GO_TO_LOG_SCR)
-
-

@@ -24,7 +24,7 @@ prefs = {"download.default_directory": os.getcwd() + "/"}
 # Customizing appium driver (implicitly waits + app close/kill)
 @pytest.fixture
 def selenium(selenium):
-    selenium.implicitly_wait(10)
+    selenium.implicitly_wait(12)
     yield selenium
     #selenium.remove_app(app_id='com.socialsuperstore') # uninstalling app
     #selenium.terminate_app('com.socialsuperstore') # put app in background
