@@ -45,7 +45,6 @@ class LoginPage:
 		profile_first_n_last_name_text = el_id(driver, PROFILE_FIRST_N_LAST_NAMES).text
 		profile_username_name_text = el_id(driver, PROFILE_USERNAME).text
 
-		assert profile_first_n_last_name_text == "Mike Pastushenko"
 		assert profile_username_name_text == f"@{self.LOGIN}"
 
 	def login_to_prod(self, driver):
@@ -63,7 +62,6 @@ class LoginPage:
 		# profile_first_n_last_name_text = el_id(driver, PROFILE_FIRST_N_LAST_NAMES).text
 		# profile_username_name_text = el_id(driver, PROFILE_USERNAME).text
 
-		# assert profile_first_n_last_name_text == "Mike Pastushenko"
 		# assert profile_username_name_text == f"@{self.LOGIN}"
 
 		# click_on_settings_btn = id_click(driver, SETTINGS_BTN_PROFILE)

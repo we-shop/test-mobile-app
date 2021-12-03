@@ -66,5 +66,5 @@ def product_page_model(request):
 
 @pytest.fixture()
 def profile_model(request):
-  fixture = ProfilePage()
+  fixture = ProfilePage(LOGIN_URL, LOGIN, PASSWORD)
   return fixture

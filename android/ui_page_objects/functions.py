@@ -5,7 +5,8 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import time
-
+import string
+import random
 from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
 
@@ -96,6 +97,12 @@ def acc_id_keys(driver, locator, keys):
 def get_toast_msg(driver):
 	time.sleep(1.38) # obligatory wait, needed for script pause, between reading of 2 or more toast messages.
 	return driver.find_element(MobileBy.XPATH, "/hierarchy/android.widget.Toast").text
+
+
+# random letters
+def rand_letters(count):
+	letters = string.ascii_lowercase
+	return ''.join(random.choice(letters) for i in range(count))
 
 # NOT IN USE NOW
 def click_few_times(locator, clicks):

@@ -4,7 +4,8 @@
   "appium:platformVersion": "10",
   "appium:appPackage": "com.socialsuperstore",
   "appium:appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",
+  "autoGrantPermissions": true,
   "appium:unicodeKeyboard": true,
   "appium:noReset:": false,
-  "appium:resetKeyboard": true}
+  "appium:resetKeyboard": true }
 }
