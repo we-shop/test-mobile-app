@@ -10,6 +10,8 @@ from ui_page_objects.functions import *
 from locators.profile_locators import *
 from locators.login_locators import *
 from locators.search_locators import *
+from locators.debug_locators import *
+from appium import webdriver
 
 
 
@@ -201,3 +203,99 @@ class ProfilePage:
 		# asserting following counter
 		assert re_reading_profile_following == ((profile_following + follow) - unfollow)
 
+
+	def info_pages_check(self, driver):
+		# Going to info pages menu
+		click_on_settings_btn = id_click(driver, PROFILE_SETTINGS_BTN)
+		click_on_settings_legal_n_terms_menu = xpath_click(driver, SETTINGS_LEGAL_N_TERMS)
+
+		# Terms check
+		click_on_menu_terms = xpath_click(driver, MENU_TERMS)
+		page_url_terms = el_id(driver, BROWSER_URL_BAR).text
+		assert page_url_terms == "legal.we.shop/terms-and-conditions"
+		driver.back()
+
+		# Privacy policy check
+		click_on_menu_privacy_policy = xpath_click(driver, MENU_POLICY)
+		page_url_privacy_policy = el_id(driver, BROWSER_URL_BAR).text
+		assert page_url_privacy_policy == "legal.we.shop/privacy-policy"
+		driver.back()
+
+		# Cookie policy check
+		click_on_menu_cookies = xpath_click(driver, MENU_COOKIE)
+		page_url_cookie = el_id(driver, BROWSER_URL_BAR).text
+		assert page_url_cookie == "help.we.shop/en/article/cookie-policy-pu4kpj/"
+		driver.back()
+
+		# Acknowledgements check
+		click_on_menu_acknowledgements = xpath_click(driver, MENU_ACKNOWLEDGEMENTS)
+		page_url_acknowledgements = el_id(driver, BROWSER_URL_BAR).text
+		assert page_url_acknowledgements == "help.we.shop/en/article/acknowledgements-7z42ii/?bust=1629990511519"
+		driver.back()
+
+		# Community Guidelines check
+		click_on_menu_community_guidelines = xpath_click(driver, MENU_COMMUNITY_GUIDES)
+		page_url_cummunity_guides = el_id(driver, BROWSER_URL_BAR).text
+		assert page_url_cummunity_guides == "help.we.shop/en/article/community-guidelines-m34bm5/"
+		driver.back()
+
+	def customer_support_page_check(self, driver):
+		# make back, because this test bound with info_pages_check test
+		driver.back()
+
+		# Going to info pages menu
+		click_on_settings_customer_support = xpath_click(driver, SETTINGS_CUSTOMER_SUPPORT)
+
+		# Customer support check
+		page_url_terms = el_id(driver, BROWSER_URL_BAR).text
+		assert page_url_terms == "help.we.shop/en/"
+		driver.back()
+	
+
+	def about_version_check(self, driver):
+		# changing debug config to UAT
+		read_app_version = el_id(driver, APP_VERSION_LOGIN_SCREEN).text
+		debug_btn_click = id_click(driver, DEBUG_BTN)
+		change_configuration_menu_click = xpath_click(driver, CHANGE_CONFIG_MENU)
+		change_env_to_uat_click = xpath_click(driver, UAT_ENV_RADIO_BTN)
+		toast_msg_env_config = get_toast_msg(driver)
+		
+		# asserting toast env config message
+		assert toast_msg_env_config == "Webapp configuration switched to uat"
+
+		change_api_to_uat_click = xpath_click(driver, UAT_API_RADIO_BTN)
+		toast_msg_api_config = get_toast_msg(driver)
+		
+		# asserting toast api config message
+		assert toast_msg_api_config == "API configuration switched to uat"
+
+		go_to_login_screen_click = id_click(driver, GO_TO_LOG_SCR)
+
+		# reading app version and making login
+		login_field = id_keys(driver, LOG_FIELD, self.LOGIN)
+		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD)
+		
+		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
+
+		# going to profile settings
+		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
+		click_on_settings_btn = id_click(driver, PROFILE_SETTINGS_BTN)
+
+		# going to settings > about and reading app version
+		click_on_about = xpath_click(driver, SETTINGS_ABOUT)
+		read_app_version_in_profile_about = el_xpath(driver, APP_VERSION_SETTINGS_ABOUT).text
+
+		assert read_app_version == read_app_version_in_profile_about
+
+
+
+
+		
+		
+		
+
+		
+		
+		
+		
+		

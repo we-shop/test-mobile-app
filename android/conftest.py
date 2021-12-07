@@ -5,6 +5,8 @@ from ui_page_objects.search_page_object import SearchPage
 from ui_page_objects.debug_page_object import DebugPage
 from ui_page_objects.product_detail_page_object import ProductDetailPage
 from ui_page_objects.profile_page_object import ProfilePage
+from ui_page_objects.post_page_object import PostPage
+
 
 from dotenv import load_dotenv
 
@@ -68,3 +70,9 @@ def product_page_model(request):
 def profile_model(request):
   fixture = ProfilePage(LOGIN_URL, LOGIN, PASSWORD)
   return fixture
+
+@pytest.fixture()
+def post_model(request):
+  fixture = PostPage()
+  return fixture
+
