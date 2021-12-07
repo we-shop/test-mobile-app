@@ -38,7 +38,17 @@ def atest_profile_info_edit(login_model, debug_model, profile_model, selenium):
 	login_model.login_go_to_profile(selenium)
 	profile_model.edit_profile(selenium)
 
-def test_profile_deactivate_account_flow(login_model, debug_model, profile_model, selenium):
+def atest_profile_deactivate_account_flow(login_model, debug_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	profile_model.deactivate_account_and_login_after(selenium)
+
+def test_profile_follow_unfollow_followers_following_tabs(login_model, debug_model, profile_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_go_to_profile(selenium)
+	profile_model.following_count_manipulations_in_profile(selenium)
+
+def test_profile_follow_few_users_using_search(login_model, debug_model, profile_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_go_to_profile(selenium)
+	profile_model.follow_few_users(selenium)

@@ -8,3 +8,4 @@ FIRST_ITEM_NAME_SEARCH = "/hierarchy/android.widget.FrameLayout/android.widget.L
 CLEAR_SEARCH_BTN = "com.socialsuperstore:id/searchClear"
 RECENT_SEARCH_ITEM_TEXT = "com.socialsuperstore:id/recentSearchItemText"
 SEARCH_FIRST_PRODUCT_DETAIL_PAGE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]"
+SEARCH_RESULT_ONE_ITEM_TEXT = "com.socialsuperstore:id/titleText"

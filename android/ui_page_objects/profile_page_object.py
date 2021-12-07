@@ -9,6 +9,7 @@ import random
 from ui_page_objects.functions import *
 from locators.profile_locators import *
 from locators.login_locators import *
+from locators.search_locators import *
 
 
 
@@ -96,4 +97,107 @@ class ProfilePage:
 
 		# going to profile from footer menu (to make sure you are already logged in)
 		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)	
+
+	def following_count_manipulations_in_profile(self, driver):
+		# read count of followers and following
+		profile_followers = int(el_id(driver, FOLLOWERS_COUNT).text)
+		profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
+
+		# going to followers/following and follow for some followers
+		click_on_followers_btn = id_click(driver, FOLLOWERS_LABEL_PROFILE)
+		find_all_follow_btns = elems_xpath(driver, LIST_OF_ALL_FOLLOW_BTNS)
+
+		follow_count = 0
+		follow_clicked = 0
+		follow_unclicked = 0
+
+		# calculating available count of actual "follow" buttons
+		# checking if user have at least 1 follower
+		if profile_followers == 0:
+			print("Re-check account, you need to have at least 1 follower")
+			print(f"{ERROR}")
+
+		# calculating how many user have "follow" buttons in followers tab
+		for btns in find_all_follow_btns:
+			if btns.text == "Follow":
+				btns.click()
+				follow_count +=1
+				follow_clicked +=1
+
+		# click conditions, according to "follow" buttons
+		if follow_count == 0:
+			if profile_followers == 1:
+				xpath_click(driver, FIRST_BTN_IN_FOLLOWERS_TAB)
+				follow_unclicked += 1
+			elif profile_followers == 2:
+				xpath_click(driver, FIRST_BTN_IN_FOLLOWERS_TAB)
+				follow_unclicked += 1
+			else:
+				xpath_click(driver, SECOND_BTN_IN_FOLLOWERS_TAB)
+				xpath_click(driver, THIRD_BTN_IN_FOLLOWERS_TAB)
+				follow_unclicked += 2
+
+		# going back to profile
+		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
+		re_reading_followings_count = int(el_id(driver, FOLLOWINGS_COUNT).text)
+
+		# assertions
+		if follow_clicked > 0:
+			assert re_reading_followings_count == (profile_following + follow_clicked)
+		else:
+			assert re_reading_followings_count == (profile_following - follow_unclicked)
+
+		
+		# going to following to make sure that current count match existing count of following
+		click_on_following_btn = id_click(driver, FOLLOWINGS_LABEL_PROFILE)
+		calculate_all_following_btns = len(elems_xpath(driver, LIST_OF_ALL_FOLLOW_BTNS))
+
+		assert calculate_all_following_btns == re_reading_followings_count
+
+	def follow_few_users(self, driver):
+		# test users
+		USER_1 = "Molosay"
+		USER_2 = "Veremeychik"
+		follow = 0
+		unfollow = 0 
+
+		# read count of following
+		profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
+
+		# searching USER_1 and subscribing/unsubscribing
+		search_user_one = id_keys(driver, SEARCH_INPUT_FIELD, USER_1)
+		click_on_suggested_item_in_search = id_click(driver, SEARCH_RESULT_ONE_ITEM_TEXT)
+		follow_btn_user_one_text = el_id(driver, FOLLOW_TO_USER_BTN).text
+
+		if follow_btn_user_one_text == "Follow":
+			id_click(driver, FOLLOW_TO_USER_BTN)
+			follow += 1
+		else:
+			id_click(driver, FOLLOW_TO_USER_BTN)
+			unfollow += 1
+
+		driver.back()
+		
+		# searching USER_2 and subscribing/unsubscribing
+		search_user_two = id_keys(driver, SEARCH_INPUT_FIELD, USER_2)
+		click_on_suggested_item_in_search = id_click(driver, SEARCH_RESULT_ONE_ITEM_TEXT)
+		follow_btn_user_two_text = el_id(driver, FOLLOW_TO_USER_BTN).text
+
+		if follow_btn_user_two_text == "Follow":
+			id_click(driver, FOLLOW_TO_USER_BTN)
+			follow += 1
+		else:
+			id_click(driver, FOLLOW_TO_USER_BTN)
+			unfollow += 1
+
+		driver.back()
+
+		# going back to profile
+		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
+		click_on_footer_home_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
+		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
+		re_reading_profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
+
+		# asserting following counter
+		assert re_reading_profile_following == ((profile_following + follow) - unfollow)
 
