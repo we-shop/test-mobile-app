@@ -116,31 +116,35 @@ def click_few_times(locator, clicks):
 
 
 # returns found element by xpath using js
-def js_by_xpath(selenium, locator):
+def js_by_xpath(driver, locator):
 	js_xpath_func = '''
 				window.getElementByXpath = function(path) {
 					return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;}
 	'''
 	selenium.execute_script(js_xpath_func)
-	elem = selenium.execute_script("return getElementByXpath(arguments[0])", locator)
+	elem = driver.execute_script("return getElementByXpath(arguments[0])", locator)
 	return elem
 
 # check if checkbox is active (returns True or False)
-def js_by_xpath_cbox_status(selenium, locator):
+def js_by_xpath_cbox_status(driver, locator):
 	js_xpath_func = '''
 				window.getElementByXpath = function(path) {
 					return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;}
 	'''
-	selenium.execute_script(js_xpath_func)
-	elem = selenium.execute_script("return getElementByXpath(arguments[0]).checked", locator)
+	driver.execute_script(js_xpath_func)
+	elem = driver.execute_script("return getElementByXpath(arguments[0]).checked", locator)
 	return elem
 
 # check if button is active (returns True or False)
-def js_by_xpath_button_status(selenium, locator):
+def js_by_xpath_button_status(driver, locator):
 	js_xpath_func = '''
 				window.getElementByXpath = function(path) {
 					return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;}
 	'''
-	selenium.execute_script(js_xpath_func)
-	elem = selenium.execute_script("return getElementByXpath(arguments[0]).disabled", locator)
+	driver.execute_script(js_xpath_func)
+	elem = driver.execute_script("return getElementByXpath(arguments[0]).disabled", locator)
 	return elem
+
+
+def send_enter_key(driver):
+	driver.execute_script('mobile: shell', {'command': 'input keyevent', 'args':'KEYCODE_ENTER'}) # send Enter key example (using adb)
