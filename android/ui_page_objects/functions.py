@@ -9,6 +9,7 @@ import string
 import random
 from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
+import pytest
 
 
 
@@ -146,5 +147,20 @@ def js_by_xpath_button_status(driver, locator):
 	return elem
 
 
-def send_enter_key(driver):
+def send_enter_key_adb(driver):
 	driver.execute_script('mobile: shell', {'command': 'input keyevent', 'args':'KEYCODE_ENTER'}) # send Enter key example (using adb)
+
+def get_correct_text_by_id(driver, locator, text):
+	WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, locator)))
+
+	seconds = 5
+
+	while seconds > 0:
+		el = driver.find_element(By.ID, locator).text
+		if str(text) in el:
+			break
+		else:
+			seconds -=1
+
+	if seconds == 0:
+		pytest.fail('Text not found!')
