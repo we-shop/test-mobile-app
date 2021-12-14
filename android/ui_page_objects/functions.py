@@ -164,3 +164,18 @@ def get_correct_text_by_id(driver, locator, text):
 
 	if seconds == 0:
 		pytest.fail('Text not found!')
+
+
+# FILE MANIPUPATION FUNCTIONS
+def create_temp_file_and_write_data(data):
+	file = open("temp_data.txt", "w+")
+	file.write(str(data))
+	file.close()
+
+def read_data_from_temp_file():
+	file = open("temp_data.txt", "r")
+	return file.read()
+
+def clear_data_from_temp_file():
+	file = open("temp_data.txt", "w+")
+	file.close()

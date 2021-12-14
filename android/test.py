@@ -67,7 +67,7 @@ def test_post_create_new_product(debug_model, login_model, post_model, selenium)
 	login_model.login_only(selenium)
 	post_model.recommend_product(selenium)
 
-def atest_post_create_new_question(debug_model, login_model, post_model, selenium):
+def test_post_create_new_question(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	post_model.ask_question(selenium)

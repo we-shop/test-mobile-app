@@ -7,6 +7,7 @@ from ui_page_objects.product_detail_page_object import ProductDetailPage
 from ui_page_objects.profile_page_object import ProfilePage
 from ui_page_objects.post_page_object import PostPage
 from selenium import webdriver
+from ui_page_objects.functions import *
 
 
 from dotenv import load_dotenv
@@ -49,6 +50,7 @@ def selenium(selenium):
     #selenium.remove_app(app_id='com.socialsuperstore') # uninstalling app
     #selenium.terminate_app('com.socialsuperstore') # put app in background
     selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
+    clear_data_from_temp_file() # clearing data in temp_data.txt
 
 
 

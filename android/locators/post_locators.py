@@ -19,6 +19,18 @@ MEDIA_IMAGE_FROM_CAMERA = "com.socialsuperstore.feature_post_editor:id/fromCamer
 CAPTION_INPUT_FIELD = "com.socialsuperstore.feature_post_editor:id/captionTextInputEditText"
 PUBLISH_BTN_ADD_PRODUCT = "com.socialsuperstore.feature_post_editor:id/doneBtn"
 FEED_POST_DESCRIPTION = "com.socialsuperstore:id/postDescription"
+QUESTION_TEXT_STEP_ONE = "com.socialsuperstore.feature_post_editor:id/questionTextInputEditText"
+QUESTION_BREAD_CRUMBS = "com.socialsuperstore:id/currentStep"
+QUESTION_UPLOAD_FROM_LIBRARY = "com.socialsuperstore.feature_post_editor:id/fromGallery"
+QUESTION_UPLOAD_FROM_CAMERA = "com.socialsuperstore.feature_post_editor:id/fromCamera"
+QUESTION_UPLOAD_FROM_DESIGNS = "com.socialsuperstore.feature_post_editor:id/fromPopularDesigns"
+CUSTOM_BACKGROUND_ITEMS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ImageView"
+SAVE_BTN_BACKGROUND_ITEMS = "com.socialsuperstore:id/submitLabel"
 
-
-
+BACKGROUND_STYLE_AND_SIZE_TAB = "Style & size"
+BACKGROUND_TEXT_COLOUR_TAB = "Text colour"
+ALL_TEXT_STYLES = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/androidx.appcompat.widget.LinearLayoutCompat"
+TEXT_SIZE_BAR = "com.socialsuperstore.feature_post_editor:id/textSizeSeekBar"
+BACKGROUND_CROP_BTN = "com.socialsuperstore.feature_post_editor:id/cropBtn"
+BACKGROUND_DELETE_BTN = "com.socialsuperstore.feature_post_editor:id/deleteBtn"
+ALL_TEXT_COLOURS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup"
