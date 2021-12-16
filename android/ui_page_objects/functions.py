@@ -54,6 +54,14 @@ def el_xpath(driver, locator):
 		print(f"Element to find by XPATH: {locator} is not found!")
 		print(f"{ERROR}")
 
+def el_id_short_wait(driver, locator):
+	try:
+		WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.ID, locator)))
+		#return driver.find_element(By.ID, locator)
+	except:
+		#print(f"Element to find by ID (short wait): {locator} is not found!")
+		print(f"{ERROR}")	
+
 def el_acc_id(driver, locator):
 	try:
 		WebDriverWait(driver, 10).until(EC.presence_of_element_located((MobileBy.ACCESSIBILITY_ID, locator)))
@@ -69,6 +77,14 @@ def elems_xpath(driver, locator):
 	except:
 		print(f"Elements to find by XPATH: {locator} is not found!")
 		print(f"{ERROR}")
+
+def elems_id(driver, locator):
+	try:
+		WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, locator)))
+		return driver.find_elements(By.ID, locator)
+	except:
+		print(f"Elements to find by XPATH: {locator} is not found!")
+		print(f"{ERROR}")		
 
 def id_until_gone(driver, locator):
 	try:

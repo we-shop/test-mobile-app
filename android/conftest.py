@@ -6,6 +6,7 @@ from ui_page_objects.debug_page_object import DebugPage
 from ui_page_objects.product_detail_page_object import ProductDetailPage
 from ui_page_objects.profile_page_object import ProfilePage
 from ui_page_objects.post_page_object import PostPage
+from ui_page_objects.inbox_page_object import InboxPage
 from selenium import webdriver
 from ui_page_objects.functions import *
 
@@ -45,7 +46,7 @@ prefs = {"download.default_directory": os.getcwd() + "/"}
 @pytest.fixture
 def selenium(selenium):
     #selenium = webdriver.Remote(command_executor="http://hub-cloud.browserstack.com/wd/hub", desired_capabilities=desired_caps)
-    selenium.implicitly_wait(12)
+    selenium.implicitly_wait(7)
     yield selenium
     #selenium.remove_app(app_id='com.socialsuperstore') # uninstalling app
     #selenium.terminate_app('com.socialsuperstore') # put app in background
@@ -116,5 +117,10 @@ def profile_model(request):
 @pytest.fixture()
 def post_model(request):
   fixture = PostPage()
+  return fixture
+
+@pytest.fixture()
+def inbox_model(request):
+  fixture = InboxPage()
   return fixture
 

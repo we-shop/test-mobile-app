@@ -62,15 +62,23 @@ def atest_profile_info_pages(login_model, debug_model, profile_model, selenium):
 def atest_profile_about_version_check(profile_model, selenium):
 	profile_model.about_version_check(selenium)
 
-def test_post_create_new_product(debug_model, login_model, post_model, selenium):
+def atest_post_create_new_product(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	post_model.recommend_product(selenium)
 
-def test_post_create_new_question(debug_model, login_model, post_model, selenium):
+def atest_post_create_new_question(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	post_model.ask_question(selenium)
+
+def test_inbox_check(debug_model, login_model, inbox_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_only(selenium)
+	inbox_model.inbox_check(selenium)
+
+
+
 
 
 
