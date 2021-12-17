@@ -34,3 +34,14 @@ TEXT_SIZE_BAR = "com.socialsuperstore.feature_post_editor:id/textSizeSeekBar"
 BACKGROUND_CROP_BTN = "com.socialsuperstore.feature_post_editor:id/cropBtn"
 BACKGROUND_DELETE_BTN = "com.socialsuperstore.feature_post_editor:id/deleteBtn"
 ALL_TEXT_COLOURS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup"
+LIKES_IN_POST = "com.socialsuperstore:id/interactionsLikes"
+COMMENTS_IN_POST = "com.socialsuperstore:id/interactionsComments"
+COMMENTS_INPUT_TEXT_FIELD = "com.socialsuperstore.feature_comments:id/commentEditText"
+COMMENTS_SEND_BTN = "com.socialsuperstore.feature_comments:id/sendCommentButton"
+
+
+# Try to adding a product first (modal in question comments)
+MODAL_TITLE_TEXT = "com.socialsuperstore:id/titleTopText"
+CLOSE_MODAL_BTN = "com.socialsuperstore:id/closeButton"
+LET_ME_ADD_PRODUCT_FIRST_BTN = "com.socialsuperstore:id/negativeButton"
+CONTINUE_WITHOUT_PRODUCT_BTN = "com.socialsuperstore:id/positiveButton"

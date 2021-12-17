@@ -11,7 +11,6 @@ from locators.profile_locators import *
 from locators.login_locators import *
 from locators.search_locators import *
 from locators.debug_locators import *
-from appium import webdriver
 
 
 
@@ -286,6 +285,7 @@ class ProfilePage:
 		read_app_version_in_profile_about = el_xpath(driver, APP_VERSION_SETTINGS_ABOUT).text
 
 		assert read_app_version == read_app_version_in_profile_about
+
 
 
 

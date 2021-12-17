@@ -9,6 +9,7 @@ import random
 from ui_page_objects.functions import *
 from locators.post_locators import *
 from locators.profile_locators import *
+from locators.product_detail_locators import *
 from appium.webdriver.extensions.android.nativekey import AndroidKey
 
 class PostPage:
@@ -92,3 +93,59 @@ class PostPage:
 
 		# check if question created (checking title/caption in feed)
 		get_correct_text_by_id(driver, FEED_POST_DESCRIPTION, QUESTION_ID)
+
+	def comment_and_like_self_post(self, driver):
+		# manipulation with likes
+		click_on_first_posts_in_profile = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POSTS_TAB)
+		read_likes_count = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
+		click_on_like_btn = id_click(driver, LIKES_IN_POST)
+		# NEED TO ADD CASE WHEN LIKE ALREADY CLICKED
+		time.sleep(1.1) # obligatory wait to avoid any errors
+		re_read_likes_count = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
+
+		assert re_read_likes_count == read_likes_count + 1
+
+		# manipulation with comments
+		read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
+		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for post")
+		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
+		time.sleep(1.1) # obligatory wait to avoid warning modal window
+		driver.back()
+		re_read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+
+		assert re_read_comments_count == read_comments_count + 1
+
+	def comment_and_like_self_question(self, driver):
+		switching_to_question_tab = acc_id_click(driver, PROFILE_QUESTIONS_TAB)
+		# manipulation with likes
+		click_on_first_question_in_profile = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POSTS_TAB)
+		read_likes_count = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
+		click_on_like_btn = id_click(driver, LIKES_IN_POST)
+		# NEED TO ADD CASE WHEN LIKE ALREADY CLICKED
+		time.sleep(1.1) # obligatory wait to avoid any errors
+		re_read_likes_count = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
+
+		assert re_read_likes_count == read_likes_count + 1
+
+		# manipulation with comments
+		read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
+		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for question")
+		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
+		
+		# handle modal window
+		click_continue_without_product = id_click(driver, CONTINUE_WITHOUT_PRODUCT_BTN)
+
+		# continue comment check section
+		time.sleep(1.1) # obligatory wait to avoid warning modal window
+		driver.back()
+		re_read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+
+		assert re_read_comments_count == read_comments_count + 1
+
+
+
+
+
+

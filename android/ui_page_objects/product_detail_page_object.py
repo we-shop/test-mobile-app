@@ -8,7 +8,10 @@ import pytest
 import random
 from ui_page_objects.functions import *
 from locators.product_detail_locators import *
-
+from locators.profile_locators import *
+from locators.login_locators import *
+from locators.search_locators import *
+from locators.debug_locators import *
 
 
 class ProductDetailPage:
@@ -109,6 +112,18 @@ class ProductDetailPage:
 		# checking correctness of added product to checklist
 		assert get_product_name_from_product_detail_page == GET_PRODUCT_NAME
 
-	def future_test(self, driver):
-		pass
+	def open_product_website(self, driver):
+		# going to detail product page
+		click_on_home_footer_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
+		read_product_title = el_id(driver, FEED_PRODUCT_TITLE).text
+		product_title_click = id_click(driver, FEED_PRODUCT_TITLE)
+		read_product_name_on_detail_page = el_id(driver, PRODUCT_NAME_TITLE).text
+
+		assert read_product_title == read_product_name_on_detail_page
+
+		# checking website URL
+		click_on_by_now_btn = id_click(driver, BUY_NOW_BTN)
+		page_url = el_id(driver, BROWSER_URL_BAR).text
+		assert len(page_url) > 10
 		
+		# need to extend url verification for future (read retailer and chec it in URL)
