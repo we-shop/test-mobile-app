@@ -123,7 +123,9 @@ class ProductDetailPage:
 
 		# checking website URL
 		click_on_by_now_btn = id_click(driver, BUY_NOW_BTN)
+		select_chrome_browser(driver)
+		time.sleep(2) # to read correct url, theoretically can be removed
 		page_url = el_id(driver, BROWSER_URL_BAR).text
 		assert len(page_url) > 10
-		
-		# need to extend url verification for future (read retailer and chec it in URL)
+
+

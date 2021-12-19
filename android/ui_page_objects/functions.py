@@ -195,3 +195,18 @@ def read_data_from_temp_file():
 def clear_data_from_temp_file():
 	file = open("temp_data.txt", "w+")
 	file.close()
+
+
+# Solve browser choice
+def select_chrome_browser(driver):
+	try:
+		WebDriverWait(driver, 2.5).until(EC.presence_of_element_located((By.ID, "android:id/icon")))
+		all_browsers = driver.find_elements(MobileBy.XPATH, "//android.widget.TextView")
+		chrome_click = [i.click() for i in all_browsers if i.text == "Chrome"]
+		
+		# then click on Just once button
+		click_on_just_once_btn = id_click(driver, "android:id/button_once")
+		#click_on_always_btn = id_click(driver, "android:id/button_always")
+	except:
+		pass
+

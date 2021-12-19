@@ -210,30 +210,35 @@ class ProfilePage:
 
 		# Terms check
 		click_on_menu_terms = xpath_click(driver, MENU_TERMS)
+		select_chrome_browser(driver)
 		page_url_terms = el_id(driver, BROWSER_URL_BAR).text
 		assert page_url_terms == "legal.we.shop/terms-and-conditions"
 		driver.back()
 
 		# Privacy policy check
 		click_on_menu_privacy_policy = xpath_click(driver, MENU_POLICY)
+		select_chrome_browser(driver)
 		page_url_privacy_policy = el_id(driver, BROWSER_URL_BAR).text
 		assert page_url_privacy_policy == "legal.we.shop/privacy-policy"
 		driver.back()
 
 		# Cookie policy check
 		click_on_menu_cookies = xpath_click(driver, MENU_COOKIE)
+		select_chrome_browser(driver)
 		page_url_cookie = el_id(driver, BROWSER_URL_BAR).text
 		assert page_url_cookie == "help.we.shop/en/article/cookie-policy-pu4kpj/"
 		driver.back()
 
 		# Acknowledgements check
 		click_on_menu_acknowledgements = xpath_click(driver, MENU_ACKNOWLEDGEMENTS)
+		select_chrome_browser(driver)
 		page_url_acknowledgements = el_id(driver, BROWSER_URL_BAR).text
 		assert page_url_acknowledgements == "help.we.shop/en/article/acknowledgements-7z42ii/?bust=1629990511519"
 		driver.back()
 
 		# Community Guidelines check
 		click_on_menu_community_guidelines = xpath_click(driver, MENU_COMMUNITY_GUIDES)
+		select_chrome_browser(driver)
 		page_url_cummunity_guides = el_id(driver, BROWSER_URL_BAR).text
 		assert page_url_cummunity_guides == "help.we.shop/en/article/community-guidelines-m34bm5/"
 		driver.back()
@@ -246,6 +251,7 @@ class ProfilePage:
 		click_on_settings_customer_support = xpath_click(driver, SETTINGS_CUSTOMER_SUPPORT)
 
 		# Customer support check
+		select_chrome_browser(driver)
 		page_url_terms = el_id(driver, BROWSER_URL_BAR).text
 		assert page_url_terms == "help.we.shop/en/"
 		driver.back()

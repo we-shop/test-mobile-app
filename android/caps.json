@@ -1,11 +1,15 @@
 { "capabilities": {
-  "appium:deviceName": "21f050e03a027ece",
-  "appium:platformName": "Android",
-  "appium:platformVersion": "10",
-  "appium:appPackage": "com.socialsuperstore",
-  "appium:appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",
+  "device" : "Samsung Galaxy S21",
+  "os_version" : "11.0",
+  "project" : "First Python project", 
+  "build" : "browserstack-build-12",
+  "name" : "first_test111",
+  "app_url":"bs://c8bea125ce17fdddd57df2f6ff778e85a97ac175",
+  "appPackage": "com.socialsuperstore",
+  "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",    
+  "implicit":12000,
   "autoGrantPermissions": true,
-  "appium:unicodeKeyboard": true,
-  "appium:noReset:": false,
-  "appium:resetKeyboard": true }
+  "unicodeKeyboard": true,
+  "noReset:": false,
+  "resetKeyboard": true }
 }

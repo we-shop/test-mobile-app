@@ -97,13 +97,28 @@ class PostPage:
 	def comment_and_like_self_post(self, driver):
 		# manipulation with likes
 		click_on_first_posts_in_profile = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POSTS_TAB)
+
+		# checking likes real count (cover case, when like already clicked)
 		read_likes_count = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 		click_on_like_btn = id_click(driver, LIKES_IN_POST)
-		# NEED TO ADD CASE WHEN LIKE ALREADY CLICKED
-		time.sleep(1.1) # obligatory wait to avoid any errors
-		re_read_likes_count = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
+		time.sleep(0.5)
+		read_likes_count_2 = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 
-		assert re_read_likes_count == read_likes_count + 1
+
+		already_clicked = None
+
+		if read_likes_count_2 > read_likes_count:
+			read_likes_count_final = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
+		else:
+			click_on_like_btn_again = id_click(driver, LIKES_IN_POST)
+			time.sleep(0.5)
+			read_likes_count_final = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
+			already_clicked = True
+
+		if already_clicked:
+			assert read_likes_count_final == read_likes_count
+		else:
+			read_likes_count_final == read_likes_count +1
 
 		# manipulation with comments
 		read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
@@ -120,13 +135,28 @@ class PostPage:
 		switching_to_question_tab = acc_id_click(driver, PROFILE_QUESTIONS_TAB)
 		# manipulation with likes
 		click_on_first_question_in_profile = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POSTS_TAB)
+
+		# checking likes real count (cover case, when like already clicked)
 		read_likes_count = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 		click_on_like_btn = id_click(driver, LIKES_IN_POST)
-		# NEED TO ADD CASE WHEN LIKE ALREADY CLICKED
-		time.sleep(1.1) # obligatory wait to avoid any errors
-		re_read_likes_count = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
+		time.sleep(0.5)
+		read_likes_count_2 = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 
-		assert re_read_likes_count == read_likes_count + 1
+
+		already_clicked = None
+
+		if read_likes_count_2 > read_likes_count:
+			read_likes_count_final = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
+		else:
+			click_on_like_btn_again = id_click(driver, LIKES_IN_POST)
+			time.sleep(0.5)
+			read_likes_count_final = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
+			already_clicked = True
+
+		if already_clicked:
+			assert read_likes_count_final == read_likes_count
+		else:
+			read_likes_count_final == read_likes_count + 1
 
 		# manipulation with comments
 		read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
