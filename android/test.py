@@ -11,7 +11,7 @@ def atest_login_with_incorrect_credentials(login_model, debug_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_with_incorrect_creds(selenium)
 
-def atest_search_request_and_clear_field(login_model, debug_model, search_model, selenium):
+def test_search_request_and_clear_field(login_model, debug_model, search_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	search_model.search_and_clear_field(selenium)
@@ -87,7 +87,7 @@ def atest_self_question_like_and_comment_check(debug_model, login_model, post_mo
 	login_model.login_go_to_profile(selenium)
 	post_model.comment_and_like_self_question(selenium)
 
-def test_open_product_website(debug_model, login_model, product_page_model, selenium):
+def atest_open_product_website(debug_model, login_model, product_page_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	product_page_model.open_product_website(selenium)

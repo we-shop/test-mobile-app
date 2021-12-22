@@ -32,7 +32,7 @@ PROFILE_EDIT_BIO_FIELD = "com.socialsuperstore.feature_settings:id/bioEditText"
 PROFILE_EDIT_SAVE_CHANGES_BTN = "com.socialsuperstore.feature_settings:id/saveChangesButton"
 PROFILE_SETTINGS_FULL_NAME_TEXT = "com.socialsuperstore.feature_settings:id/userFullNameTextView"
 PROFILE_SETTINGS_USERNAME_TEXT = "com.socialsuperstore.feature_settings:id/userNickNameTextView"
-BACK_BTN = "Перейти вверх"
+BACK_BTN = "Navigate up"
 
 # SETTINGS MENU ITEMS
 SETTINGS_MANAGE_YOUR_CREDS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.view.ViewGroup[1]"

@@ -1,0 +1,15 @@
+{ "capabilities": {
+  "device" : "Samsung Galaxy S21",
+  "os_version" : "11.0",
+  "project" : "First Python project", 
+  "build" : "browserstack-build-12",
+  "name" : "first_test111",
+  "app_url":"bs://8253a8a78af3841af23e94f4070abc4d6cb2f313",
+  "appPackage": "com.socialsuperstore",
+  "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",    
+  "implicit":12000,
+  "autoGrantPermissions": true,
+  "unicodeKeyboard": true,
+  "noReset:": false,
+  "resetKeyboard": true }
+}

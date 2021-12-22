@@ -33,7 +33,12 @@ class ProfilePage:
 
 		# assertion of real and readed count of followers/following
 		assert profile_followers == total_count_of_existing_followers
-		assert profile_following == total_count_of_existing_following
+
+		# cover vision issue (unable to detect hidden items)
+		if profile_following >= 8:
+			assert total_count_of_existing_following >= 8
+		else:	
+			assert profile_following == total_count_of_existing_following
 
 	def edit_profile(self, driver):
 		# random data
@@ -153,7 +158,13 @@ class ProfilePage:
 		click_on_following_btn = id_click(driver, FOLLOWINGS_LABEL_PROFILE)
 		calculate_all_following_btns = len(elems_xpath(driver, LIST_OF_ALL_FOLLOW_BTNS))
 
-		assert calculate_all_following_btns == re_reading_followings_count
+		# cover vision issue (unable to detect hidden items)
+		if re_reading_followings_count >= 8:
+			assert calculate_all_following_btns >= 8
+		else:	
+			assert calculate_all_following_btns == re_reading_followings_count
+
+		
 
 	def follow_few_users(self, driver):
 		# test users
