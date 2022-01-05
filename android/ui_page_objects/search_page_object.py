@@ -8,7 +8,7 @@ import pytest
 import random
 from ui_page_objects.functions import *
 from locators.search_locators import *
-
+from locators.product_detail_locators import *
 
 
 
@@ -25,6 +25,7 @@ class SearchPage:
 
 		# clear search result
 		clear_field = id_click(driver, CLEAR_SEARCH_BTN)
+		click_in_search_field = id_click(driver, SEARCH_INPUT_FIELD)
 
 		# asserting recent search name
 		recent_search_item_text = el_id(driver, RECENT_SEARCH_ITEM_TEXT).text
@@ -41,11 +42,10 @@ class SearchPage:
 		assert "Samsung" in first_item_in_search_result_text
 
 		# go to product detail page
-		first_item_in_search_result_click = xpath_click(driver, SEARCH_FIRST_PRODUCT_DETAIL_PAGE)
+		first_item_in_search_result_click = xpath_click(driver, FIRST_ITEM_NAME_SEARCH)
 
-		# # asserting recent search name
-		# recent_search_item_text = el_id(driver, RECENT_SEARCH_ITEM_TEXT).text
-		# assert recent_search_item_text == "Adidas"		
+		# assert product name on product detail page
+		assert "Samsung" in el_id(driver, PRODUCT_NAME_PRICE_BLOCK).text
 
 
 	def search_extended(self, driver):

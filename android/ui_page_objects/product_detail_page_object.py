@@ -123,6 +123,7 @@ class ProductDetailPage:
 
 		# checking website URL
 		click_on_by_now_btn = id_click(driver, BUY_NOW_BTN)
+		taking_you_to_win(driver) # passing modal window
 		select_chrome_browser(driver)
 		time.sleep(2) # to read correct url, theoretically can be removed
 		page_url = el_id(driver, BROWSER_URL_BAR).text

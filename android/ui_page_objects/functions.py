@@ -10,7 +10,7 @@ import random
 from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
 import pytest
-
+from locators.product_detail_locators import PRODUCT_MODAL_CONTINUE_BTN
 
 
 # FUCTIONS FOR MOBILE
@@ -210,3 +210,10 @@ def select_chrome_browser(driver):
 	except:
 		pass
 
+# Passing "Taking you to" window function
+def taking_you_to_win(driver):
+	try:
+		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, PRODUCT_MODAL_CONTINUE_BTN))).click()
+	except:
+		print("Taking you to window is not displayed")
+		print(f"Expected window is not displayed: {ERROR}")
