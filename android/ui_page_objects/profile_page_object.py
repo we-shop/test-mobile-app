@@ -31,12 +31,18 @@ class ProfilePage:
 		click_on_following_tab = acc_id_click(driver, PROFILE_FOLLOWERS_TAB_FOLLOWINGS_TAB)
 		total_count_of_existing_following = len(elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS))
 
+
 		# assertion of real and readed count of followers/following
-		assert profile_followers == total_count_of_existing_followers
+		# we unable to see more then 7 items without scroll
+		if profile_followers >= 7:
+			assert total_count_of_existing_followers >= 7
+		else:	
+			assert profile_followers == total_count_of_existing_followers
 
 		# cover vision issue (unable to detect hidden items)
-		if profile_following >= 8:
-			assert total_count_of_existing_following >= 8
+		# we unable to see more then 7 items without scroll
+		if profile_following >= 7:
+			assert total_count_of_existing_following >= 7
 		else:	
 			assert profile_following == total_count_of_existing_following
 

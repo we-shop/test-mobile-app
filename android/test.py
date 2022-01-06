@@ -16,7 +16,7 @@ def atest_search_request_and_clear_field(login_model, debug_model, search_model,
 	login_model.login_only(selenium)
 	search_model.search_and_clear_field(selenium)
 
-def test_add_and_remove_product_from_wishlist(login_model, debug_model, search_model, product_page_model, selenium):
+def atest_add_and_remove_product_from_wishlist(login_model, debug_model, search_model, product_page_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	search_model.search_product_and_open_detail_page(selenium)
@@ -33,7 +33,7 @@ def atest_profile_check_followers_and_followings_count(login_model, debug_model,
 	login_model.login_go_to_profile(selenium)
 	profile_model.followings_followers_count(selenium)
 
-def atest_profile_info_edit(login_model, debug_model, profile_model, selenium):
+def test_profile_info_edit(login_model, debug_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	profile_model.edit_profile(selenium)

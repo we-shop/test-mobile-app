@@ -105,7 +105,12 @@ class ProductDetailPage:
 			pass
 
 		list_of_all_items_inside_wishlist = elems_xpath(driver, LIST_OF_ITEMS_INSIDE_WISHLIST)
-		click_on_correct_product_name_inside_wishlist = [x.click() for x in list_of_all_items_inside_wishlist if x.text == GET_PRODUCT_NAME]
+
+		# try/except block to avoid unknown java issue
+		try:
+			click_on_correct_product_name_inside_wishlist = [x.click() for x in list_of_all_items_inside_wishlist if x.text == GET_PRODUCT_NAME]
+		except:
+			pass
 
 		get_product_name_from_product_detail_page = el_id(driver, PRODUCT_NAME_TITLE).text
 
