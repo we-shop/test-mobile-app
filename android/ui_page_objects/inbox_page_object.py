@@ -34,8 +34,8 @@ class InboxPage:
 			# checking stun "No activity here, yet" in case when activity list is empty
 			assert "No activity here, yet" in el_id(driver, NO_CONTENT_TEXT).text
 
-		if is_inbox_messages:
-			print(getting_all_inbox_message_titles)
+		# if is_inbox_messages:
+		# 	print(getting_all_inbox_message_titles)
 		
 
 		

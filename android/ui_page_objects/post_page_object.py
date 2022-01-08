@@ -18,8 +18,8 @@ class PostPage:
 		PRODUCT_ID = str(random.randint(1000, 10000000))
 
 		# product creation step 1 (search)
-		click_on_footer_new_post_btn = acc_id_click(driver, FOOTER_ITEM_NEW_POST)
-		recommend_product_click = xpath_click(driver, FOOTER_ITEM_REC_PRODUCT)
+		plus_button_click = xpath_click(driver, PLUS_BUTTON)
+		click_on_footer_new_post_btn = id_click(driver, REC_PRODUCT_PLUS_MENU)
 		add_first_product_click = xpath_click(driver, ADD_FIRST_PRODUCT_PLUS_INPUT)
 		search_product_for_post = id_keys(driver, SEARCH_PRODUCT_POST_CREATION, "Samsung")
 		driver.keyevent(66) # additional execution: send_enter_key_adb(driver)
@@ -45,8 +45,8 @@ class PostPage:
 		QUESTION_ID = str(random.randint(1000, 10000000))
 
 		# question creation step 1 (question title)
-		click_on_footer_new_post_btn = acc_id_click(driver, FOOTER_ITEM_NEW_POST)
-		ask_question_click = xpath_click(driver, FOOTER_ITEM_ASK_QUESTION)
+		plus_button_click = xpath_click(driver, PLUS_BUTTON)
+		click_on_footer_new_question_btn = id_click(driver, ASK_QUESTION_PLUS_MENU)
 		fill_question_text = id_keys(driver, QUESTION_TEXT_STEP_ONE, f"Test question number {QUESTION_ID}")
 		click_next_btn = id_click(driver, STEP_BTN_ADD_PRODUCT)
 

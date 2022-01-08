@@ -27,48 +27,48 @@ LOGIN_URL = os.getenv("LOGIN_URL")
 prefs = {"download.default_directory": os.getcwd() + "/"}
 
 
-# caps for Browserstack
-# desired_cap = {
-#   "device" : "Samsung Galaxy S21",
-#   "os_version" : "11.0",
-#   "project" : "First Python project2", 
-#   "build" : "browserstack-build-13",
-#   "name" : "first_test222",
-#   "appPackage": "com.socialsuperstore",
-#   "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
-#   "app_url":"bs://c8bea125ce17fdddd57df2f6ff778e85a97ac175",
-#   "browser" : "Chrome",
-#   "browserstack.idleTimeout":10,
-#   "implicit":8000,
-#   "autoGrantPermissions": True,
-#   "unicodeKeyboard": True,
-#   "noReset:": True,
-#   "resetKeyboard": True }
+#caps for Browserstack
+desired_cap = {
+  "device" : "Samsung Galaxy S21",
+  "os_version" : "11.0",
+  "project" : "First Python project2", 
+  "build" : "browserstack-build-13",
+  "name" : "first_test222",
+  "appPackage": "com.socialsuperstore",
+  "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
+  "app_url":"bs://8151df81002753baa7ed8e5ac2dfb9baa428e4b0",
+  "browser" : "Chrome",
+  "browserstack.idleTimeout":10,
+  "implicit":8000,
+  "autoGrantPermissions": True,
+  "unicodeKeyboard": True,
+  "noReset:": True,
+  "resetKeyboard": True }
 
 
-# #Customizing appium driver for Browserstack
-# @pytest.fixture(autouse=True)
-# def selenium(request):
-#     webdriver
-#     selenium = webdriver.Remote(
-#       command_executor='https://mike_M1rIkt:x2YybDe3qVzH1M6tUpM4@hub-cloud.browserstack.com/wd/hub',
-#       desired_capabilities=desired_cap)
+#Customizing appium driver for Browserstack
+@pytest.fixture(autouse=True)
+def selenium(request):
+    webdriver
+    selenium = webdriver.Remote(
+      command_executor='https://mikepasta_PKlm6D:6dpEtxQmpxfyWkB789F5@hub-cloud.browserstack.com/wd/hub',
+      desired_capabilities=desired_cap)
 
-#     yield selenium
-#     selenium.quit() # marking test is finished for Browserstack
-#     #selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
-#     clear_data_from_temp_file() # clearing data in temp_data.txt
-
-#Customizing appium driver (implicitly waits + app close/kill)
-@pytest.fixture
-def selenium(selenium):
-    #selenium = webdriver.Remote(command_executor="http://hub-cloud.browserstack.com/wd/hub", desired_capabilities=desired_caps)
-    selenium.implicitly_wait(7)
     yield selenium
-    #selenium.remove_app(app_id='com.socialsuperstore') # uninstalling app
-    #selenium.terminate_app('com.socialsuperstore') # put app in background
-    selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
+    selenium.quit() # marking test is finished for Browserstack
+    #selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
     clear_data_from_temp_file() # clearing data in temp_data.txt
+
+# #Customizing appium driver (implicitly waits + app close/kill)
+# @pytest.fixture
+# def selenium(selenium):
+#     #selenium = webdriver.Remote(command_executor="http://hub-cloud.browserstack.com/wd/hub", desired_capabilities=desired_caps)
+#     selenium.implicitly_wait(7)
+#     yield selenium
+#     #selenium.remove_app(app_id='com.socialsuperstore') # uninstalling app
+#     #selenium.terminate_app('com.socialsuperstore') # put app in background
+#     selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
+#     clear_data_from_temp_file() # clearing data in temp_data.txt
 
 
 #FIXTURES PAGE OBJECT

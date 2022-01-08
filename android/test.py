@@ -33,7 +33,7 @@ def atest_profile_check_followers_and_followings_count(login_model, debug_model,
 	login_model.login_go_to_profile(selenium)
 	profile_model.followings_followers_count(selenium)
 
-def test_profile_info_edit(login_model, debug_model, profile_model, selenium):
+def atest_profile_info_edit(login_model, debug_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	profile_model.edit_profile(selenium)
@@ -82,7 +82,7 @@ def atest_self_product_like_and_comment_check(debug_model, login_model, post_mod
 	login_model.login_go_to_profile(selenium)
 	post_model.comment_and_like_self_post(selenium)
 	
-def atest_self_question_like_and_comment_check(debug_model, login_model, post_model, selenium):
+def test_self_question_like_and_comment_check(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	post_model.comment_and_like_self_question(selenium)
