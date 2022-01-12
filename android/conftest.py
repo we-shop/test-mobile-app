@@ -28,9 +28,12 @@ prefs = {"download.default_directory": os.getcwd() + "/"}
 
 
 #caps for Browserstack
+# "device" : "Samsung Galaxy S21",
+# "os_version" : "11.0"
+
 desired_cap = {
-  "device" : "Samsung Galaxy S21",
-  "os_version" : "11.0",
+  "device" : "Samsung Galaxy A51",
+  "os_version" : "10.0",
   "project" : "First Python project2", 
   "build" : "browserstack-build-13",
   "name" : "first_test222",
@@ -46,7 +49,7 @@ desired_cap = {
   "resetKeyboard": True }
 
 
-#Customizing appium driver for Browserstack
+# Customizing appium driver for Browserstack
 @pytest.fixture(autouse=True)
 def selenium(request):
     webdriver

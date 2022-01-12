@@ -39,8 +39,8 @@ class ProductDetailPage:
 			# add product to wishlist
 			click_on_star_btn = id_click(driver, WISHLIST_STAR_BUTTON)
 			click_on_add_to_wishlist_btn = xpath_click(driver, ADD_BUTTON_IN_WISHLIST)
-			toast_msg_wishlist_added = get_toast_msg(driver)
-			assert toast_msg_wishlist_added == "Product added to your wishlist!"
+			toast_msg_wishlist_added_2 = get_toast_msg(driver)
+			assert toast_msg_wishlist_added_2 == "Product added to your wishlist!"
 			
 			# remove product from wishlist
 			click_on_star_btn = id_click(driver, WISHLIST_STAR_BUTTON)
