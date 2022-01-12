@@ -19,7 +19,16 @@ MEDIA_IMAGE_FROM_CAMERA = "com.socialsuperstore.feature_post_editor:id/fromCamer
 CAPTION_INPUT_FIELD = "com.socialsuperstore.feature_post_editor:id/captionTextInputEditText"
 PUBLISH_BTN_ADD_PRODUCT = "com.socialsuperstore.feature_post_editor:id/doneBtn"
 FEED_POST_DESCRIPTION = "com.socialsuperstore:id/postDescription"
+POST_DOTS_SUB_MENU = "com.socialsuperstore:id/postActionsBtn"
+POST_DOTS_SUB_MENU_EDIT_POST = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.Button[1]"
+POST_DOTS_SUB_MENU_DELETE_POST = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.Button[2]"
+POST_SUB_MENU_ACTION_ITEMS_ID = "com.socialsuperstore:id/actionText"
+READ_ALL_PRODUCT_LINEAR_LAYOUTS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.LinearLayout/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.LinearLayout"
+PRODUCT_EDIT_FIRST_CHECKBOX = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.CheckBox"
+
+
 QUESTION_TEXT_STEP_ONE = "com.socialsuperstore.feature_post_editor:id/questionTextInputEditText"
+QUESTION_TEXT_MEDIA_TAB = "com.socialsuperstore.feature_post_editor:id/questionText"
 QUESTION_BREAD_CRUMBS = "com.socialsuperstore:id/currentStep"
 QUESTION_UPLOAD_FROM_LIBRARY = "com.socialsuperstore.feature_post_editor:id/fromGallery"
 QUESTION_UPLOAD_FROM_CAMERA = "com.socialsuperstore.feature_post_editor:id/fromCamera"

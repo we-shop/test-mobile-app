@@ -40,6 +40,43 @@ class PostPage:
 		# check if product created (checking title/caption in feed)
 		get_correct_text_by_id(driver, FEED_POST_DESCRIPTION, PRODUCT_ID)
 
+	def product_edit_and_deletion(self, driver):
+		# starting from opened feed
+		read_post_title = el_id(driver, FEED_POST_DESCRIPTION).text.split(" ")[-1]
+		read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
+
+		open_sub_menu_of_post = id_click(driver, POST_DOTS_SUB_MENU)
+		edit_post_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[0].click()
+
+		# edit post part
+		remove_selection_first_product = xpath_click(driver, PRODUCT_EDIT_FIRST_CHECKBOX)
+		click_on_next_btn = id_click(driver, STEP_BTN_ADD_PRODUCT)
+		click_on_next_btn_again = id_click(driver, STEP_BTN_ADD_PRODUCT)
+
+		# final step
+		caption_input_edit = id_keys(driver, CAPTION_INPUT_FIELD, f"edited {read_post_title}")
+		publish_btn_click = id_click(driver, PUBLISH_BTN_ADD_PRODUCT)
+
+		# verify post data after edit
+		re_read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
+		re_read_post_title = el_id(driver, FEED_POST_DESCRIPTION).text
+
+		assert re_read_count_of_linear_carousel_items == read_count_of_linear_carousel_items - 1
+		assert re_read_post_title == f"edited {read_post_title}"
+
+		# delete part
+		re_open_sub_menu_of_post = id_click(driver, POST_DOTS_SUB_MENU)
+		delete_post_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[1].click()
+		accept_deletion_in_modal = id_click(driver, CONTINUE_WITHOUT_PRODUCT_BTN)
+
+		# verify that post was deleted
+		read_toast_msg = get_toast_msg(driver)
+		re_re_read_post_title = el_id(driver, FEED_POST_DESCRIPTION).text
+
+		assert read_toast_msg == "Your post has been deleted"
+		assert re_re_read_post_title != f"edited {read_post_title}"
+
+
 	def ask_question(self, driver):
 		# generating random id for question title
 		QUESTION_ID = str(random.randint(1000, 10000000))
@@ -93,6 +130,51 @@ class PostPage:
 
 		# check if question created (checking title/caption in feed)
 		get_correct_text_by_id(driver, FEED_POST_DESCRIPTION, QUESTION_ID)
+
+	def question_edit_and_deletion(self, driver):
+		# starting from opened feed
+		read_question_title = el_id(driver, FEED_POST_DESCRIPTION).text.split(" ")[-1]
+		read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
+
+		open_sub_menu_of_question = id_click(driver, POST_DOTS_SUB_MENU)
+		edit_question_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[0].click()
+
+		# edit question part
+		edit_question_banner_text = id_keys(driver, QUESTION_TEXT_STEP_ONE, f"Edited question {read_question_title}")
+		click_on_next_btn = id_click(driver, STEP_BTN_ADD_PRODUCT)
+
+		# verify that edited text visible on next step
+		get_edited_question_banner_text = el_id(driver, QUESTION_TEXT_MEDIA_TAB).text
+		assert get_edited_question_banner_text == f"Edited question {read_question_title}"
+		click_on_next_btn_again = id_click(driver, STEP_BTN_ADD_PRODUCT)
+
+		# next step
+		remove_selection_first_product = xpath_click(driver, PRODUCT_EDIT_FIRST_CHECKBOX)
+		click_step_further = id_click(driver, STEP_BTN_ADD_PRODUCT)
+
+		# next step
+		caption_input_edit = id_keys(driver, CAPTION_INPUT_FIELD, f"edited {read_question_title}")
+		publish_btn_click = id_click(driver, PUBLISH_BTN_ADD_PRODUCT)
+
+		# verify question data after edit
+		re_read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
+		re_read_question_title = el_id(driver, FEED_POST_DESCRIPTION).text
+
+		assert re_read_count_of_linear_carousel_items == read_count_of_linear_carousel_items - 1
+		assert re_read_question_title == f"edited {read_question_title}"
+
+		# delete part
+		re_open_sub_menu_of_question = id_click(driver, POST_DOTS_SUB_MENU)
+		delete_post_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[1].click()
+		accept_deletion_in_modal = id_click(driver, CONTINUE_WITHOUT_PRODUCT_BTN)
+
+		# verify that question was deleted
+		read_toast_msg = get_toast_msg(driver)
+		re_re_read_question_title = el_id(driver, FEED_POST_DESCRIPTION).text
+
+		assert read_toast_msg == "Your post has been deleted"
+		assert re_re_read_question_title != f"edited {read_question_title}"
+		
 
 	def comment_and_like_self_post(self, driver):
 		# manipulation with likes
