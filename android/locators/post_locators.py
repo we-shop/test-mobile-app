@@ -47,6 +47,8 @@ LIKES_IN_POST = "com.socialsuperstore:id/interactionsLikes"
 COMMENTS_IN_POST = "com.socialsuperstore:id/interactionsComments"
 COMMENTS_INPUT_TEXT_FIELD = "com.socialsuperstore.feature_comments:id/commentEditText"
 COMMENTS_SEND_BTN = "com.socialsuperstore.feature_comments:id/sendCommentButton"
+COMMENT_TEXT_ID = "com.socialsuperstore.feature_comments:id/commentTextView"
+
 
 
 # Try to adding a product first (modal in question comments)

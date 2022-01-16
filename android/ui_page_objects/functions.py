@@ -11,6 +11,7 @@ from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
 import pytest
 from locators.product_detail_locators import PRODUCT_MODAL_CONTINUE_BTN
+from appium.webdriver.common.touch_action import TouchAction
 
 
 # FUCTIONS FOR MOBILE
@@ -220,3 +221,19 @@ def taking_you_to_win(driver):
 	except:
 		print("Taking you to window is not displayed")
 		print(f"Expected window is not displayed: {ERROR}")
+
+
+# Long press function
+def long_click_id(driver, locator):
+	WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, locator)))
+	element = driver.find_element(By.ID, locator)
+	actions = TouchAction(driver)
+	actions.long_press(element)
+	actions.perform()
+
+def long_click_xpath(driver, locator):
+	WebDriverWait(driver, 10).until(EC.presence_of_element_located((MobileBy.XPATH, locator)))
+	element = driver.find_element(MobileBy.XPATH, locator)
+	actions = TouchAction(driver)
+	actions.long_press(element)
+	actions.perform()

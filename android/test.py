@@ -94,10 +94,20 @@ def atest_inbox_check(debug_model, login_model, inbox_model, selenium):
 	login_model.login_only(selenium)
 	inbox_model.inbox_check(selenium)
 
-def atest_self_product_like_and_comment_check(debug_model, login_model, post_model, selenium):
+def atest_self_post_like_and_comment_check(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	post_model.comment_and_like_self_post(selenium)
+
+def test_self_post_comment_edit_and_delete(debug_model, login_model, post_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_go_to_profile(selenium)
+	post_model.comment_edit_and_delete_in_self_post(selenium)
+
+
+
+
+
 	
 def atest_self_question_like_and_comment_check(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)

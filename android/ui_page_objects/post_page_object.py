@@ -203,7 +203,14 @@ class PostPage:
 			read_likes_count_final == read_likes_count +1
 
 		# manipulation with comments
-		read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+		# check if comment exist
+		read_comments_count = None
+
+		if el_id(driver, COMMENTS_IN_POST).text == "Add a comment":
+			read_comments_count = 0
+		else:
+			read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+
 		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
 		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for post")
 		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
@@ -212,6 +219,34 @@ class PostPage:
 		re_read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
 
 		assert re_read_comments_count == read_comments_count + 1
+
+	def comment_edit_and_delete_in_self_post(self, driver):
+		# manipulation with likes
+		click_on_first_posts_in_profile = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POSTS_TAB)
+
+		# manipulation with comments
+		read_comments_count = None
+
+		if el_id(driver, COMMENTS_IN_POST).text == "Add a comment":
+			read_comments_count = 0
+		else:
+			read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+
+		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
+		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for post")
+		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
+		time.sleep(1.1) # obligatory wait to avoid warning modal window
+		driver.back()
+		re_read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+
+		assert re_read_comments_count == read_comments_count + 1
+
+		# re-enter to comments, then edit
+		click_on_comments_btn_edit_flow = id_click(driver, COMMENTS_IN_POST)
+		long_click_id(driver, COMMENT_TEXT_ID)
+		time.sleep(3)
+		# FOOTER_ITEM_REC_PRODUCT
+		# FOOTER_ITEM_ASK_QUESTION
 
 	def comment_and_like_self_question(self, driver):
 		switching_to_question_tab = acc_id_click(driver, PROFILE_QUESTIONS_TAB)
@@ -241,7 +276,14 @@ class PostPage:
 			read_likes_count_final == read_likes_count + 1
 
 		# manipulation with comments
-		read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+		# check if comment exist
+		read_comments_count = None
+
+		if el_id(driver, COMMENTS_IN_POST).text == "Add a comment":
+			read_comments_count = 0
+		else:
+			read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+
 		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
 		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for question")
 		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
