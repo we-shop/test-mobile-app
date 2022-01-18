@@ -21,7 +21,7 @@ def id_click(driver, locator):
 		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, locator))).click()
 	except:
 		print(f"Element to click by ID: {locator} is not found!")
-		print(f"{ERROR}")
+		pytest.fail("Element to click by ID error")
 
 def xpath_click(driver, locator):
 	try: 

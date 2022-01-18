@@ -7,6 +7,7 @@ from ui_page_objects.product_detail_page_object import ProductDetailPage
 from ui_page_objects.profile_page_object import ProfilePage
 from ui_page_objects.post_page_object import PostPage
 from ui_page_objects.inbox_page_object import InboxPage
+from ui_page_objects.dashboard_page_object import DashboardPage
 from appium import webdriver
 from ui_page_objects.functions import *
 
@@ -75,3 +76,7 @@ def inbox_model(request):
   fixture = InboxPage()
   return fixture
 
+@pytest.fixture()
+def dashboard_model(request):
+  fixture = DashboardPage()
+  return fixture

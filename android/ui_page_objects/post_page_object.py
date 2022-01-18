@@ -244,17 +244,13 @@ class PostPage:
 		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
 		time.sleep(1.1) # obligatory wait to avoid warning modal window
 		
+		driver.back()
+		re_read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
 
-
-
-		#driver.back()
-		#re_read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
-
-		#assert re_read_comments_count == read_comments_count + 1  # NEED TO UNCOMMENT AFTER BUG FIX
+		assert re_read_comments_count == read_comments_count + 1, pytest.fail("Wrong comments count!")
 
 		# re-enter to comments, then edit
-		#click_on_comments_btn_edit_flow = id_click(driver, COMMENTS_IN_POST)
-		#time.sleep(1.1) # obligatory wait to avoid warning modal window
+		click_on_comments_btn_edit_flow = id_click(driver, COMMENTS_IN_POST)
 		long_click_id(driver, COMMENT_TEXT_ID)
 		click_on_edit_comment_btn = xpath_click(driver, FOOTER_ITEM_REC_PRODUCT)
 		edit_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, EDITED_COMMENT)
@@ -262,25 +258,26 @@ class PostPage:
 		time.sleep(1.1) # obligatory wait to avoid warning modal window
 
 		read_edited_comment_text = el_id(driver, COMMENT_TEXT_ID).text
-
 		assert read_edited_comment_text == EDITED_COMMENT
 
 		# delete comment block
 		long_click_id(driver, COMMENT_TEXT_ID)
-		click_on_edit_comment_btn = xpath_click(driver, FOOTER_ITEM_ASK_QUESTION)
-
+		click_on_delete_comment_btn = xpath_click(driver, FOOTER_ITEM_ASK_QUESTION)
 
 		# asserting that stub "Be the first to comment is displayed"
 		read_no_comments_stub = el_id(driver, NO_COMMENTS_STUB).text
 		assert "Be the first to comment" in read_no_comments_stub
 
-		#driver.back()
-		#re_read_comments_count_after_deletion = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+		# checking comments count again (after deletion)
+		driver.back()
+		re_read_comments_count_after_deletion = None
 
-		#assert re_read_comments_count_after_deletion == re_read_comments_count - 1
+		if el_id(driver, COMMENTS_IN_POST).text == "Add a comment":
+			re_read_comments_count_after_deletion = 0
+		else:
+			re_read_comments_count_after_deletion = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
 
-		# FOOTER_ITEM_REC_PRODUCT
-		# FOOTER_ITEM_ASK_QUESTION
+		assert re_read_comments_count_after_deletion == re_read_comments_count - 1
 
 	def comment_and_like_self_question(self, driver):
 		switching_to_question_tab = acc_id_click(driver, PROFILE_QUESTIONS_TAB)
@@ -339,6 +336,7 @@ class PostPage:
 
 		# go to profile
 		go_to_profile = acc_id_click(driver, FOOTER_ITEM_PROFILE)
+		click_on_question_tab = acc_id_click(driver, PROFILE_QUESTIONS_TAB) 
 		el_xpath_short_wait(driver, PROFILE_FIRST_ITEM_IN_POSTS_TAB)
 		click_on_first_question_in_profile = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POSTS_TAB)
 
@@ -355,19 +353,21 @@ class PostPage:
 		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
 		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for post")
 		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
-		time.sleep(1.1) # obligatory wait to avoid warning modal window
 		
+		# handle modal window
+		click_continue_without_product = id_click(driver, CONTINUE_WITHOUT_PRODUCT_BTN)
+		time.sleep(1.1) # obligatory wait to avoid warning modal window
 
+		# check comments count after creation
+		driver.back()
+		re_read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
 
-
-		#driver.back()
-		#re_read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
-
-		#assert re_read_comments_count == read_comments_count + 1  # NEED TO UNCOMMENT AFTER BUG FIX
+		assert re_read_comments_count == read_comments_count + 1, pytest.fail("Wrong comments count!")
 
 		# re-enter to comments, then edit
-		#click_on_comments_btn_edit_flow = id_click(driver, COMMENTS_IN_POST)
-		#time.sleep(1.1) # obligatory wait to avoid warning modal window
+		click_on_comments_btn_edit_flow = id_click(driver, COMMENTS_IN_POST)
+		time.sleep(1.1) # obligatory wait to avoid warning modal window
+
 		long_click_id(driver, COMMENT_TEXT_ID)
 		click_on_edit_comment_btn = xpath_click(driver, FOOTER_ITEM_REC_PRODUCT)
 		edit_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, EDITED_COMMENT)
@@ -380,17 +380,19 @@ class PostPage:
 
 		# delete comment block
 		long_click_id(driver, COMMENT_TEXT_ID)
-		click_on_edit_comment_btn = xpath_click(driver, FOOTER_ITEM_ASK_QUESTION)
-
+		click_on_delete_comment_btn = xpath_click(driver, FOOTER_ITEM_ASK_QUESTION)
 
 		# asserting that stub "Be the first to comment is displayed"
 		read_no_comments_stub = el_id(driver, NO_COMMENTS_STUB).text
 		assert "Be the first to comment" in read_no_comments_stub
 
-		#driver.back()
-		#re_read_comments_count_after_deletion = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+		# checking comments count again (after deletion)
+		driver.back()
+		re_read_comments_count_after_deletion = None
 
-		#assert re_read_comments_count_after_deletion == re_read_comments_count - 1
+		if el_id(driver, COMMENTS_IN_POST).text == "Add a comment":
+			re_read_comments_count_after_deletion = 0
+		else:
+			re_read_comments_count_after_deletion = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
 
-		# FOOTER_ITEM_REC_PRODUCT
-		# FOOTER_ITEM_ASK_QUESTION
+		assert re_read_comments_count_after_deletion == re_read_comments_count - 1

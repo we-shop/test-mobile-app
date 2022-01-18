@@ -26,7 +26,22 @@ def atest_add_product_to_wishlist_and_check_in_profile(login_model, debug_model,
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	search_model.search_product_and_open_detail_page(selenium)
-	product_page_model.add_product_to_wishlist_and_check_in_profile(selenium)	
+	product_page_model.add_product_to_wishlist_and_check_in_profile(selenium)
+
+def atest_open_product_website(debug_model, login_model, product_page_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_only(selenium)
+	product_page_model.open_product_website(selenium)
+
+def atest_add_product_to_post(debug_model, login_model, product_page_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_only(selenium)
+	product_page_model.add_product_to_post(selenium)
+
+def atest_add_product_to_question(debug_model, login_model, product_page_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_only(selenium)
+	product_page_model.add_product_to_question(selenium)
 
 def atest_profile_check_followers_and_followings_count(login_model, debug_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
@@ -100,25 +115,18 @@ def atest_self_question_like_and_comment_check(debug_model, login_model, post_mo
 	login_model.login_go_to_profile(selenium)
 	post_model.comment_and_like_self_question(selenium)
 
-def test_self_question_comment_edit_and_delete(debug_model, login_model, post_model, selenium):
+def atest_self_question_comment_edit_and_delete(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	post_model.ask_question(selenium)
 	post_model.comment_edit_and_delete_in_self_question(selenium)
-
-
-
-
 
 def atest_inbox_check(debug_model, login_model, inbox_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	inbox_model.inbox_check(selenium)
 
-def atest_open_product_website(debug_model, login_model, product_page_model, selenium):
+def atest_dashboard_wenews_check(debug_model, login_model, dashboard_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
-	product_page_model.open_product_website(selenium)
-
-
-
+	dashboard_model.wenews_check(selenium)

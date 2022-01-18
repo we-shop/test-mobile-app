@@ -12,6 +12,7 @@ from locators.profile_locators import *
 from locators.login_locators import *
 from locators.search_locators import *
 from locators.debug_locators import *
+from locators.post_locators import *
 
 
 class ProductDetailPage:
@@ -135,3 +136,34 @@ class ProductDetailPage:
 		assert len(page_url) > 10
 
 
+	def add_product_to_post(self, driver):
+		# going to detail product page
+		click_on_home_footer_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
+		click_on_first_product_in_feed = id_click(driver, FEED_PRODUCT_TITLE)
+
+		# product detail page steps > add to post
+		read_product_name = el_id(driver, PRODUCT_NAME_PRICE_BLOCK).text
+		open_product_sub_menu = id_click(driver, PRODUCT_PAGE_SUB_MENU)
+		click_on_add_to_post_sub_menu_item = xpath_click(driver, FOOTER_ITEM_REC_PRODUCT)
+
+		# assert product name on post creation step #1
+		read_product_name_in_post_creation_step = el_id(driver, PRODUCT_NAME_POST_CREATION).text
+
+		assert read_product_name == read_product_name_in_post_creation_step
+
+	def add_product_to_question(self, driver):
+		# going to detail product page
+		click_on_home_footer_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
+		click_on_first_product_in_feed = id_click(driver, FEED_PRODUCT_TITLE)
+
+		# product detail page steps > add to question
+		read_product_name = el_id(driver, PRODUCT_NAME_PRICE_BLOCK).text
+		open_product_sub_menu = id_click(driver, PRODUCT_PAGE_SUB_MENU)
+		click_on_add_to_question_sub_menu_item = xpath_click(driver, FOOTER_ITEM_ASK_QUESTION)
+
+		# assert product name on question creation step #2
+		click_next_btn = id_click(driver, STEP_BTN_ADD_PRODUCT)
+		click_next_btn_again = id_click(driver, STEP_BTN_ADD_PRODUCT)
+		read_product_name_in_question_creation_step = el_id(driver, PRODUCT_NAME_POST_CREATION).text
+
+		assert read_product_name == read_product_name_in_question_creation_step
