@@ -150,6 +150,8 @@ class ProfilePage:
 				follow_unclicked += 2
 
 		# going back to profile
+		driver.back()
+		click_on_home_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
 		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
 		re_reading_followings_count = int(el_id(driver, FOLLOWINGS_COUNT).text)
 
@@ -162,6 +164,7 @@ class ProfilePage:
 		
 		# going to following to make sure that current count match existing count of following
 		click_on_following_btn = id_click(driver, FOLLOWINGS_LABEL_PROFILE)
+		time.sleep(0.6) # obligatory wait to avoid miscalculations of following items
 		calculate_all_following_btns = len(elems_xpath(driver, LIST_OF_ALL_FOLLOW_BTNS))
 
 		# cover vision issue (unable to detect hidden items)
@@ -170,7 +173,6 @@ class ProfilePage:
 		else:	
 			assert calculate_all_following_btns == re_reading_followings_count
 
-		
 
 	def follow_few_users(self, driver):
 		# test users

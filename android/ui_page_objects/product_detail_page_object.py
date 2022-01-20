@@ -95,7 +95,7 @@ class ProductDetailPage:
 		# going back to profile
 		click_on_back_btn = acc_id_click(driver, BACK_BTN)
 		profile_footer_icon_click = id_click(driver, PROFILE_FOOTER_ITEM)
-		wishlist_profile_click = id_click(driver, WISHLIST_PROFILE_CLICK)
+		wishlist_profile_click = acc_id_click(driver, WISHLIST_PROFILE_CLICK)
 
 		# checking if item was indeed added to correct wishlist
 		# Note: can't avoid try/except block, because of java error (stale element exception > unknown DOM issue)

@@ -48,6 +48,16 @@ def atest_profile_check_followers_and_followings_count(login_model, debug_model,
 	login_model.login_go_to_profile(selenium)
 	profile_model.followings_followers_count(selenium)
 
+def atest_profile_follow_unfollow_followers_following_tabs(login_model, debug_model, profile_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_go_to_profile(selenium)
+	profile_model.following_count_manipulations_in_profile(selenium)
+
+def atest_profile_follow_few_users_using_search(login_model, debug_model, profile_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_go_to_profile(selenium)
+	profile_model.follow_few_users(selenium)	
+
 def atest_profile_info_edit(login_model, debug_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
@@ -57,16 +67,6 @@ def atest_profile_deactivate_account_flow(login_model, debug_model, profile_mode
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	profile_model.deactivate_account_and_login_after(selenium)
-
-def atest_profile_follow_unfollow_followers_following_tabs(login_model, debug_model, profile_model, selenium):
-	debug_model.switch_to_uat(selenium)
-	login_model.login_go_to_profile(selenium)
-	profile_model.following_count_manipulations_in_profile(selenium)
-
-def atest_profile_follow_few_users_using_search(login_model, debug_model, profile_model, selenium):
-	debug_model.switch_to_uat(selenium)
-	login_model.login_go_to_profile(selenium)
-	profile_model.follow_few_users(selenium)
 
 def atest_profile_info_pages(login_model, debug_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
@@ -126,7 +126,19 @@ def atest_inbox_check(debug_model, login_model, inbox_model, selenium):
 	login_model.login_only(selenium)
 	inbox_model.inbox_check(selenium)
 
+def atest_inbox_redirect_to_post_and_question_check(debug_model, login_model, inbox_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_only(selenium)
+	inbox_model.inbox_post_and_question_redirects(selenium)
+
+def atest_dashboard_new_account_check(debug_model, login_model, dashboard_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_only(selenium)
+	dashboard_model.new_acc_check(selenium)
+
 def atest_dashboard_wenews_check(debug_model, login_model, dashboard_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	dashboard_model.wenews_check(selenium)
+
+

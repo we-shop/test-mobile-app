@@ -27,3 +27,20 @@ class DashboardPage:
 		# check that title from preview is the same as inside post
 		assert read_first_post_title == read_post_title_inside
 
+
+	def new_acc_check(self, driver):
+		# open dashboard > wenews
+		go_to_dashboard = acc_id_click(driver, FOOTER_ITEM_DASHBOARD)
+
+		# check weshares tab stubs for new account
+		assert el_id(driver, DASH_WESHARES_EMPTY_STUB_IMG).is_displayed()
+		assert el_id(driver, DASH_WESHARES_EMPTY_STUB_TITLE).is_displayed()
+		assert el_id(driver, DASH_WESHARES_EMPTY_STUB_TEXT).is_displayed()
+		assert el_id(driver, DASH_WESHARES_BOTTOM_HINT).is_displayed()
+		 
+		# check transactions tab stubs for new account
+		go_to_transactions_tab = acc_id_click(driver, DASHBOARD_TRANSACTIONS_TAB)
+		assert el_id(driver, DASH_TRANS_EMPTY_PURCHASES_STUB).is_displayed()
+		assert el_id(driver, DASH_TRANS_EMPTY_INFLUENCE_SALES_STUB).is_displayed()
+		assert el_id(driver, DASH_TRANS_EMPTY_REFERRALS_STUB).is_displayed()
+		assert el_id(driver, DASH_TRANS_ALERT_CONTAINER).is_displayed()
