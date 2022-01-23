@@ -44,3 +44,10 @@ class DashboardPage:
 		assert el_id(driver, DASH_TRANS_EMPTY_INFLUENCE_SALES_STUB).is_displayed()
 		assert el_id(driver, DASH_TRANS_EMPTY_REFERRALS_STUB).is_displayed()
 		assert el_id(driver, DASH_TRANS_ALERT_CONTAINER).is_displayed()
+
+
+	def existing_acc_check(self, driver):
+		# open dashboard > wenews
+		go_to_dashboard = acc_id_click(driver, FOOTER_ITEM_DASHBOARD)
+
+		# check weshares tab stubs for new account

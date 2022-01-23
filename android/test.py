@@ -97,7 +97,15 @@ def atest_self_post_comment_edit_and_delete(debug_model, login_model, post_model
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	post_model.recommend_product(selenium)
-	post_model.comment_edit_and_delete_in_self_post(selenium)	
+	post_model.comment_edit_and_delete_in_self_post(selenium)
+
+def atest_self_post_comment_edit_and_delete_second(debug_model, login_model, post_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_only(selenium)
+	post_model.recommend_product(selenium)
+	post_model.comment_edit_and_delete_in_self_post_second(selenium)
+
+
 
 def atest_post_create_new_question(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
@@ -121,6 +129,16 @@ def atest_self_question_comment_edit_and_delete(debug_model, login_model, post_m
 	post_model.ask_question(selenium)
 	post_model.comment_edit_and_delete_in_self_question(selenium)
 
+def test_self_question_comment_edit_and_delete_second(debug_model, login_model, post_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_only(selenium)
+	post_model.ask_question(selenium)
+	post_model.comment_edit_and_delete_in_self_question_second(selenium)
+
+
+
+	
+
 def atest_inbox_check(debug_model, login_model, inbox_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
@@ -135,6 +153,15 @@ def atest_dashboard_new_account_check(debug_model, login_model, dashboard_model,
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	dashboard_model.new_acc_check(selenium)
+
+def atest_dashboard_existing_account_check(debug_model, login_model, dashboard_model, selenium):
+	debug_model.switch_to_uat(selenium)
+	login_model.login_only(selenium)
+	dashboard_model.existing_acc_check(selenium)	
+
+
+
+
 
 def atest_dashboard_wenews_check(debug_model, login_model, dashboard_model, selenium):
 	debug_model.switch_to_uat(selenium)
