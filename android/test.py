@@ -129,7 +129,7 @@ def atest_self_question_comment_edit_and_delete(debug_model, login_model, post_m
 	post_model.ask_question(selenium)
 	post_model.comment_edit_and_delete_in_self_question(selenium)
 
-def test_self_question_comment_edit_and_delete_second(debug_model, login_model, post_model, selenium):
+def atest_self_question_comment_edit_and_delete_second(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	post_model.ask_question(selenium)
@@ -151,10 +151,10 @@ def atest_inbox_redirect_to_post_and_question_check(debug_model, login_model, in
 
 def atest_dashboard_new_account_check(debug_model, login_model, dashboard_model, selenium):
 	debug_model.switch_to_uat(selenium)
-	login_model.login_only(selenium)
+	login_model.login_only_new_acc(selenium)
 	dashboard_model.new_acc_check(selenium)
 
-def atest_dashboard_existing_account_check(debug_model, login_model, dashboard_model, selenium):
+def test_dashboard_existing_account_check(debug_model, login_model, dashboard_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	dashboard_model.existing_acc_check(selenium)	

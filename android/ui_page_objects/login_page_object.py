@@ -12,16 +12,24 @@ from locators.login_locators import *
 
 
 class LoginPage:
-	def __init__(self, LOGIN_URL, LOGIN, PASSWORD):
+	def __init__(self, LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW):
 		self.LOGIN_URL = LOGIN_URL
 		self.LOGIN = LOGIN
 		self.PASSWORD = PASSWORD
+		self.LOGIN_NEW = LOGIN_NEW
+		self.PASSWORD_NEW = PASSWORD_NEW
 
 	def login_only(self, driver):
 		# making login
 		login_field = id_keys(driver, LOG_FIELD, self.LOGIN)
 		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD)
 		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
+
+	def login_only_new_acc(self, driver):
+		# making login
+		login_field = id_keys(driver, LOG_FIELD, self.LOGIN_NEW)
+		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD_NEW)
+		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)		
 
 	def login_go_to_profile(self, driver):
 		# making login

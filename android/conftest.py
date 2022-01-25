@@ -20,9 +20,15 @@ load_dotenv()
 def get_data(data):
 	return data.split("#")[0]
 
+LOGIN_URL = os.getenv("LOGIN_URL")
 LOGIN = os.getenv("LOGIN")
 PASSWORD = os.getenv("PASSWORD")
-LOGIN_URL = os.getenv("LOGIN_URL")
+LOGIN_NEW = os.getenv("LOGIN_NEW")
+PASSWORD_NEW = os.getenv("PASSWORD_NEW")
+LOGIN_INT = os.getenv("LOGIN_INT")
+PASSWORD_INT = os.getenv("PASSWORD_INT")
+LOGIN_INT_NEW = os.getenv("LOGIN_INT_NEW")
+PASSWORD_INT_NEW = os.getenv("PASSWORD_INT_NEW")
 
 
 prefs = {"download.default_directory": os.getcwd() + "/"}
@@ -43,7 +49,7 @@ def selenium(selenium):
 #FIXTURES PAGE OBJECT
 @pytest.fixture()
 def login_model(request):
-	fixture = LoginPage(LOGIN_URL, LOGIN, PASSWORD)
+	fixture = LoginPage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW)
 	return fixture
 
 @pytest.fixture()
@@ -78,5 +84,5 @@ def inbox_model(request):
 
 @pytest.fixture()
 def dashboard_model(request):
-  fixture = DashboardPage()
+  fixture = DashboardPage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW)
   return fixture

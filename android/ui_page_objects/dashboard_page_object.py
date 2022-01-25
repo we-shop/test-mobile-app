@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 import time
 import pytest
 import random
+from datetime import datetime
 from ui_page_objects.functions import *
 from locators.search_locators import *
 from locators.product_detail_locators import *
@@ -14,6 +15,14 @@ from locators.profile_locators import *
 
 
 class DashboardPage:
+	def __init__(self, LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW):
+		self.LOGIN_URL = LOGIN_URL
+		self.LOGIN = LOGIN
+		self.PASSWORD = PASSWORD
+		self.LOGIN_NEW = LOGIN_NEW
+		self.PASSWORD_NEW = PASSWORD_NEW
+
+
 	def wenews_check(self, driver):
 		# open dashboard > wenews
 		go_to_dashboard = acc_id_click(driver, FOOTER_ITEM_DASHBOARD)
@@ -29,7 +38,7 @@ class DashboardPage:
 
 
 	def new_acc_check(self, driver):
-		# open dashboard > wenews
+		# open dashboard > weshares
 		go_to_dashboard = acc_id_click(driver, FOOTER_ITEM_DASHBOARD)
 
 		# check weshares tab stubs for new account
@@ -47,7 +56,51 @@ class DashboardPage:
 
 
 	def existing_acc_check(self, driver):
-		# open dashboard > wenews
+		CURRENT_DATE = datetime.today().strftime('%d.%m.%y')
+
+		# open dashboard
 		go_to_dashboard = acc_id_click(driver, FOOTER_ITEM_DASHBOARD)
 
-		# check weshares tab stubs for new account
+		# check weshares tab
+		weshares_chart = el_id(driver, DASH_WESHARES_CHART)
+		assert weshares_chart.is_displayed()
+
+		last_updated = el_id(driver, DASH_WESHARES_LAST_UPDATED).text.split(", ")[1]
+		assert last_updated == CURRENT_DATE
+		
+		share_price = float(el_id(driver, DASH_WESHARES_SHARE_PRICE).text.split("£")[1])
+		assert share_price > 0
+
+		your_weshare_top = float(el_id(driver, DASH_WESHARES_YOUR_WESHARE_TOP).text.split("£")[1])
+		assert your_weshare_top > 100
+
+		your_weshare_bottom = float(el_id(driver, DASH_WESHARES_YOUR_WESHARE_BOTTOM).text)
+		assert your_weshare_bottom > 100
+
+		# support URL check
+		click_on_support_link = id_click(driver, DASH_WESHARES_SUPPORT_LINK)
+		select_chrome_browser(driver)
+		page_url_support = el_id(driver, BROWSER_URL_BAR).text
+		assert page_url_support == "help.we.shop/en/"
+		driver.back()
+
+		# switch to transactions tab
+		click_on_transactions_tab = acc_id_click(driver, DASHBOARD_TRANSACTIONS_TAB)
+
+		# check purchases
+		"com.socialsuperstore:id/youPurchasesLoadMore"
+		"com.socialsuperstore:id/dashboardTransactionTitle"
+		"com.socialsuperstore:id/dashboardTransactionPrice"
+		driver.back()
+
+		# check influenced sales
+		"com.socialsuperstore:id/influencedSalesLoadMore"
+		"com.socialsuperstore:id/dashboardTransactionTitle"
+		"com.socialsuperstore:id/dashboardTransactionPrice"
+		driver.back()
+
+		# check refferals
+		"com.socialsuperstore:id/friendsReferredLoadMore"
+		"com.socialsuperstore:id/referralsHeader"
+		"com.socialsuperstore:id/nickInput"
+		"com.socialsuperstore:id/dashboardTransactionTitle"

@@ -12,6 +12,13 @@ DASH_WESHARES_EMPTY_STUB_TITLE = "com.socialsuperstore:id/emptyTitle"
 DASH_WESHARES_EMPTY_STUB_TEXT = "com.socialsuperstore:id/emptyBody"
 DASH_WESHARES_BOTTOM_HINT = "com.socialsuperstore:id/bottomHint"
 
+DASH_WESHARES_SUPPORT_LINK = "com.socialsuperstore:id/supportHint"
+DASH_WESHARES_LAST_UPDATED = "com.socialsuperstore:id/lastUpdated"
+DASH_WESHARES_SHARE_PRICE = "com.socialsuperstore:id/sharePrice"
+DASH_WESHARES_YOUR_WESHARE_TOP = "com.socialsuperstore:id/capitalization" 
+DASH_WESHARES_YOUR_WESHARE_BOTTOM = "com.socialsuperstore:id/yourWeshares"
+DASH_WESHARES_CHART = "com.socialsuperstore:id/chart"
+
 # TRANSACTIONS TAB
 DASH_TRANS_EMPTY_PURCHASES_STUB = "com.socialsuperstore:id/purchasesEmpty"
 DASH_TRANS_EMPTY_INFLUENCE_SALES_STUB = "com.socialsuperstore:id/influencedEmpty"
