@@ -100,7 +100,14 @@ def id_until_gone(driver, locator):
 		WebDriverWait(driver, 10).until(EC.invisibility_of_element_located((By.ID, locator)))
 	except:
 		print(f"Elements by ID: {locator} is not gone!")
-		print(f"{ERROR}")				
+		print(f"{ERROR}")
+
+def id_until_gone_short(driver, locator):
+	try:
+		WebDriverWait(driver, 1).until(EC.invisibility_of_element_located((By.ID, locator)))
+	except:
+		print(f"Elements by ID: {locator} is not gone!")
+		print(f"{ERROR}")					
 
 def id_keys(driver, locator, keys):
 	try: 
@@ -249,3 +256,6 @@ def long_click_xpath(driver, locator):
 
 def scroll_down_slowly(driver):
 	driver.swipe(470, 1400, 470, 950, 330)
+
+def scroll_down_dashboard(driver):
+	driver.swipe(768, 1423, 768, 1657, 330)

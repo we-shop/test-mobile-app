@@ -88,19 +88,33 @@ class DashboardPage:
 		click_on_transactions_tab = acc_id_click(driver, DASHBOARD_TRANSACTIONS_TAB)
 
 		# check purchases
-		"com.socialsuperstore:id/youPurchasesLoadMore"
-		"com.socialsuperstore:id/dashboardTransactionTitle"
-		"com.socialsuperstore:id/dashboardTransactionPrice"
+		click_on_show_more_purchases = id_click(driver, DASH_TRANS_SHOW_MORE_PURCHASES)
+		id_until_gone_short(driver, PRE_LOADER)
+		purchased_product_title = len(el_id(driver, DASH_TRANS_SHOW_MORE_PRODUCT_TITLE).text)
+		purchased_product_price = float(el_id(driver, DASH_TRANS_SHOW_MORE_PRICE).text.split("£")[1])
+
+		assert purchased_product_title > 3
+		assert purchased_product_price > 0
 		driver.back()
 
 		# check influenced sales
-		"com.socialsuperstore:id/influencedSalesLoadMore"
-		"com.socialsuperstore:id/dashboardTransactionTitle"
-		"com.socialsuperstore:id/dashboardTransactionPrice"
+		click_on_show_more_sales = id_click(driver, DASH_TRANS_SHOW_MORE_SALES)
+		id_until_gone_short(driver, PRE_LOADER)
+		influenced_sales_product_title = len(el_id(driver, DASH_TRANS_SHOW_MORE_PRODUCT_TITLE).text)
+		influenced_sales_price = float(el_id(driver, DASH_TRANS_SHOW_MORE_PRICE).text.split("£")[1])
+
+		assert influenced_sales_product_title > 3
+		assert influenced_sales_price > 0
 		driver.back()
 
 		# check refferals
-		"com.socialsuperstore:id/friendsReferredLoadMore"
-		"com.socialsuperstore:id/referralsHeader"
-		"com.socialsuperstore:id/nickInput"
-		"com.socialsuperstore:id/dashboardTransactionTitle"
+		click_on_show_more_referrals = id_click(driver, DASH_TRANS_SHOW_MORE_REFERRALS)
+		id_until_gone_short(driver, PRE_LOADER)
+		read_referral_header_title = el_id(driver, DASH_TRANS_SHOW_MORE_REFERRALS_HEADER).text
+		read_link_in_share_input = el_id(driver, DASH_TRANS_SHOW_MORE_REFERRALS_NICK_INPUT).text.split("@")[1]
+		read_my_invited_referral_name = len(el_id(driver, DASH_TRANS_SHOW_MORE_PRODUCT_TITLE).text)
+
+		assert read_referral_header_title == "Invite your friends"
+		assert read_link_in_share_input == self.LOGIN
+		assert read_my_invited_referral_name > 5
+

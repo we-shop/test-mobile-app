@@ -311,10 +311,18 @@ class ProfilePage:
 
 		assert read_app_version == read_app_version_in_profile_about
 
+	def other_user_posts_n_questions(self, driver):
+		# test users
+		USER_1 = "@nemesis"
+		USER_2 = "Veremeychik"
+		follow = 0
+		unfollow = 0 
 
 
-
-
+		search_user_one = id_keys(driver, SEARCH_INPUT_FIELD, USER_1)
+		click_on_suggested_item_in_search = xpath_click(driver, SEARCH_RESULT_SECOND_ITEM)
+		read_opened_profile = el_id(driver, PROFILE_USERNAME).text
+		assert read_opened_profile == USER_1
 		
 		
 		
