@@ -172,6 +172,6 @@ def atest_dashboard_wenews_check(debug_model, login_model, dashboard_model, sele
 def test_walkthough_other_user_posts_and_questions(debug_model, login_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only_new_acc(selenium)
-	profile_model.other_user_posts_n_questions(selenium)	
+	profile_model.other_user_posts_n_questions(selenium)
 
 

@@ -1,7 +1,7 @@
 from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
 
-# LIST OF LOCATORS FOR SEARCH PAGE MODEL
+# LIST OF LOCATORS FOR PROFILE PAGE MODEL
 FOLLOWERS_COUNT = "com.socialsuperstore:id/profileFollowersCount"
 FOLLOWINGS_COUNT = "com.socialsuperstore:id/profileFollowingCount"
 FOLLOWERS_LABEL_PROFILE = "com.socialsuperstore:id/profileFollowersTitle"
@@ -20,7 +20,11 @@ FOOTER_ITEM_INBOX = "Alerts"
 FOOTER_ITEM_PROFILE = "Profile"
 PROFILE_POSTS_TAB = "Posts"
 PROFILE_FIRST_ITEM_IN_POSTS_TAB = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView"
+PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT = "/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[2]"
+NESTED_PRODUCTS_COUNT_IN_POST = "//android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[1]"
+POST_PRODUCT_TITLE = "com.socialsuperstore:id/productTitle"
 PROFILE_QUESTIONS_TAB = "Questions"
+FIRST_QUESTION_IN_QUEST_TAB = "//android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView[2]"
 PROFILE_FOLLOWERS_TAB_FOLLOWERS_TAB = "Followers"
 PROFILE_FOLLOWERS_TAB_FOLLOWINGS_TAB = "Following"
 PROFILE_FOLLOWERS_TAB_ALL_ITEMS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.CompoundButton"
