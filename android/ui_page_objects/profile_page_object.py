@@ -326,45 +326,41 @@ class ProfilePage:
 		assert read_opened_profile == USER_1
 		read_profile_first_and_last_name = el_id(driver, PROFILE_FIRST_AND_LAST_NAME).text
 
-		# post tab manipulation
-		read_product_post_name = el_xpath(driver, PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT).text
-
+		# post tab manipulation		
 		nested_product_count = None
 
 		try:
 			if el_xpath(driver, NESTED_PRODUCTS_COUNT_IN_POST).is_displayed():
-				nested_product_count = el_xpath(driver, NESTED_PRODUCTS_COUNT_IN_POST).text.split("+")[1]
+				nested_product_count = int(el_xpath(driver, NESTED_PRODUCTS_COUNT_IN_POST).text.split("+")[1]) + 1
 		except:
 			nested_product_count = False
 
-
-		go_to_first_product = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT)
 		
 		if nested_product_count != False:
-			assert int(nested_product_count) == len(elems_xpath(driver, READ_SINGLE_PRODUCT_LINEAR_LAYOUTS))
+			read_product_post_name = el_xpath(driver, PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT).text
+			go_to_first_product = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT)
+			assert nested_product_count == len(elems_xpath(driver, READ_SINGLE_PRODUCT_LINEAR_LAYOUTS))
+		else:
+			read_product_post_name = el_xpath(driver, PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT_SPECIAL).text
+			go_to_first_product = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT)
+			
 
 		read_product_name_on_post_page = el_id(driver, POST_PRODUCT_TITLE).text
 		read_user_name_in_post = el_id(driver, POST_USERNAME).text
 		
-		assert 	read_product_post_name == read_product_name_on_post_page
+		assert read_product_post_name == read_product_name_on_post_page
 		assert read_profile_first_and_last_name == read_user_name_in_post
 
 		driver.back()
 
 		# question tab manipulation
 		switch_to_question_tab = acc_id_click(driver, PROFILE_QUESTIONS_TAB)
+		##############################################################################
+		# NEED TO ADD CHECK FOR COUNT OF PRODUCT IN QUESTION, WHEN WILL BE IMPLEMENTED
+		##############################################################################
 		click_on_first_question = xpath_click(driver, FIRST_QUESTION_IN_QUEST_TAB)
 		read_username_in_question = el_id(driver, POST_USERNAME).text
 
 		assert el_id(driver, QUESTION_REPLY_LABEL).is_displayed()
 		assert read_profile_first_and_last_name == read_username_in_question
-		
-
-
-		
-
-		
-		
-		
-		
 		

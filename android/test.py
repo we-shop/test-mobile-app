@@ -157,7 +157,7 @@ def atest_dashboard_new_account_check(debug_model, login_model, dashboard_model,
 def atest_dashboard_existing_account_check(debug_model, login_model, dashboard_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
-	dashboard_model.existing_acc_check(selenium)	
+	dashboard_model.existing_acc_check(selenium)
 
 
 
