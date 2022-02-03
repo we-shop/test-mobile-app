@@ -257,5 +257,15 @@ def long_click_xpath(driver, locator):
 def scroll_down_slowly(driver):
 	driver.swipe(470, 1400, 470, 950, 330)
 
+def scroll_down_deep(driver):
+	driver.swipe(470, 1400, 470, 150, 230)
+
 def scroll_down_dashboard(driver):
 	driver.swipe(768, 1423, 768, 1657, 330)
+
+def scroll_down_main(driver):
+	driver.execute_script('mobile: scrollGesture', {
+		'left': 100, 'top': 100, 'width': 200, 'height': 200,
+		'direction': 'down',
+		'percent': 3.0
+	})	
