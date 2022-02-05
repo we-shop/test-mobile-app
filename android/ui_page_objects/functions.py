@@ -260,6 +260,19 @@ def scroll_down_slowly(driver):
 def scroll_down_deep(driver):
 	driver.swipe(470, 1400, 470, 150, 230)
 
+def scroll_on_feed_page(driver):
+	time.sleep(2)
+	action = TouchAction(driver)
+	action.press(x=867, y=1574).wait(1000).move_to(x=867, y=344).release().perform()
+	time.sleep(0.3)
+
+def scroll_up_on_feed_page(driver):
+	time.sleep(2)
+	action = TouchAction(driver)
+	action.press(x=867, y=1874).wait(1000).move_to(x=867, y=2455).release().perform()
+	time.sleep(0.3)	
+
+
 def scroll_down_dashboard(driver):
 	driver.swipe(768, 1423, 768, 1657, 330)
 

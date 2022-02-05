@@ -113,16 +113,49 @@ class ProfilePage:
 		# checking expected error message (2 possible variants)
 		assert toast_error_msg_get == expected_message_one or expected_message_two == expected_message_two
 
-		# editing first/last name and bio
+		# editing first/last name
 		edit_first_name_field = xpath_keys(driver, PROFILE_EDIT_FIRST_NAME_FIELD, RANDOM_FIRST_NAME)
 		edit_last_name_field = xpath_keys(driver, PROFILE_EDIT_LAST_NAME_FIELD, RANDOM_LAST_NAME)
 
 		scroll_down_deep(driver)
 		time.sleep(1.2) # obligatory wait, between scrolls
+
+		# manipulation with "your interests"
+		UNCHECK_BOXES = None
+		total_count_of_interests = len(elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES))
+		total_count_of_checked_interests = len([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "true"])
+
+		if total_count_of_checked_interests >= 5:
+			UNCHECK_BOXES = True
+			rand_boxes_to_uncheck = random.sample([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "true"], 2)
+			for i in rand_boxes_to_uncheck:
+				i.click()
+		elif total_count_of_checked_interests < 3:
+			rand_boxes_to_fill = [i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "false"]
+			for i in rand_boxes_to_fill:
+				i.click()
+		else:
+			UNCHECK_BOXES = False
+			rand_boxes_to_check	= random.sample([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "false"], 2)
+			for i in rand_boxes_to_check:
+				i.click()
+
+		re_read_count_of_checked_interests = len([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "true"])
+
+		if UNCHECK_BOXES:
+			assert total_count_of_checked_interests == re_read_count_of_checked_interests + 2
+
+		elif UNCHECK_BOXES == None:
+			total_count_of_checked_interests == total_count_of_interests
+
+		else:
+			assert total_count_of_checked_interests == re_read_count_of_checked_interests - 2		
+		
 		scroll_down_deep(driver)
 		time.sleep(1.2) # obligatory wait, between scrolls
 
-		edit_bio_name_field = id_keys(driver, PROFILE_EDIT_BIO_FIELD, RANDOM_BIO_NAME)
+		# editing first/last name
+		edit_bio_name_field = xpath_keys(driver, PROFILE_EDIT_BIO_FIELD, RANDOM_BIO_NAME)
 		click_on_save_changes_btn = id_click(driver, PROFILE_EDIT_SAVE_CHANGES_BTN)
 		
 		# refresh manupulation to see new profile data

@@ -12,6 +12,9 @@ from locators.profile_locators import *
 from locators.product_detail_locators import *
 from appium.webdriver.extensions.android.nativekey import AndroidKey
 
+
+from appium.webdriver.common.touch_action import TouchAction
+
 class PostPage:
 	def recommend_product(self, driver):
 		# generating random id for product title/caption
@@ -38,13 +41,16 @@ class PostPage:
 		publish_btn_click = id_click(driver, PUBLISH_BTN_ADD_PRODUCT)
 
 		# check if product created (checking title/caption in feed)
-		get_correct_text_by_id(driver, FEED_POST_DESCRIPTION, PRODUCT_ID)
+		wait_element = el_id(driver, POST_TIME_AGO_TEXT)
+		scroll_on_feed_page(driver)
+		#get_correct_text_by_id(driver, FEED_POST_DESCRIPTION, PRODUCT_ID)
 
 	def product_edit_and_deletion(self, driver):
 		# starting from opened feed
 		read_post_title = el_id(driver, FEED_POST_DESCRIPTION).text.split(" ")[-1]
 		read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
 
+		scroll_up_on_feed_page(driver)
 		open_sub_menu_of_post = id_click(driver, POST_DOTS_SUB_MENU)
 		edit_post_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[0].click()
 
@@ -58,6 +64,8 @@ class PostPage:
 		publish_btn_click = id_click(driver, PUBLISH_BTN_ADD_PRODUCT)
 
 		# verify post data after edit
+		wait_element = el_id(driver, POST_TIME_AGO_TEXT)
+		scroll_on_feed_page(driver)
 		re_read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
 		re_read_post_title = el_id(driver, FEED_POST_DESCRIPTION).text
 
@@ -65,12 +73,14 @@ class PostPage:
 		assert re_read_post_title == f"edited {read_post_title}"
 
 		# delete part
+		scroll_up_on_feed_page(driver)
 		re_open_sub_menu_of_post = id_click(driver, POST_DOTS_SUB_MENU)
 		delete_post_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[1].click()
 		accept_deletion_in_modal = id_click(driver, CONTINUE_WITHOUT_PRODUCT_BTN)
 
 		# verify that post was deleted
 		read_toast_msg = get_toast_msg(driver)
+		scroll_on_feed_page(driver)
 		re_re_read_post_title = el_id(driver, FEED_POST_DESCRIPTION).text
 
 		assert read_toast_msg == "Your post has been deleted"
@@ -129,6 +139,8 @@ class PostPage:
 		publish_btn_click = id_click(driver, PUBLISH_BTN_ADD_PRODUCT)
 
 		# check if question created (checking title/caption in feed)
+		wait_element = el_id(driver, POST_TIME_AGO_TEXT)
+		scroll_on_feed_page(driver)
 		get_correct_text_by_id(driver, FEED_POST_DESCRIPTION, QUESTION_ID)
 
 	def question_edit_and_deletion(self, driver):

@@ -8,6 +8,8 @@ BACK_BTN = "Navigate up"
 PRODUCT_NAME_TITLE = "com.socialsuperstore:id/toolbarText"
 PRODUCT_NAME_PRICE_BLOCK = "com.socialsuperstore.feature_product_detail:id/productName"
 PRODUCT_NAME_POST_CREATION = "com.socialsuperstore.feature_post_editor:id/name"
+PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE = "//*[contains(@resource-id, 'com.socialsuperstore.feature_post_editor:id/productImage')]"
+
 PRODUCT_PAGE_SUB_MENU = "com.socialsuperstore.feature_product_detail:id/moreActionsBtn"
 PROFILE_FOOTER_ITEM = "com.socialsuperstore:id/action_profile"
 WISHLIST_PROFILE_CLICK = "Wishlists"

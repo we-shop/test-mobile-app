@@ -58,7 +58,7 @@ def atest_profile_follow_few_users_using_search(login_model, debug_model, profil
 	login_model.login_go_to_profile(selenium)
 	profile_model.follow_few_users(selenium)	
 
-def test_profile_info_edit(login_model, debug_model, profile_model, selenium):
+def atest_profile_info_edit(login_model, debug_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	profile_model.edit_profile(selenium)
@@ -82,7 +82,7 @@ def atest_post_create_new_product(debug_model, login_model, post_model, selenium
 	login_model.login_only(selenium)
 	post_model.recommend_product(selenium)
 
-def atest_post_create_new_product_edit_delete(debug_model, login_model, post_model, selenium):
+def test_post_create_new_product_edit_delete(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	post_model.recommend_product(selenium)
