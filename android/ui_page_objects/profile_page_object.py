@@ -446,3 +446,75 @@ class ProfilePage:
 		assert el_id(driver, QUESTION_REPLY_LABEL).is_displayed()
 		assert read_profile_first_and_last_name == read_username_in_question
 		
+	def wishlist_likes_and_comments(self, driver):
+		got_to_wishlists_tab = acc_id_click(driver, PROFILE_WISHLIST_TAB)
+		click_on_first_wishlist_in_grid = xpath_click(driver, PROFILE_FIRST_ITEM_IN_WISHLIST_GRID)
+
+		# manipulation with likes
+		assert el_id(driver, PROFILE_FIRST_ITEM_TEXT_INSED_WISHLIST).is_displayed()
+
+		read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+		final_count_of_likes = 0
+
+		if read_likes_in_wishlist == 0:
+			click_on_like_btn = id_click(driver, LIKES_IN_POST)
+			re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+			assert re_read_likes_in_wishlist == read_likes_in_wishlist + 1
+			final_count_of_likes = read_likes_in_wishlist + 1
+		elif read_likes_in_wishlist == 1:
+			click_on_like_btn = id_click(driver, LIKES_IN_POST)
+			re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+			if re_read_likes_in_wishlist == 0:
+				click_on_like_btn = id_click(driver, LIKES_IN_POST)
+				re_re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+				assert re_re_read_likes_in_wishlist == 1
+				final_count_of_likes = 1
+			else:
+				assert re_read_likes_in_wishlist == 2
+				final_count_of_likes = 2
+
+		else:
+			click_on_like_btn = id_click(driver, LIKES_IN_POST)		
+			re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+
+			if re_read_likes_in_wishlist == read_likes_in_wishlist - 1:
+				click_on_like_btn = id_click(driver, LIKES_IN_POST)
+				re_re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+				assert re_re_read_likes_in_wishlist == read_likes_in_wishlist
+				final_count_of_likes = re_re_read_likes_in_wishlist
+			else:
+				assert re_read_likes_in_wishlist == read_likes_in_wishlist + 1
+				final_count_of_likes = read_likes_in_wishlist + 1
+
+			
+		
+		# manipulation with comments
+		read_comments_count = None
+
+		if el_id(driver, COMMENTS_IN_POST).text == "Add a comment":
+			read_comments_count = 0
+		else:
+			read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])				
+
+		
+		go_to_wishlist_comments = id_click(driver, GO_TO_COMMENTS_BTN)
+
+		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for post")
+		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
+		time.sleep(1.1) # obligatory wait to avoid warning modal window
+		driver.back()
+		re_read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
+		read_again_likes_count = int(el_id(driver, LIKES_IN_POST).text)
+		
+		
+		# WILL BE UNCOMMENTED AFTER BUG FIX
+		#asserting comments and likes (because of often bug in past)
+		print(read_comments_count)
+		print(re_read_comments_count)
+		print(final_count_of_likes)
+		print(read_again_likes_count)
+		assert re_read_comments_count == read_comments_count + 1
+
+		assert read_again_likes_count == final_count_of_likes
+
+

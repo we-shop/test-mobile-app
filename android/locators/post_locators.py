@@ -49,10 +49,12 @@ BACKGROUND_DELETE_BTN = "com.socialsuperstore.feature_post_editor:id/deleteBtn"
 ALL_TEXT_COLOURS = "//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout" #"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout"
 LIKES_IN_POST = "com.socialsuperstore:id/interactionsLikes"
 COMMENTS_IN_POST = "com.socialsuperstore:id/interactionsComments"
+GO_TO_COMMENTS_BTN = "com.socialsuperstore:id/interactionsCommentBtn"
 COMMENTS_INPUT_TEXT_FIELD = "com.socialsuperstore.feature_comments:id/commentEditText"
 COMMENTS_SEND_BTN = "com.socialsuperstore.feature_comments:id/sendCommentButton"
 COMMENT_TEXT_ID = "com.socialsuperstore.feature_comments:id/commentTextView"
-NO_COMMENTS_STUB = "com.socialsuperstore:id/noContentText"
+NO_COMMENTS_STUB = "com.socialsuperstore.feature_comments:id/noContentText"
+
 
 
 # Try to adding a product first (modal in question comments)

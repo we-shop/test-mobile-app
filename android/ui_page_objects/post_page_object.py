@@ -223,7 +223,7 @@ class PostPage:
 		else:
 			read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
 
-		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
+		click_on_comments_btn = id_click(driver, GO_TO_COMMENTS_BTN)
 		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for post")
 		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
 		time.sleep(1.1) # obligatory wait to avoid warning modal window
@@ -251,7 +251,7 @@ class PostPage:
 			print(read_comments_count)
 			print(f"{EXISTING_COMMENTS_IN_NEW_POST}")
 
-		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
+		click_on_comments_btn = id_click(driver, GO_TO_COMMENTS_BTN)
 		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for post")
 		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
 		time.sleep(1.1) # obligatory wait to avoid warning modal window
@@ -262,7 +262,7 @@ class PostPage:
 		assert re_read_comments_count == read_comments_count + 1, pytest.fail("Wrong comments count!")
 
 		# re-enter to comments, then edit
-		click_on_comments_btn_edit_flow = id_click(driver, COMMENTS_IN_POST)
+		click_on_comments_btn_edit_flow = id_click(driver, GO_TO_COMMENTS_BTN)
 		long_click_id(driver, COMMENT_TEXT_ID)
 		click_on_edit_comment_btn = xpath_click(driver, FOOTER_ITEM_REC_PRODUCT)
 		edit_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, EDITED_COMMENT)
@@ -278,7 +278,7 @@ class PostPage:
 
 		# asserting that stub "Be the first to comment" is displayed
 		read_no_comments_stub = el_id(driver, NO_COMMENTS_STUB).text
-		assert "Be the first to comment" in read_no_comments_stub
+		assert "Be the first to comment on" in read_no_comments_stub
 
 		# checking comments count again (after deletion)
 		driver.back()
@@ -311,7 +311,7 @@ class PostPage:
 			#print(read_comments_count)
 			#print(f"{EXISTING_COMMENTS_IN_NEW_POST}")
 
-		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
+		click_on_comments_btn = id_click(driver, GO_TO_COMMENTS_BTN)
 		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for post")
 		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
 		time.sleep(1.1) # obligatory wait to avoid warning modal window
@@ -340,7 +340,7 @@ class PostPage:
 
 		# asserting that stub "Be the first to comment" is displayed
 		read_no_comments_stub = el_id(driver, NO_COMMENTS_STUB).text
-		assert "Be the first to comment" in read_no_comments_stub
+		assert "Be the first to comment on" in read_no_comments_stub
 
 		# check count of comments right after deletion (comments page)
 		re_read_comments_count_after_deletion = None
@@ -435,7 +435,7 @@ class PostPage:
 			print(read_comments_count)
 			print(f"{EXISTING_COMMENTS_IN_NEW_QUESTION}")
 
-		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
+		click_on_comments_btn = id_click(driver, GO_TO_COMMENTS_BTN)
 		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for question")
 		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
 		
@@ -450,7 +450,7 @@ class PostPage:
 		assert re_read_comments_count == read_comments_count + 1, pytest.fail("Wrong comments count!")
 
 		# re-enter to comments, then edit
-		click_on_comments_btn_edit_flow = id_click(driver, COMMENTS_IN_POST)
+		click_on_comments_btn_edit_flow = id_click(driver, GO_TO_COMMENTS_BTN)
 		time.sleep(1.1) # obligatory wait to avoid warning modal window
 
 		long_click_id(driver, COMMENT_TEXT_ID)
@@ -469,7 +469,7 @@ class PostPage:
 
 		# asserting that stub "Be the first to comment" is displayed
 		read_no_comments_stub = el_id(driver, NO_COMMENTS_STUB).text
-		assert "Be the first to comment" in read_no_comments_stub
+		assert "Be the first to comment on" in read_no_comments_stub
 
 		# checking comments count again (after deletion)
 		driver.back()
@@ -502,7 +502,7 @@ class PostPage:
 			#print(read_comments_count)
 			#print(f"{EXISTING_COMMENTS_IN_NEW_QUESTION}")
 
-		click_on_comments_btn = id_click(driver, COMMENTS_IN_POST)
+		click_on_comments_btn = id_click(driver, GO_TO_COMMENTS_BTN)
 		type_test_comment = id_keys(driver, COMMENTS_INPUT_TEXT_FIELD, "self test comment for question")
 		click_on_send_comments_btn = id_click(driver, COMMENTS_SEND_BTN)
 		
@@ -535,7 +535,7 @@ class PostPage:
 
 		# asserting that stub "Be the first to comment" is displayed
 		read_no_comments_stub = el_id(driver, NO_COMMENTS_STUB).text
-		assert "Be the first to comment" in read_no_comments_stub
+		assert "Be the first to comment on" in read_no_comments_stub
 
 		# check count of comments right after deletion (comments page)
 		re_read_comments_count_after_deletion = None
@@ -557,3 +557,4 @@ class PostPage:
 			re_re_read_comments_count_after_deletion = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
 
 		assert re_re_read_comments_count_after_deletion == re_read_comments_count - 1		
+
