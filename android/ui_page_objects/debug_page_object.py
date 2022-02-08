@@ -27,6 +27,8 @@ class DebugPage:
 		assert toast_msg_api_config == "API configuration switched to uat"
 
 		go_to_login_screen_click = id_click(driver, GO_TO_LOG_SCR)
+		create_temp_file_and_write_data("uat")
+
 
 	def switch_to_int(self, driver):
 		debug_btn_click = id_click(driver, DEBUG_BTN)
@@ -44,3 +46,4 @@ class DebugPage:
 		assert toast_msg_api_config == "API configuration switched to int"
 
 		go_to_login_screen_click = id_click(driver, GO_TO_LOG_SCR)
+		create_temp_file_and_write_data("int")

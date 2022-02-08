@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 import time
 import pytest
 import random
+import requests
 from ui_page_objects.functions import *
 from locators.profile_locators import *
 from locators.login_locators import *
@@ -516,5 +517,43 @@ class ProfilePage:
 		assert re_read_comments_count == read_comments_count + 1
 
 		assert read_again_likes_count == final_count_of_likes
+
+	def share_profile_post_and_product(self, driver):
+		current_env = read_data_from_temp_file()[0]
+		current_usr = read_data_from_temp_file()[1]
+
+		# clicking share profile button and getting data from clipboard
+		click_on_profile_share_btn = id_click(driver, PROFILE_SHARE_BUTTON)
+		click_on_copy_btn = id_click(driver, SHARE_WINDOW_COPY_BTN)
+		
+		get_profile_text_from_clipboard = driver.get_clipboard_text()
+		
+		assert current_env in get_profile_text_from_clipboard
+
+		# send request to get username in URL
+		req = requests.get(get_profile_text_from_clipboard)
+		response_url = req.url
+
+		assert current_usr in response_url
+
+		# go to post in profile and check share functionality
+		click_on_first_product_in_posts_tab = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT)
+		click_on_share_post_btn = id_click(driver, PROFILE_POST_SHARE_BUTTON)
+		click_on_copy_btn = id_click(driver, SHARE_WINDOW_COPY_BTN)
+
+		get_post_text_from_clipboard = driver.get_clipboard_text()
+
+		assert current_env in get_post_text_from_clipboard
+		assert "home-feed" in get_post_text_from_clipboard # should be in URL structure
+
+		# go to product and check share functionality
+		click_on_product_in_post = id_click(driver, POST_PRODUCT_TITLE)
+		click_on_share_product_btn = id_click(driver, PRODUCT_SHARE_BUTTON)
+		click_on_copy_btn = id_click(driver, SHARE_WINDOW_COPY_BTN)
+
+		get_product_text_from_clipboard = driver.get_clipboard_text()
+
+		assert current_env in get_product_text_from_clipboard
+		assert "products" in get_product_text_from_clipboard # should be in URL structure
 
 

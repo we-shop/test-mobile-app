@@ -204,12 +204,16 @@ def get_correct_text_by_id(driver, locator, text):
 # FILE MANIPUPATION FUNCTIONS
 def create_temp_file_and_write_data(data):
 	file = open("temp_data.txt", "w+")
-	file.write(str(data))
+	file.write(str(data)+"\n")
 	file.close()
+
+def update_temp_file(data):
+	with open("temp_data.txt", "a") as f:
+		f.write(f"{str(data)}\n")
 
 def read_data_from_temp_file():
 	file = open("temp_data.txt", "r")
-	return file.read()
+	return file.read().splitlines()
 
 def clear_data_from_temp_file():
 	file = open("temp_data.txt", "w+")

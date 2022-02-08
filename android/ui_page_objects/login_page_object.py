@@ -24,6 +24,7 @@ class LoginPage:
 		login_field = id_keys(driver, LOG_FIELD, self.LOGIN)
 		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD)
 		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
+		update_temp_file(self.LOGIN)
 
 	def login_only_new_acc(self, driver):
 		# making login
@@ -38,7 +39,8 @@ class LoginPage:
 		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
 
 		# going to profile settings
-		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)		
+		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
+		update_temp_file(self.LOGIN)
 
 	def login_with_assert(self, driver):
 		# making login
@@ -88,7 +90,7 @@ class LoginPage:
 	def logout(self, driver):
 		# sign out
 		click_on_settings_btn = id_click(driver, SETTINGS_BTN_PROFILE)
-		driver.swipe(start_x=94, start_y=2422, end_x=64, end_y=975, duration=650)
+		scroll_down_deep(driver) #driver.swipe(start_x=94, start_y=2422, end_x=64, end_y=975, duration=650)
 		sign_out_btn_click = xpath_click(driver, SIGN_OUT_BTN)
 		click_yes_in_logout_modal = id_click(driver, ACCEPT_MODAL_BTN_LOGOUT)
 		
