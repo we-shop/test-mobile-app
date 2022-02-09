@@ -24,7 +24,13 @@ FOOTER_PRODUCT_RETAILER = "com.socialsuperstore.feature_product_detail:id/sticky
 FEED_PRODUCT_TITLE = "com.socialsuperstore:id/productTitle"
 
 
+DESCRIPTION_TAB = "Description"
+TERMS_TAB = "Terms"
+DESCRIPTION_TEXT = "com.socialsuperstore.feature_product_detail:id/descriptionPlainTextView"
+TERMS_TEXT = "com.socialsuperstore:id/term"
+
 # "Taking you to" window locators
 PRODUCT_MODAL_READ_TERMS_BTN = "com.socialsuperstore:id/readTermsButton"
 PRODUCT_MODAL_CONTINUE_BTN = "com.socialsuperstore:id/continueButton"
 PRODUCT_MODAL_TITLE_TEXT = "com.socialsuperstore:id/titleText"
+TERMS_TEXT_IN_WINDOW = "//androidx.recyclerview.widget.RecyclerView/androidx.appcompat.widget.LinearLayoutCompat/android.widget.TextView" # //androidx.recyclerview.widget.RecyclerView/androidx.appcompat.widget.LinearLayoutCompat[1]/android.widget.TextView

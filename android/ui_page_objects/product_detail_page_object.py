@@ -172,3 +172,28 @@ class ProductDetailPage:
 		#read_product_name_in_question_creation_step = el_id(driver, PRODUCT_NAME_POST_CREATION).text <<< old check, commented, because of bug
 		#assert read_product_name == read_product_name_in_question_creation_step <<< old check, commented, because of bug
 		assert el_xpath(driver, PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE).is_displayed()
+
+	def open_description_and_terms(self, driver):
+		# read description
+		scroll_down_deep(driver)
+		read_description_text = el_id(driver, DESCRIPTION_TEXT).text
+
+		#assert len(read_description_text) > 10
+
+		# read terms 
+		switch_to_terms_tab = acc_id_click(driver, TERMS_TAB)
+		read_terms_text = el_id(driver, TERMS_TEXT).text
+
+		assert len(read_terms_text) > 10
+
+		# buy now > read terms
+		click_on_buynow_btn = id_click(driver, BUY_NOW_BTN)
+		click_on_read_terms_btn_in_window = id_click(driver, PRODUCT_MODAL_READ_TERMS_BTN)
+
+		read_terms_text_in_window = el_xpath(driver, TERMS_TEXT_IN_WINDOW).text
+		assert len(read_terms_text_in_window) > 10
+
+			
+
+
+		

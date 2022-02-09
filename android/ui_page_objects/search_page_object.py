@@ -46,6 +46,14 @@ class SearchPage:
 
 		# assert product name on product detail page
 		assert "Samsung" in el_id(driver, PRODUCT_NAME_PRICE_BLOCK).text
+		
+
+	def search_specific_product_and_open_detail_page(self, driver):
+		# search request
+		make_request_in_search_field = id_keys(driver, SEARCH_INPUT_FIELD, "Wild dance")
+		select_suggested_search_item = id_click(driver, SEARCH_RESULT_ONE_ITEM_TEXT)
+
+		first_item_in_search_result_click = xpath_click(driver, FIRST_ITEM_NAME_SEARCH)
 
 
 	def search_extended(self, driver):
