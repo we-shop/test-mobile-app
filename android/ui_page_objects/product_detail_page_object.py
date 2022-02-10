@@ -178,7 +178,7 @@ class ProductDetailPage:
 		scroll_down_deep(driver)
 		read_description_text = el_id(driver, DESCRIPTION_TEXT).text
 
-		#assert len(read_description_text) > 10
+		#assert len(read_description_text) > 10 # depends on product, description can be empty
 
 		# read terms 
 		switch_to_terms_tab = acc_id_click(driver, TERMS_TAB)
