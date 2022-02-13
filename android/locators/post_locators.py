@@ -55,8 +55,6 @@ COMMENTS_SEND_BTN = "com.socialsuperstore.feature_comments:id/sendCommentButton"
 COMMENT_TEXT_ID = "com.socialsuperstore.feature_comments:id/commentTextView"
 NO_COMMENTS_STUB = "com.socialsuperstore.feature_comments:id/noContentText"
 
-
-
 # Try to adding a product first (modal in question comments)
 MODAL_TITLE_TEXT = "com.socialsuperstore:id/titleTopText"
 CLOSE_MODAL_BTN = "com.socialsuperstore:id/closeButton"
@@ -66,3 +64,8 @@ CONTINUE_WITHOUT_PRODUCT_BTN = "com.socialsuperstore:id/positiveButton"
 # new post
 ASK_QUESTION_PLUS_MENU = "com.socialsuperstore:id/fabAAQ"
 REC_PRODUCT_PLUS_MENU = "com.socialsuperstore:id/fabRecommendProduct"
+
+# home feed carousel
+FEED_SLIDE_UPPERLINE = "//*[contains(@resource-id, 'slideSuperscript')]"
+FEED_SLIDE_HEADLINE = "//*[contains(@resource-id, 'slideHeadline')]"
+

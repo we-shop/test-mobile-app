@@ -31,7 +31,7 @@ WISHLIST_EDIT_NAME_INPUT = "com.socialsuperstore:id/collectionTitleEditText"
 WISHLIST_EDIT_IS_PUBLIC_SWITCHER = "com.socialsuperstore:id/collectionPublicCheckBox"
 WISHLIST_EDIT_SAVE_BUTTON = "com.socialsuperstore:id/submitButton"
 WISHLIST_NAME_TOOLBAR_TEXT = "com.socialsuperstore:id/toolbarText"	
-WISHLIST_GRID_HIDE_ICON = "com.socialsuperstore:id/lockIcon"		
+WISHLIST_GRID_HIDE_ICON = "com.socialsuperstore:id/lockIcon"
 
 PROFILE_SHARE_BUTTON = "com.socialsuperstore:id/shareButton"
 PROFILE_POST_SHARE_BUTTON = "com.socialsuperstore:id/interactionsShareBtn"

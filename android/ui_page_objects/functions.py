@@ -55,6 +55,11 @@ def el_xpath(driver, locator):
 		print(f"Element to find by XPATH: {locator} is not found!")
 		print(f"{ERROR}")
 
+
+def el_xpath_short_wait_with_fail(driver, locator):
+	WebDriverWait(driver, 2).until(EC.presence_of_element_located((MobileBy.XPATH, locator)))
+	return driver.find_element(MobileBy.XPATH, locator)
+
 def el_id_short_wait(driver, locator):
 	try:
 		WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.ID, locator)))

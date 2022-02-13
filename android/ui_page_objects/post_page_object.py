@@ -558,3 +558,34 @@ class PostPage:
 
 		assert re_re_read_comments_count_after_deletion == re_read_comments_count - 1		
 
+
+	def home_feed_carousel(self, driver):
+		current_env = read_data_from_temp_file()[0]
+
+		# go to feed
+		go_to_feed = acc_id_click(driver, FOOTER_ITEM_HOME)
+
+		# manipulation with carousel
+		is_carousel = True
+
+		while is_carousel:
+			try:
+				wait_carousel = el_xpath_short_wait_with_fail(driver, FEED_SLIDE_HEADLINE)
+				is_carousel = True
+			except:
+				is_carousel = False
+
+			if is_carousel:
+				read_text_in_first_carousel_item = el_xpath(driver, FEED_SLIDE_HEADLINE).text
+				assert len(read_text_in_first_carousel_item) > 5
+
+				# going to site and check URL
+				click_on_carousel_item = xpath_click(driver, FEED_SLIDE_HEADLINE)
+				select_chrome_browser(driver)
+				page_url_terms = el_id(driver, BROWSER_URL_BAR).text
+
+				assert current_env in page_url_terms
+				assert "search?query=" in page_url_terms
+				driver.back()
+
+	

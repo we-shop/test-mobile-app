@@ -4,6 +4,7 @@
 # from selenium.webdriver.support import expected_conditions as EC
 # from selenium.webdriver.support.ui import WebDriverWait
 from appium.webdriver.common.mobileby import MobileBy
+from appium.webdriver.common.mobileby import By
 import time
 import pytest
 import random
@@ -571,28 +572,37 @@ class ProfilePage:
 
 		enter_wishlist_name = id_keys(driver, ADD_NEW_WISHLIST_INPUT_NAME, RANDOM_WISHLIST_NAME)
 		save_new_wishlist = id_click(driver, ADD_NEW_WISHLIST_SAVE_BUTTON)
-		
-		time.sleep(2) #obligatory wait after wishlist creation
 
-		read_created_wishlist_name = el_xpath(driver, PROFILE_FIRST_ITEM_IN_WISHLIST_GRID).text
-		read_all_hide_icons_count = len(driver.find_elements(MobileBy.XPATH, WISHLIST_GRID_HIDE_ICON))
+		time.sleep(1) #obligatory wait after wishlist creation
 
-		assert read_created_wishlist_name == RANDOM_WISHLIST_NAME
+		switch_to_post_tab = acc_id_click(driver, PROFILE_POSTS_TAB) # purpose: refresh wishlist items
+		switch_back_to_wishlists_tab = acc_id_click(driver, PROFILE_WISHLIST_TAB)
+
+		read_created_wishlist_name = [i.text for i in elems_xpath(driver, PROFILE_FIRST_ITEM_IN_WISHLIST_GRID)]
+		read_all_hide_icons_count = len(driver.find_elements(By.ID, WISHLIST_GRID_HIDE_ICON))
+
+		assert RANDOM_WISHLIST_NAME in read_created_wishlist_name
 		assert read_all_hide_icons_count == 0 # should be 0
 
-		go_to_created_wishlist = xpath_click(driver, PROFILE_FIRST_ITEM_IN_WISHLIST_GRID)
+		# try/except block to avoid unknown java error
+		try:
+			go_to_created_wishlist = [i.click() for i in elems_xpath(driver, PROFILE_FIRST_ITEM_IN_WISHLIST_GRID) if i.text == RANDOM_WISHLIST_NAME]
+		except:
+			pass
 
-		wait_and_click_plus_icon = el_id(driver, ADD_NEW_WISHLIST_ITEM_PLUS_ICON)
+		wait_plus_icon = el_id(driver, ADD_NEW_WISHLIST_ITEM_PLUS_ICON)
 
 		# edit created wishlist
 		open_sub_menu = id_click(driver, ADD_NEW_WISHLIST_MORE_BUTTON)
 		click_on_sub_menu_edit_item = xpath_click(driver, WISHLIST_SUB_MENU_EDIT)
 
+		clear_wishlist_field = el_id(driver, WISHLIST_EDIT_NAME_INPUT).clear()
 		edit_wishlist_name =id_keys(driver, WISHLIST_EDIT_NAME_INPUT, RANDOM_EDITED_WISHLIST_NAME)
 		make_wishlist_not_public = id_click(driver, WISHLIST_EDIT_IS_PUBLIC_SWITCHER)
 		save_edited_changes = id_click(driver, WISHLIST_EDIT_SAVE_BUTTON)
 
-		time.sleep(2) # obligatory wait (for update edited name in toolbar)
+		wait_plus_icon_after_edit = el_id(driver, ADD_NEW_WISHLIST_ITEM_PLUS_ICON)
+		time.sleep(2.2) # obligatory wait (for update edited name in toolbar)
 
 		read_edited_wishlist_name_in_toolbar = el_id(driver, WISHLIST_NAME_TOOLBAR_TEXT).text
 		assert read_edited_wishlist_name_in_toolbar == RANDOM_EDITED_WISHLIST_NAME
