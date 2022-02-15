@@ -2,8 +2,8 @@ from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
 
 # LIST OF LOCATORS FOR POST PAGE MODEL
-FOOTER_ITEM_REC_PRODUCT = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.Button[1]"
-FOOTER_ITEM_ASK_QUESTION = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.Button[2]"
+FOOTER_ITEM_REC_PRODUCT = "//androidx.recyclerview.widget.RecyclerView/android.widget.Button[1]"
+FOOTER_ITEM_ASK_QUESTION = "//androidx.recyclerview.widget.RecyclerView/android.widget.Button[2]"
 SEARCH_PRODUCT_POST_CREATION = "com.socialsuperstore.feature_post_editor:id/search"
 ADD_FIRST_PRODUCT_PLUS_INPUT = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[4]/android.view.ViewGroup/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView[1]"
 SEARCH_RESULT_PRODUCT_ONE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.CheckBox"
@@ -20,8 +20,11 @@ CAPTION_INPUT_FIELD = "com.socialsuperstore.feature_post_editor:id/captionTextIn
 PUBLISH_BTN_ADD_PRODUCT = "com.socialsuperstore.feature_post_editor:id/doneBtn"
 FEED_POST_DESCRIPTION = "com.socialsuperstore:id/postDescription"
 POST_DOTS_SUB_MENU = "com.socialsuperstore:id/postActionsBtn"
-POST_DOTS_SUB_MENU_EDIT_POST = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.Button[1]"
-POST_DOTS_SUB_MENU_DELETE_POST = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.Button[2]"
+POST_DOTS_SUB_MENU_EDIT_POST = "//androidx.recyclerview.widget.RecyclerView/android.widget.Button[1]"
+POST_DOTS_SUB_MENU_DELETE_POST = "//androidx.recyclerview.widget.RecyclerView/android.widget.Button[2]"
+POST_DOTS_SUB_MENU_FLAG_CONTENT_ITEMS = "com.socialsuperstore:id/actionText"
+POST_FLAG_CONTENT_SUCCESS_WIN_TITLE = "com.socialsuperstore:id/title"
+POST_FLAG_CONTENT_SUCCESS_WIN_DONE_BTN = "com.socialsuperstore:id/doneButton"
 POST_SUB_MENU_ACTION_ITEMS_ID = "com.socialsuperstore:id/actionText"
 POST_MEDIA_LAYOUT = "com.socialsuperstore:id/postProductsMediaLayout"
 READ_ALL_PRODUCT_LINEAR_LAYOUTS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.LinearLayout/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.LinearLayout"

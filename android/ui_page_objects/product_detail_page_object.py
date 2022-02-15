@@ -121,6 +121,7 @@ class ProductDetailPage:
 	def open_product_website(self, driver):
 		# going to detail product page
 		click_on_home_footer_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
+		scroll_on_feed_page(driver)
 		read_product_title = el_id(driver, FEED_PRODUCT_TITLE).text
 		product_title_click = id_click(driver, FEED_PRODUCT_TITLE)
 		read_product_name_on_detail_page = el_id(driver, PRODUCT_NAME_TITLE).text

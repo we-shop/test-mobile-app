@@ -30,7 +30,8 @@ class LoginPage:
 		# making login
 		login_field = id_keys(driver, LOG_FIELD, self.LOGIN_NEW)
 		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD_NEW)
-		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)		
+		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
+		update_temp_file(self.LOGIN)
 
 	def login_go_to_profile(self, driver):
 		# making login

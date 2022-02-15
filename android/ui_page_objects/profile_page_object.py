@@ -159,6 +159,7 @@ class ProfilePage:
 
 		# editing first/last name
 		edit_bio_name_field = xpath_keys(driver, PROFILE_EDIT_BIO_FIELD, RANDOM_BIO_NAME)
+		scroll_down_deep(driver)
 		click_on_save_changes_btn = id_click(driver, PROFILE_EDIT_SAVE_CHANGES_BTN)
 		
 		# refresh manupulation to see new profile data

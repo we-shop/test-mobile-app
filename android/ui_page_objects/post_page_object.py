@@ -588,4 +588,23 @@ class PostPage:
 				assert "search?query=" in page_url_terms
 				driver.back()
 
-	
+	def flag_post_content(self, driver):
+		current_usr = read_data_from_temp_file()[1]
+
+		not_self_post = True
+
+		while not_self_post:
+			if current_usr not in el_id(driver, POST_USERNAME).text:
+				not_self_post = False
+			else:
+				scroll_down_deep(driver)
+
+		open_sub_menu_of_post = id_click(driver, POST_DOTS_SUB_MENU)
+		select_flag_content = xpath_click(driver, POST_DOTS_SUB_MENU_EDIT_POST)
+		read_all_flag_reasons = elems_id(driver, POST_DOTS_SUB_MENU_FLAG_CONTENT_ITEMS)
+		select_random_flag_reason = read_all_flag_reasons[random.randint(0, len(read_all_flag_reasons))].click()
+		read_success_message_title = el_id(driver, POST_FLAG_CONTENT_SUCCESS_WIN_TITLE).text
+
+		assert read_success_message_title == "Thanks for letting us know"
+		click_on_done_btn = id_click(driver, POST_FLAG_CONTENT_SUCCESS_WIN_DONE_BTN)
+		
