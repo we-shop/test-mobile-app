@@ -10,33 +10,81 @@ from ui_page_objects.functions import *
 from locators.login_locators import *
 
 
-
 class LoginPage:
-	def __init__(self, LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW):
+	def __init__(self, LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW):
 		self.LOGIN_URL = LOGIN_URL
 		self.LOGIN = LOGIN
 		self.PASSWORD = PASSWORD
 		self.LOGIN_NEW = LOGIN_NEW
 		self.PASSWORD_NEW = PASSWORD_NEW
+		self.LOGIN_INT = LOGIN_INT
+		self.PASSWORD_INT = PASSWORD_INT
+		self.LOGIN_INT_NEW = LOGIN_INT_NEW
+		self.PASSWORD_INT_NEW = PASSWORD_INT_NEW
 
 	def login_only(self, driver):
+		# configuration for credentials according to env
+		current_env = read_data_from_temp_file()[0]
+		USERNAME = None
+		PASSWORD = None
+
+		if current_env == "int":
+			USERNAME = self.LOGIN_INT
+			PASSWORD = self.PASSWORD_INT
+		elif current_env == "uat":
+			USERNAME = self.LOGIN
+			PASSWORD = self.PASSWORD
+		else:
+			print(current_env)
+			print(F"{ERROR} Something wrong with current env variable")
+
 		# making login
-		login_field = id_keys(driver, LOG_FIELD, self.LOGIN)
-		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD)
+		login_field = id_keys(driver, LOG_FIELD, USERNAME)
+		password_field = id_keys(driver, PASS_FIELD, PASSWORD)
 		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
 		update_temp_file(self.LOGIN)
 
 	def login_only_new_acc(self, driver):
+		# configuration for credentials according to env
+		current_env = read_data_from_temp_file()[0]
+		USERNAME = None
+		PASSWORD = None
+
+		if current_env == "int":
+			USERNAME = self.LOGIN_INT_NEW
+			PASSWORD = self.PASSWORD_INT_NEW
+		elif current_env == "uat":
+			USERNAME = self.LOGIN_NEW
+			PASSWORD = self.PASSWORD_NEW
+		else:
+			print(current_env)
+			print(F"{ERROR} Something wrong with current env variable")
+
 		# making login
-		login_field = id_keys(driver, LOG_FIELD, self.LOGIN_NEW)
-		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD_NEW)
+		login_field = id_keys(driver, LOG_FIELD, USERNAME)
+		password_field = id_keys(driver, PASS_FIELD, PASSWORD)
 		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
 		update_temp_file(self.LOGIN)
 
 	def login_go_to_profile(self, driver):
+		# configuration for credentials according to env
+		current_env = read_data_from_temp_file()[0]
+		USERNAME = None
+		PASSWORD = None
+
+		if current_env == "int":
+			USERNAME = self.LOGIN_INT
+			PASSWORD = self.PASSWORD_INT
+		elif current_env == "uat":
+			USERNAME = self.LOGIN
+			PASSWORD = self.PASSWORD
+		else:
+			print(current_env)
+			print(F"{ERROR} Something wrong with current env variable")
+
 		# making login
-		login_field = id_keys(driver, LOG_FIELD, self.LOGIN)
-		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD)
+		login_field = id_keys(driver, LOG_FIELD, USERNAME)
+		password_field = id_keys(driver, PASS_FIELD, PASSWORD)
 		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
 
 		# going to profile settings
@@ -44,9 +92,23 @@ class LoginPage:
 		update_temp_file(self.LOGIN)
 
 	def login_with_assert(self, driver):
+		# configuration for credentials according to env
+		current_env = read_data_from_temp_file()[0]
+		USERNAME = None
+		PASSWORD = None
+
+		if current_env == "int":
+			USERNAME = self.LOGIN_INT
+			PASSWORD = self.PASSWORD_INT
+		elif current_env == "uat":
+			USERNAME = self.LOGIN
+			PASSWORD = self.PASSWORD
+		else:
+			print(current_env)
+			print(F"{ERROR} Something wrong with current env variable")	
 		# making login
-		login_field = id_keys(driver, LOG_FIELD, self.LOGIN)
-		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD)
+		login_field = id_keys(driver, LOG_FIELD, USERNAME)
+		password_field = id_keys(driver, PASS_FIELD, PASSWORD)
 		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
 
 		# going to profile settings
@@ -56,7 +118,7 @@ class LoginPage:
 		profile_first_n_last_name_text = el_id(driver, PROFILE_FIRST_N_LAST_NAMES).text
 		profile_username_name_text = el_id(driver, PROFILE_USERNAME).text
 
-		assert profile_username_name_text == f"@{self.LOGIN}"
+		assert profile_username_name_text == f"@{USERNAME}"
 
 	def login_to_prod(self, driver):
 		# making login to production (without debug step)

@@ -15,12 +15,16 @@ from locators.profile_locators import *
 
 
 class DashboardPage:
-	def __init__(self, LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW):
+	def __init__(self, LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW):
 		self.LOGIN_URL = LOGIN_URL
 		self.LOGIN = LOGIN
 		self.PASSWORD = PASSWORD
 		self.LOGIN_NEW = LOGIN_NEW
 		self.PASSWORD_NEW = PASSWORD_NEW
+		self.LOGIN_INT = LOGIN_INT
+		self.PASSWORD_INT = PASSWORD_INT
+		self.LOGIN_INT_NEW = LOGIN_INT_NEW
+		self.PASSWORD_INT_NEW = PASSWORD_INT_NEW
 
 
 	def wenews_check(self, driver):
@@ -56,6 +60,21 @@ class DashboardPage:
 
 
 	def existing_acc_check(self, driver):
+		# configuration for credentials according to env
+		current_env = read_data_from_temp_file()[0]
+		USERNAME = None
+		PASSWORD = None
+
+		if current_env == "int":
+			USERNAME = self.LOGIN_INT
+			PASSWORD = self.PASSWORD_INT
+		elif current_env == "uat":
+			USERNAME = self.LOGIN
+			PASSWORD = self.PASSWORD
+		else:
+			print(current_env)
+			print(F"{ERROR} Something wrong with current env variable")
+		
 		CURRENT_DATE = datetime.today().strftime('%d.%m.%y')
 
 		# open dashboard
@@ -115,6 +134,6 @@ class DashboardPage:
 		read_my_invited_referral_name = len(el_id(driver, DASH_TRANS_SHOW_MORE_PRODUCT_TITLE).text)
 
 		assert read_referral_header_title == "Invite your friends"
-		assert read_link_in_share_input == self.LOGIN
+		assert read_link_in_share_input == USERNAME
 		assert read_my_invited_referral_name > 5
 

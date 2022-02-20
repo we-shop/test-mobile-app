@@ -19,10 +19,16 @@ from locators.post_locators import *
 
 
 class ProfilePage:
-	def __init__(self, LOGIN_URL, LOGIN, PASSWORD):
+	def __init__(self, LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW):
 		self.LOGIN_URL = LOGIN_URL
 		self.LOGIN = LOGIN
 		self.PASSWORD = PASSWORD
+		self.LOGIN_NEW = LOGIN_NEW
+		self.PASSWORD_NEW = PASSWORD_NEW
+		self.LOGIN_INT = LOGIN_INT
+		self.PASSWORD_INT = PASSWORD_INT
+		self.LOGIN_INT_NEW = LOGIN_INT_NEW
+		self.PASSWORD_INT_NEW = PASSWORD_INT_NEW
 
 	def followings_followers_count(self, driver):
 		# read count of followers and following
@@ -364,27 +370,24 @@ class ProfilePage:
 	
 
 	def about_version_check(self, driver):
-		# changing debug config to UAT
-		read_app_version = el_id(driver, APP_VERSION_LOGIN_SCREEN).text
-		debug_btn_click = id_click(driver, DEBUG_BTN)
-		change_configuration_menu_click = xpath_click(driver, CHANGE_CONFIG_MENU)
-		change_env_to_uat_click = xpath_click(driver, UAT_ENV_RADIO_BTN)
-		toast_msg_env_config = get_toast_msg(driver)
-		
-		# asserting toast env config message
-		assert toast_msg_env_config == "Webapp configuration switched to uat"
+		# configuration for credentials according to env
+		current_env = read_data_from_temp_file()[0]
+		USERNAME = None
+		PASSWORD = None
 
-		change_api_to_uat_click = xpath_click(driver, UAT_API_RADIO_BTN)
-		toast_msg_api_config = get_toast_msg(driver)
-		
-		# asserting toast api config message
-		assert toast_msg_api_config == "API configuration switched to uat"
+		if current_env == "int":
+			USERNAME = self.LOGIN_INT
+			PASSWORD = self.PASSWORD_INT
+		elif current_env == "uat":
+			USERNAME = self.LOGIN
+			PASSWORD = self.PASSWORD
+		else:
+			print(current_env)
+			print(F"{ERROR} Something wrong with current env variable")
 
-		go_to_login_screen_click = id_click(driver, GO_TO_LOG_SCR)
 
-		# reading app version and making login
-		login_field = id_keys(driver, LOG_FIELD, self.LOGIN)
-		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD)
+		login_field = id_keys(driver, LOG_FIELD, USERNAME)
+		password_field = id_keys(driver, PASS_FIELD, PASSWORD)
 		
 		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
 
@@ -395,8 +398,9 @@ class ProfilePage:
 		# going to settings > about and reading app version
 		click_on_about = xpath_click(driver, SETTINGS_ABOUT)
 		read_app_version_in_profile_about = el_xpath(driver, APP_VERSION_SETTINGS_ABOUT).text
+		read_app_version_from_file = read_data_from_temp_file()[1]
 
-		assert read_app_version == read_app_version_in_profile_about
+		assert read_app_version_from_file == read_app_version_in_profile_about
 
 	def other_user_posts_n_questions(self, driver):
 		# test users
