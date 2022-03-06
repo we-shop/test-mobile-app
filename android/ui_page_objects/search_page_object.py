@@ -7,15 +7,21 @@ import time
 import pytest
 import random
 from ui_page_objects.functions import *
+from locators.profile_locators import *
+from locators.login_locators import *
 from locators.search_locators import *
-from locators.product_detail_locators import *
+from locators.debug_locators import *
+from locators.post_locators import *
 
 
 
 class SearchPage:
 	def search_and_clear_field(self, driver):
 		# search request
-		make_request_in_search_field = id_keys(driver, SEARCH_INPUT_FIELD, "Adidas")
+		switch_to_search_menu = acc_id_click(driver, FOOTER_ITEM_SEARCH)
+		click_on_search_btn_in_head_bar = id_click(driver, SEARCH_BTN_HEAD_BAR)
+		time.sleep(1.2)
+		make_request_in_search_field = xpath_keys(driver, COLLAPSED_SEARCH_INPUT_FIELD, "Adidas")
 		select_suggested_search_item = xpath_click(driver, SELECT_SUGGESTED_ITEM_SEARCH)
 
 		# verify that we have search result
