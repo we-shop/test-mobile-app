@@ -20,7 +20,6 @@ class SearchPage:
 		# search request
 		switch_to_search_menu = acc_id_click(driver, FOOTER_ITEM_SEARCH)
 		click_on_search_btn_in_head_bar = id_click(driver, SEARCH_BTN_HEAD_BAR)
-		time.sleep(1.2)
 		make_request_in_search_field = xpath_keys(driver, COLLAPSED_SEARCH_INPUT_FIELD, "Adidas")
 		select_suggested_search_item = xpath_click(driver, SELECT_SUGGESTED_ITEM_SEARCH)
 
@@ -30,8 +29,9 @@ class SearchPage:
 		assert "adidas" in first_item_in_search_result_text.lower()
 
 		# clear search result
-		clear_field = id_click(driver, CLEAR_SEARCH_BTN)
-		click_in_search_field = id_click(driver, SEARCH_INPUT_FIELD)
+		clear_field = id_click(driver, CLEAR_SEARCH_X_BTN)
+		#click_in_search_field = id_click(driver, SEARCH_INPUT_FIELD)
+		click_on_search_btn_in_head_bar_again = id_click(driver, SEARCH_BTN_HEAD_BAR)
 
 		# asserting recent search name
 		recent_search_item_text = el_id(driver, RECENT_SEARCH_ITEM_TEXT).text
@@ -39,7 +39,9 @@ class SearchPage:
 
 	def search_product_and_open_detail_page(self, driver):
 		# search request
-		make_request_in_search_field = id_keys(driver, SEARCH_INPUT_FIELD, "Samsung")
+		switch_to_search_menu = acc_id_click(driver, FOOTER_ITEM_SEARCH)
+		click_on_search_btn_in_head_bar = id_click(driver, SEARCH_BTN_HEAD_BAR)
+		make_request_in_search_field = xpath_keys(driver, COLLAPSED_SEARCH_INPUT_FIELD, "Samsung")
 		select_suggested_search_item = xpath_click(driver, SELECT_SUGGESTED_ITEM_SEARCH)
 
 		# verify that we have search result
