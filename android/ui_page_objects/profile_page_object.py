@@ -272,9 +272,16 @@ class ProfilePage:
 		# read count of following
 		profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
 
+
+		#switch_to_search_menu = acc_id_click(driver, FOOTER_ITEM_SEARCH)
+		click_on_search_btn_in_head_bar = id_click(driver, SEARCH_BTN_HEAD_BAR)
+		make_request_in_search_field = xpath_keys(driver, COLLAPSED_SEARCH_INPUT_FIELD, USER_1)
+		select_suggested_search_item = xpath_click(driver, SELECT_SUGGESTED_ITEM_SEARCH_PROFILE)
+
+
 		# searching USER_1 and subscribing/unsubscribing
-		search_user_one = id_keys(driver, SEARCH_INPUT_FIELD, USER_1)
-		click_on_suggested_item_in_search = id_click(driver, SEARCH_RESULT_ONE_ITEM_TEXT)
+		#search_user_one = id_keys(driver, SEARCH_INPUT_FIELD, USER_1)
+		#click_on_suggested_item_in_search = id_click(driver, SEARCH_RESULT_ONE_ITEM_TEXT)
 		follow_btn_user_one_text = el_id(driver, FOLLOW_TO_USER_BTN).text
 
 		if follow_btn_user_one_text == "Follow":
@@ -287,8 +294,9 @@ class ProfilePage:
 		driver.back()
 		
 		# searching USER_2 and subscribing/unsubscribing
-		search_user_two = id_keys(driver, SEARCH_INPUT_FIELD, USER_2)
-		click_on_suggested_item_in_search = id_click(driver, SEARCH_RESULT_ONE_ITEM_TEXT)
+
+		search_user_two = xpath_keys(driver, COLLAPSED_SEARCH_INPUT_FIELD, USER_2) #id_keys(driver, SEARCH_INPUT_FIELD, USER_2) 
+		click_on_suggested_item_in_search = xpath_click(driver, SELECT_SUGGESTED_ITEM_SEARCH_PROFILE) #id_click(driver, SEARCH_RESULT_ONE_ITEM_TEXT)
 		follow_btn_user_two_text = el_id(driver, FOLLOW_TO_USER_BTN).text
 
 		if follow_btn_user_two_text == "Follow":

@@ -5,6 +5,7 @@ from appium.webdriver.common.mobileby import MobileBy
 SEARCH_INPUT_FIELD = "com.socialsuperstore:id/searchInput"
 COLLAPSED_SEARCH_INPUT_FIELD = "//android.widget.EditText" #"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/androidx.appcompat.widget.LinearLayoutCompat/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat[1]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText" #"com.socialsuperstore:id/collapsedSearchInput" #"com.socialsuperstore:id/textinput_placeholder" 
 SELECT_SUGGESTED_ITEM_SEARCH = "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.TextView[1]" #"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView"
+SELECT_SUGGESTED_ITEM_SEARCH_PROFILE = "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.TextView[1]"
 CLEAR_SEARCH_X_BTN ="com.socialsuperstore:id/search"
 FIRST_ITEM_NAME_SEARCH = "//*[contains(@resource-id, 'productTitle')]"
 CLEAR_SEARCH_BTN = "com.socialsuperstore:id/searchClear"
