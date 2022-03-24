@@ -121,10 +121,8 @@ class ProfilePage:
 		edit_first_name_field = xpath_keys(driver, PROFILE_EDIT_FIRST_NAME_FIELD, RANDOM_FIRST_NAME)
 		edit_last_name_field = xpath_keys(driver, PROFILE_EDIT_LAST_NAME_FIELD, RANDOM_LAST_NAME)
 
-		time.sleep(1.4) # obligatory wait to avoit toast messages
 		scroll_down_deep(driver)
 		time.sleep(1.2) # obligatory wait, between scrolls
-		scroll_down_deep(driver)
 
 		# manipulation with "your interests"
 		UNCHECK_BOXES = None
@@ -181,8 +179,7 @@ class ProfilePage:
 	def deactivate_account_and_login_after(self, driver):
 		# deactivate account
 		click_on_settings_btn = id_click(driver, PROFILE_SETTINGS_BTN)
-		#driver.swipe(start_x=94, start_y=2422, end_x=64, end_y=975, duration=650)
-		scroll_down_deep(driver)
+		driver.swipe(start_x=94, start_y=2422, end_x=64, end_y=975, duration=650)
 		deactivate_acc_click = xpath_click(driver, SETTINGS_DEACTIVATE_ACC)
 		deactivate_acc_btn_click = id_click(driver, DEACTIVATE_ACCOUNT_BTN)
 		accept_are_you_sure_modal = id_click(driver, DEACTIVATE_ACC_ACCEPT_IN_MODAL)
@@ -297,8 +294,7 @@ class ProfilePage:
 		driver.back()
 		
 		# searching USER_2 and subscribing/unsubscribing
-		clear_search_btn_click = id_click(driver, CLEAR_SEARCH_X_BTN)
-		click_on_search_btn_in_head_bar = id_click(driver, SEARCH_BTN_HEAD_BAR)
+
 		search_user_two = xpath_keys(driver, COLLAPSED_SEARCH_INPUT_FIELD, USER_2) #id_keys(driver, SEARCH_INPUT_FIELD, USER_2) 
 		click_on_suggested_item_in_search = xpath_click(driver, SELECT_SUGGESTED_ITEM_SEARCH_PROFILE) #id_click(driver, SEARCH_RESULT_ONE_ITEM_TEXT)
 		follow_btn_user_two_text = el_id(driver, FOLLOW_TO_USER_BTN).text
@@ -315,16 +311,10 @@ class ProfilePage:
 		# going back to profile
 		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
 		click_on_footer_home_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
-		time.sleep(1) # for sure, refresh purpose
 		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
 		re_reading_profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
 
 		# asserting following counter
-		# DEBUG PRINTS
-		# print(profile_following)
-		# print("Follow" + str(follow))
-		# print("Unfollow" + str(unfollow))
-		# print(re_reading_profile_following)
 		assert re_reading_profile_following == ((profile_following + follow) - unfollow)
 
 

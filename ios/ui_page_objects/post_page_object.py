@@ -51,7 +51,6 @@ class PostPage:
 		read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
 
 		scroll_up_on_feed_page(driver)
-		scroll_up_on_feed_page(driver)
 		open_sub_menu_of_post = id_click(driver, POST_DOTS_SUB_MENU)
 		edit_post_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[0].click()
 
@@ -74,7 +73,6 @@ class PostPage:
 		assert re_read_post_title == f"edited {read_post_title}"
 
 		# delete part
-		scroll_up_on_feed_page(driver)
 		scroll_up_on_feed_page(driver)
 		re_open_sub_menu_of_post = id_click(driver, POST_DOTS_SUB_MENU)
 		delete_post_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[1].click()
@@ -147,7 +145,6 @@ class PostPage:
 
 	def question_edit_and_deletion(self, driver):
 		# starting from opened feed
-		print("Started 00")
 		read_question_title = el_id(driver, FEED_POST_DESCRIPTION).text.split(" ")[-1]
 		read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
 
@@ -172,11 +169,6 @@ class PostPage:
 		publish_btn_click = id_click(driver, PUBLISH_BTN_ADD_PRODUCT)
 
 		# verify question data after edit
-		time.sleep(1)
-		scroll_on_feed_page(driver)
-		scroll_on_feed_page(driver)
-		time.sleep(1)
-		print("Passed 1")
 		re_read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
 		re_read_question_title = el_id(driver, FEED_POST_DESCRIPTION).text
 
@@ -184,9 +176,6 @@ class PostPage:
 		assert re_read_question_title == f"edited {read_question_title}"
 
 		# delete part
-		scroll_up_on_feed_page(driver)
-		scroll_up_on_feed_page(driver)
-		print("Passed 1")
 		re_open_sub_menu_of_question = id_click(driver, POST_DOTS_SUB_MENU)
 		delete_post_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[1].click()
 		accept_deletion_in_modal = id_click(driver, CONTINUE_WITHOUT_PRODUCT_BTN)

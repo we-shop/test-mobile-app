@@ -17,11 +17,17 @@ load_dotenv()
 
 # Read from file function
 def get_data(data):
-	return data.split("#")[0]
+  return data.split("#")[0]
 
+LOGIN_URL = os.getenv("LOGIN_URL")
 LOGIN = os.getenv("LOGIN")
 PASSWORD = os.getenv("PASSWORD")
-LOGIN_URL = os.getenv("LOGIN_URL")
+LOGIN_NEW = os.getenv("LOGIN_NEW")
+PASSWORD_NEW = os.getenv("PASSWORD_NEW")
+LOGIN_INT = os.getenv("LOGIN_INT")
+PASSWORD_INT = os.getenv("PASSWORD_INT")
+LOGIN_INT_NEW = os.getenv("LOGIN_INT_NEW")
+PASSWORD_INT_NEW = os.getenv("PASSWORD_INT_NEW")
 
 
 prefs = {"download.default_directory": os.getcwd() + "/"}
@@ -38,7 +44,7 @@ prefs = {"download.default_directory": os.getcwd() + "/"}
 # caps.setCapability("app", "bs://576463a96efb0a64e20d5abe7652b5faa671aba4")
 
 
-desired_cap = {
+DROID_desired_cap = {
   "device" : "Samsung Galaxy A51",
   "os_version" : "10.0",
   "project" : "First Python project2", 
@@ -46,7 +52,7 @@ desired_cap = {
   "name" : "first_test222",
   "appPackage": "com.socialsuperstore",
   "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
-  "app_url":"bs://576463a96efb0a64e20d5abe7652b5faa671aba4",
+  "app_url":"bs://5f5ba99b31e378e943039767abeb7ca35a3d99eb",
   "browser" : "Chrome",
   "browserstack.idleTimeout":10,
   "implicit":8000,
@@ -56,12 +62,50 @@ desired_cap = {
   "resetKeyboard": True }
 
 
+# desired_cap = {
+#   "appium:platformName": "iOS",
+#   "appium:platformVersion": "15.3.1",
+#   "appium:deviceName": "iPhone 7",
+#   "appium:automationName": "UiAutomator",
+#   "app_url":"bs://c9233654e295b4b1aadd17f2a1640a043b462d38"
+#   #"appium:app": "C:\\Users\\NEMESIS\\Desktop\\UPW\\weshop\\WeShop.ipa"
+# }
+
+desired_cap = {
+  "device" : "iPhone 11",
+  "os_version" : "15",
+  "project" : "First Python project", 
+  "build" : "browserstack-iOS",
+  "name" : "iOS_tests",
+  "app_url":"bs://c9233654e295b4b1aadd17f2a1640a043b462d38"
+  #"appium:app": "C:\\Users\\NEMESIS\\Desktop\\UPW\\weshop\\WeShop.ipa"
+}
+
+# desired_cap = {
+#     # Set your access credentials
+#     "browserstack.user" : "mikevo_e4SQsH",
+#     "browserstack.key" : "vAxMnKJJiYcxmsekXNuZ",
+  
+#     # Set URL of the application under test
+#     #"app" : "bs://444bd0308813ae0dc236f8cd461c02d3afa7901d",
+  
+#     # Specify device and os_version for testing
+#     "device" : "iPhone 7",
+#     "os_version" : "10",
+      
+#     # Set other BrowserStack capabilities
+#     "project" : "First Python project", 
+#     "build" : "browserstack-build-1",
+#     "name" : "first_test"
+# }
+
+
 # Customizing appium driver for Browserstack
 @pytest.fixture(autouse=True)
 def selenium(request):
     webdriver
     selenium = webdriver.Remote(
-      command_executor='https://mikepasta_PKlm6D:6dpEtxQmpxfyWkB789F5@hub-cloud.browserstack.com/wd/hub',
+      command_executor='https://mikevo_e4SQsH:vAxMnKJJiYcxmsekXNuZ@hub-cloud.browserstack.com/wd/hub',
       desired_capabilities=desired_cap)
 
     yield selenium
@@ -84,13 +128,13 @@ def selenium(request):
 #FIXTURES PAGE OBJECT
 @pytest.fixture()
 def login_model(request):
-	fixture = LoginPage(LOGIN_URL, LOGIN, PASSWORD)
-	return fixture
+  fixture = LoginPage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW)
+  return fixture
 
 @pytest.fixture()
 def debug_model(request):
-	fixture = DebugPage()
-	return fixture
+  fixture = DebugPage()
+  return fixture
 
 @pytest.fixture()
 def search_model(request):
@@ -104,7 +148,7 @@ def product_page_model(request):
 
 @pytest.fixture()
 def profile_model(request):
-  fixture = ProfilePage(LOGIN_URL, LOGIN, PASSWORD)
+  fixture = ProfilePage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW)
   return fixture
 
 @pytest.fixture()
@@ -117,3 +161,7 @@ def inbox_model(request):
   fixture = InboxPage()
   return fixture
 
+@pytest.fixture()
+def dashboard_model(request):
+  fixture = DashboardPage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW)
+  return fixture
