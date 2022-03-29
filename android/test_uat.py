@@ -111,7 +111,8 @@ def atest_post_create_new_question(debug_model, login_model, post_model, seleniu
 	login_model.login_only(selenium)
 	post_model.ask_question(selenium)
 
-def test_post_create_new_question_edit_delete(debug_model, login_model, post_model, selenium):
+	# latest
+def atest_post_create_new_question_edit_delete(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	post_model.ask_question(selenium)
@@ -174,17 +175,19 @@ def atest_share_profile_post_and_product(debug_model, login_model, profile_model
 	login_model.login_go_to_profile(selenium)
 	profile_model.share_profile_post_and_product(selenium)
 
-def atest_search_products_and_check_terms_and_description(login_model, debug_model, search_model, product_page_model, selenium):
+def test_search_products_and_check_terms_and_description(login_model, debug_model, search_model, product_page_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	search_model.search_specific_product_and_open_detail_page(selenium)
 	product_page_model.open_description_and_terms(selenium)
 
+	# need to add block for mass wishlists 
 def atest_wishlist_create_read_update_delete(debug_model, login_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	profile_model.wishlist_crud(selenium)
 
+	# working, re-check UI
 def atest_home_feed_carousel(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)

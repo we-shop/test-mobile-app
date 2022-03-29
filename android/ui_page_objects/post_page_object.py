@@ -172,10 +172,12 @@ class PostPage:
 		publish_btn_click = id_click(driver, PUBLISH_BTN_ADD_PRODUCT)
 
 		# verify question data after edit
-		time.sleep(1)
+		wait_for_plust_button = el_xpath(driver, PLUS_BUTTON)
+		#time.sleep(1)
+		scroll_up_on_feed_page(driver)
 		scroll_on_feed_page(driver)
-		scroll_on_feed_page(driver)
-		time.sleep(1)
+		#scroll_on_feed_page(driver)
+		#time.sleep(1)
 		print("Passed 1")
 		re_read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
 		re_read_question_title = el_id(driver, FEED_POST_DESCRIPTION).text
@@ -186,13 +188,19 @@ class PostPage:
 		# delete part
 		scroll_up_on_feed_page(driver)
 		scroll_up_on_feed_page(driver)
-		print("Passed 1")
+		print("Passed 2")
 		re_open_sub_menu_of_question = id_click(driver, POST_DOTS_SUB_MENU)
 		delete_post_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[1].click()
 		accept_deletion_in_modal = id_click(driver, CONTINUE_WITHOUT_PRODUCT_BTN)
 
 		# verify that question was deleted
+		#go_to_profile = acc_id_click(driver, FOOTER_ITEM_PROFILE) # refresh purpose
+		#go_to_feed = acc_id_click(driver, FOOTER_ITEM_HOME) # refresh purpose
+
 		read_toast_msg = get_toast_msg(driver)
+		scroll_on_feed_page(driver)
+		scroll_on_feed_page(driver)
+		
 		re_re_read_question_title = el_id(driver, FEED_POST_DESCRIPTION).text
 
 		assert read_toast_msg == "Your post has been deleted"

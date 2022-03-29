@@ -622,7 +622,7 @@ class ProfilePage:
 		wait_plus_icon_after_edit = el_id(driver, ADD_NEW_WISHLIST_ITEM_PLUS_ICON)
 		time.sleep(2.2) # obligatory wait (for update edited name in toolbar)
 
-		read_edited_wishlist_name_in_toolbar = el_id(driver, WISHLIST_NAME_TOOLBAR_TEXT).text
+		read_edited_wishlist_name_in_toolbar = el_xpath(driver, WISHLIST_NAME_TOOLBAR_TEXT).text
 		assert read_edited_wishlist_name_in_toolbar == RANDOM_EDITED_WISHLIST_NAME
 
 		driver.back()
