@@ -17,11 +17,17 @@ load_dotenv()
 
 # Read from file function
 def get_data(data):
-	return data.split("#")[0]
+  return data.split("#")[0]
 
+LOGIN_URL = os.getenv("LOGIN_URL")
 LOGIN = os.getenv("LOGIN")
 PASSWORD = os.getenv("PASSWORD")
-LOGIN_URL = os.getenv("LOGIN_URL")
+LOGIN_NEW = os.getenv("LOGIN_NEW")
+PASSWORD_NEW = os.getenv("PASSWORD_NEW")
+LOGIN_INT = os.getenv("LOGIN_INT")
+PASSWORD_INT = os.getenv("PASSWORD_INT")
+LOGIN_INT_NEW = os.getenv("LOGIN_INT_NEW")
+PASSWORD_INT_NEW = os.getenv("PASSWORD_INT_NEW")
 
 
 prefs = {"download.default_directory": os.getcwd() + "/"}
@@ -46,7 +52,7 @@ desired_cap = {
   "name" : "first_test222",
   "appPackage": "com.socialsuperstore",
   "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
-  "app_url":"bs://576463a96efb0a64e20d5abe7652b5faa671aba4",
+  "app_url":"bs://5f5ba99b31e378e943039767abeb7ca35a3d99eb",
   "browser" : "Chrome",
   "browserstack.idleTimeout":10,
   "implicit":8000,
@@ -61,7 +67,7 @@ desired_cap = {
 def selenium(request):
     webdriver
     selenium = webdriver.Remote(
-      command_executor='https://mikepasta_PKlm6D:6dpEtxQmpxfyWkB789F5@hub-cloud.browserstack.com/wd/hub',
+      command_executor='https://mikevo_e4SQsH:vAxMnKJJiYcxmsekXNuZ@hub-cloud.browserstack.com/wd/hub',
       desired_capabilities=desired_cap)
 
     yield selenium
@@ -84,13 +90,13 @@ def selenium(request):
 #FIXTURES PAGE OBJECT
 @pytest.fixture()
 def login_model(request):
-	fixture = LoginPage(LOGIN_URL, LOGIN, PASSWORD)
-	return fixture
+  fixture = LoginPage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW)
+  return fixture
 
 @pytest.fixture()
 def debug_model(request):
-	fixture = DebugPage()
-	return fixture
+  fixture = DebugPage()
+  return fixture
 
 @pytest.fixture()
 def search_model(request):
@@ -104,7 +110,7 @@ def product_page_model(request):
 
 @pytest.fixture()
 def profile_model(request):
-  fixture = ProfilePage(LOGIN_URL, LOGIN, PASSWORD)
+  fixture = ProfilePage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW)
   return fixture
 
 @pytest.fixture()
@@ -117,3 +123,7 @@ def inbox_model(request):
   fixture = InboxPage()
   return fixture
 
+@pytest.fixture()
+def dashboard_model(request):
+  fixture = DashboardPage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW)
+  return fixture

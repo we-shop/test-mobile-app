@@ -9,6 +9,21 @@ import random
 from ui_page_objects.functions import *
 from locators.login_locators import *
 
+#from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+import time
+import string
+import random
+from appium.webdriver.common.mobileby import By
+from appium.webdriver.common.mobileby import MobileBy
+import pytest
+from locators.product_detail_locators import PRODUCT_MODAL_CONTINUE_BTN
+from appium.webdriver.common.touch_action import TouchAction
+
 
 class LoginPage:
 	def __init__(self, LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW):
@@ -172,3 +187,50 @@ class LoginPage:
 		# verify login screen title (means that you are successfully logged out)
 		login_screen_title_text = el_id(driver, LOGIN_SCREEN_TITLE).text
 		assert login_screen_title_text == "We’re so glad to have you around."
+
+
+	def ios_test_example(self, driver):
+		time.sleep(1)
+		driver.find_element_by_xpath("//XCUIElementTypeStaticText[@name='Debug']").click()
+
+		time.sleep(2)
+		x = driver.find_elements_by_xpath("//*[@label='UAT']")
+		for i in x:
+			print(i.text)
+			i.click()
+			#print("1")
+
+		time.sleep(2)
+		# y = driver.find_elements_by_xpath("//*[@name='UAT']")
+		# for i in y:
+		# 	print(i.text)
+		# 	print("2")	
+		# driver.find_element_by_xpath("//XCUIElement.ElementType.radioButton[@name='UAT']").click()
+
+		driver.back()
+
+		driver.find_element_by_xpath("//XCUIElementTypeStaticText[@name='Sign in']").click() #("label contains 'Sign in'").click()
+		login_field = driver.find_element_by_accessibility_id("loginTextField")
+		password_field = driver.find_element_by_accessibility_id("passwordTextField")
+		login_field.send_keys("nemesis")
+		password_field.send_keys("123456aA#") #(r"ZO2c%omy")
+		click_on_sign_in = driver.find_element_by_accessibility_id("continueButton").click()
+
+
+		time.sleep(7)
+		
+
+
+
+		# driver.back()
+
+		# driver.find_element_by_xpath("//XCUIElementTypeStaticText[@name='Sign in']").click() #("label contains 'Sign in'").click()
+		# login_field = driver.find_element_by_accessibility_id("loginTextField")
+		# password_field = driver.find_element_by_accessibility_id("passwordTextField")
+		# login_field.send_keys("mike-qa")
+		# password_field.send_keys("123456aA#") #(r"ZO2c%omy")
+		# click_on_sign_in = driver.find_element_by_accessibility_id("continueButton").click()
+
+
+		# time.sleep(3)
+		# 
