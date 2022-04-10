@@ -423,8 +423,16 @@ class ProfilePage:
 		unfollow = 0 
 
 
-		search_user_one = id_keys(driver, SEARCH_INPUT_FIELD, USER_1)
+		switch_to_search_menu = acc_id_click(driver, FOOTER_ITEM_SEARCH)
+		click_on_search_btn_in_head_bar = id_click(driver, SEARCH_BTN_HEAD_BAR)
+		make_request_in_search_field = xpath_keys(driver, COLLAPSED_SEARCH_INPUT_FIELD, USER_1)
 		click_on_suggested_item_in_search = xpath_click(driver, SEARCH_RESULT_SECOND_ITEM)
+		#select_suggested_search_item = xpath_click(driver, SELECT_SUGGESTED_ITEM_SEARCH_ONE_ITEM)
+		#first_item_in_search_result_click = xpath_click(driver, FIRST_ITEM_NAME_SEARCH)
+
+		
+		#search_user_one = id_keys(driver, SEARCH_INPUT_FIELD, USER_1)
+		#click_on_suggested_item_in_search = xpath_click(driver, SEARCH_RESULT_SECOND_ITEM)
 		read_opened_profile = el_id(driver, PROFILE_USERNAME).text
 		assert read_opened_profile == USER_1
 		read_profile_first_and_last_name = el_id(driver, PROFILE_FIRST_AND_LAST_NAME).text
@@ -472,14 +480,14 @@ class ProfilePage:
 		click_on_first_wishlist_in_grid = xpath_click(driver, PROFILE_FIRST_ITEM_IN_WISHLIST_GRID)
 
 		# manipulation with likes
-		assert el_id(driver, PROFILE_FIRST_ITEM_TEXT_INSED_WISHLIST).is_displayed()
+		assert el_id(driver, PROFILE_FIRST_ITEM_TEXT_INSIDE_WISHLIST).is_displayed()
 
-		read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+		read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 		final_count_of_likes = 0
 
 		if read_likes_in_wishlist == 0:
 			click_on_like_btn = id_click(driver, LIKES_IN_POST)
-			re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+			re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 			assert re_read_likes_in_wishlist == read_likes_in_wishlist + 1
 			final_count_of_likes = read_likes_in_wishlist + 1
 		elif read_likes_in_wishlist == 1:
@@ -487,7 +495,7 @@ class ProfilePage:
 			re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
 			if re_read_likes_in_wishlist == 0:
 				click_on_like_btn = id_click(driver, LIKES_IN_POST)
-				re_re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+				re_re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 				assert re_re_read_likes_in_wishlist == 1
 				final_count_of_likes = 1
 			else:
@@ -496,11 +504,11 @@ class ProfilePage:
 
 		else:
 			click_on_like_btn = id_click(driver, LIKES_IN_POST)		
-			re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+			re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 
 			if re_read_likes_in_wishlist == read_likes_in_wishlist - 1:
 				click_on_like_btn = id_click(driver, LIKES_IN_POST)
-				re_re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+				re_re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 				assert re_re_read_likes_in_wishlist == read_likes_in_wishlist
 				final_count_of_likes = re_re_read_likes_in_wishlist
 			else:
@@ -525,7 +533,7 @@ class ProfilePage:
 		time.sleep(1.1) # obligatory wait to avoid warning modal window
 		driver.back()
 		re_read_comments_count = int(el_id(driver, COMMENTS_IN_POST).text.split(" ")[0])
-		read_again_likes_count = int(el_id(driver, LIKES_IN_POST).text)
+		read_again_likes_count = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 		
 		
 		# WILL BE UNCOMMENTED AFTER BUG FIX

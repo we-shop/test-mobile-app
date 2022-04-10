@@ -198,14 +198,8 @@ class LoginPage:
 		for i in x:
 			print(i.text)
 			i.click()
-			#print("1")
 
 		time.sleep(2)
-		# y = driver.find_elements_by_xpath("//*[@name='UAT']")
-		# for i in y:
-		# 	print(i.text)
-		# 	print("2")	
-		# driver.find_element_by_xpath("//XCUIElement.ElementType.radioButton[@name='UAT']").click()
 
 		driver.back()
 
@@ -216,21 +210,5 @@ class LoginPage:
 		password_field.send_keys("123456aA#") #(r"ZO2c%omy")
 		click_on_sign_in = driver.find_element_by_accessibility_id("continueButton").click()
 
-
-		time.sleep(7)
+		time.sleep(2)
 		
-
-
-
-		# driver.back()
-
-		# driver.find_element_by_xpath("//XCUIElementTypeStaticText[@name='Sign in']").click() #("label contains 'Sign in'").click()
-		# login_field = driver.find_element_by_accessibility_id("loginTextField")
-		# password_field = driver.find_element_by_accessibility_id("passwordTextField")
-		# login_field.send_keys("mike-qa")
-		# password_field.send_keys("123456aA#") #(r"ZO2c%omy")
-		# click_on_sign_in = driver.find_element_by_accessibility_id("continueButton").click()
-
-
-		# time.sleep(3)
-		# 

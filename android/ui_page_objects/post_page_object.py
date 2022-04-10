@@ -587,25 +587,39 @@ class PostPage:
 		# manipulation with carousel
 		is_carousel = True
 
-		while is_carousel:
-			try:
-				wait_carousel = el_xpath_short_wait_with_fail(driver, FEED_SLIDE_HEADLINE)
-				is_carousel = True
-			except:
-				is_carousel = False
+		# carousel checks
+		scope_carousel_before_swipe = [i.text for i in elems_xpath(driver, FEED_SLIDE_HEADLINE)]
+		read_text_in_first_carousel_item = el_xpath(driver, FEED_SLIDE_HEADLINE).text
+		assert len(read_text_in_first_carousel_item) > 5
 
-			if is_carousel:
-				read_text_in_first_carousel_item = el_xpath(driver, FEED_SLIDE_HEADLINE).text
-				assert len(read_text_in_first_carousel_item) > 5
+		horisontal_carousel_swipe(driver)
 
-				# going to site and check URL
-				click_on_carousel_item = xpath_click(driver, FEED_SLIDE_HEADLINE)
-				select_chrome_browser(driver)
-				page_url_terms = el_id(driver, BROWSER_URL_BAR).text
+		scope_carousel_after_swipe = [b.text for b in elems_xpath(driver, FEED_SLIDE_HEADLINE)]
 
-				assert current_env in page_url_terms
-				assert "search?query=" in page_url_terms
-				driver.back()
+		assert scope_carousel_before_swipe != scope_carousel_after_swipe
+
+
+		# Temprorary commented, because of varios combinations of functionality
+		# this test part was replaced with above block, but probably in future in will be uncommented and re-worked
+		# while is_carousel:
+		# 	try:
+		# 		wait_carousel = el_xpath_short_wait_with_fail(driver, FEED_SLIDE_HEADLINE)
+		# 		is_carousel = True
+		# 	except:
+		# 		is_carousel = False
+
+		# 	if is_carousel:
+		# 		read_text_in_first_carousel_item = el_xpath(driver, FEED_SLIDE_HEADLINE).text
+		# 		assert len(read_text_in_first_carousel_item) > 5
+
+		# 		# going to site and check URL
+		# 		click_on_carousel_item = xpath_click(driver, FEED_SLIDE_HEADLINE)
+		# 		select_chrome_browser(driver)
+		# 		page_url_terms = el_id(driver, BROWSER_URL_BAR).text
+
+		# 		assert current_env in page_url_terms
+		# 		assert "search?query=" in page_url_terms
+		# 		driver.back()
 
 	def flag_post_content(self, driver):
 		current_usr = read_data_from_temp_file()[1]

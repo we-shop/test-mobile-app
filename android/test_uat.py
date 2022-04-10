@@ -22,6 +22,8 @@ def atest_add_and_remove_product_from_wishlist(login_model, debug_model, search_
 	search_model.search_product_and_open_detail_page(selenium)
 	product_page_model.add_product_to_wishlist(selenium)
 
+
+	# MEED TO ADD DELAY
 def atest_add_product_to_wishlist_and_check_in_profile(login_model, debug_model, search_model, product_page_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
@@ -150,7 +152,7 @@ def atest_dashboard_new_account_check(debug_model, login_model, dashboard_model,
 	login_model.login_only_new_acc(selenium)
 	dashboard_model.new_acc_check(selenium)
 
-def atest_dashboard_existing_account_check(debug_model, login_model, dashboard_model, selenium):
+def test_dashboard_existing_account_check(debug_model, login_model, dashboard_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	dashboard_model.existing_acc_check(selenium)
@@ -175,19 +177,17 @@ def atest_share_profile_post_and_product(debug_model, login_model, profile_model
 	login_model.login_go_to_profile(selenium)
 	profile_model.share_profile_post_and_product(selenium)
 
-def test_search_products_and_check_terms_and_description(login_model, debug_model, search_model, product_page_model, selenium):
+def atest_search_products_and_check_terms_and_description(login_model, debug_model, search_model, product_page_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	search_model.search_specific_product_and_open_detail_page(selenium)
 	product_page_model.open_description_and_terms(selenium)
 
-	# need to add block for mass wishlists 
 def atest_wishlist_create_read_update_delete(debug_model, login_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	profile_model.wishlist_crud(selenium)
 
-	# working, re-check UI
 def atest_home_feed_carousel(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)

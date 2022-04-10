@@ -154,8 +154,6 @@ def click_few_times(locator, clicks):
 			locator.click()
 			time.sleep(0.3)
 
-
-
 # returns found element by xpath using js
 def js_by_xpath(driver, locator):
 	js_xpath_func = '''

@@ -27,7 +27,7 @@ FEED_PRODUCT_TITLE = "com.socialsuperstore:id/productTitle"
 DESCRIPTION_TAB = "Description"
 TERMS_TAB = "Terms"
 DESCRIPTION_TEXT = "com.socialsuperstore.feature_product_detail:id/descriptionPlainTextView"
-TERMS_TEXT = "com.socialsuperstore:id/term"
+TERMS_TEXT = "//androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.RelativeLayout/android.view.ViewGroup[1]/android.widget.ScrollView/android.view.ViewGroup/androidx.viewpager.widget.ViewPager[2]/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.ScrollView/androidx.recyclerview.widget.RecyclerView/androidx.appcompat.widget.LinearLayoutCompat[1]/android.widget.TextView" #"com.socialsuperstore:id/recycler" #"com.socialsuperstore:id/term"
 
 # "Taking you to" window locators
 PRODUCT_MODAL_READ_TERMS_BTN = "com.socialsuperstore:id/readTermsButton"

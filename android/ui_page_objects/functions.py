@@ -281,6 +281,11 @@ def scroll_up_on_feed_page(driver):
 	action.press(x=867, y=1874).wait(1000).move_to(x=867, y=2455).release().perform()
 	time.sleep(0.3)	
 
+def horisontal_carousel_swipe(driver):
+	time.sleep(2)
+	action = TouchAction(driver)
+	action.press(x=950, y=1240).wait(1000).move_to(x=280, y=1240).release().perform()
+	time.sleep(0.3)
 
 def scroll_down_dashboard(driver):
 	driver.swipe(768, 1423, 768, 1657, 330)

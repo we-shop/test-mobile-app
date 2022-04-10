@@ -182,8 +182,11 @@ class ProductDetailPage:
 		#assert len(read_description_text) > 10 # depends on product, description can be empty
 
 		# read terms 
+		time.sleep(1.2) # obligatory wait
 		switch_to_terms_tab = acc_id_click(driver, TERMS_TAB)
-		read_terms_text = el_id(driver, TERMS_TEXT).text
+		#time.sleep(0.5)
+		read_terms_text = el_xpath(driver, TERMS_TEXT).text  #el_id(driver, TERMS_TEXT).text
+		#print(read_terms_text)
 
 		assert len(read_terms_text) > 10
 

@@ -36,5 +36,5 @@ DASH_TRANS_SHOW_MORE_REFERRALS_NICK_INPUT = "com.socialsuperstore:id/nickInput"
 # WENEWS TAB
 DASH_WENEWS_READ_MORE_BTN = "com.socialsuperstore:id/newsReadMore"
 DASH_WENEWS_POST_TITLE = "com.socialsuperstore:id/newsTitle"
-DASH_WENEWS_READ_MORE_POST_TITLE = "//android.view.View/android.view.View/android.widget.TextView[1]"
+DASH_WENEWS_READ_MORE_POST_TITLE = "//androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.widget.TextView[1]" #"//android.view.View/android.view.View/android.widget.TextView[1]"
 

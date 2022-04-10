@@ -72,6 +72,3 @@ REC_PRODUCT_PLUS_MENU = "com.socialsuperstore:id/fabRecommendProduct"
 FEED_SLIDE_UPPERLINE = "//*[contains(@resource-id, 'slideSuperscript')]"
 FEED_SLIDE_HEADLINE = "//*[contains(@resource-id, 'slideHeadline')]"
 
-
-
-
