@@ -87,10 +87,10 @@ class DashboardPage:
 		last_updated = el_id(driver, DASH_WESHARES_LAST_UPDATED).text.split(", ")[1]
 		assert last_updated == CURRENT_DATE
 		
-		share_price = float(el_id(driver, DASH_WESHARES_SHARE_PRICE).text.split("£")[1])
+		share_price = float(el_id(driver, DASH_WESHARES_SHARE_PRICE).text.split("£")[1].replace(",", "."))
 		assert share_price > 0
 
-		your_weshare_top = float(el_id(driver, DASH_WESHARES_YOUR_WESHARE_TOP).text.split("£")[1])
+		your_weshare_top = float(el_id(driver, DASH_WESHARES_YOUR_WESHARE_TOP).text.split("£")[1].replace(",", "."))
 		assert your_weshare_top > 100
 
 		your_weshare_bottom = float(el_id(driver, DASH_WESHARES_YOUR_WESHARE_BOTTOM).text)
@@ -109,8 +109,23 @@ class DashboardPage:
 		# check purchases
 		click_on_show_more_purchases = id_click(driver, DASH_TRANS_SHOW_MORE_PURCHASES)
 		id_until_gone_short(driver, PRE_LOADER)
+
+		error = False
+
+		try:
+			read_possible_error = get_toast_msg(driver)
+			error = True 
+		except:
+			pass 
+
+		if error:
+			print(read_possible_error)
+			print(F"{ERROR_IN_TOAST}")
+		else:
+			pass
+
 		purchased_product_title = len(el_id(driver, DASH_TRANS_SHOW_MORE_PRODUCT_TITLE).text)
-		purchased_product_price = float(el_id(driver, DASH_TRANS_SHOW_MORE_PRICE).text.split("£")[1])
+		purchased_product_price = float(el_id(driver, DASH_TRANS_SHOW_MORE_PRICE).text.split("£")[1].replace(",", "."))
 
 		assert purchased_product_title > 3
 		assert purchased_product_price > 0
@@ -120,7 +135,7 @@ class DashboardPage:
 		click_on_show_more_sales = id_click(driver, DASH_TRANS_SHOW_MORE_SALES)
 		id_until_gone_short(driver, PRE_LOADER)
 		influenced_sales_product_title = len(el_id(driver, DASH_TRANS_SHOW_MORE_PRODUCT_TITLE).text)
-		influenced_sales_price = float(el_id(driver, DASH_TRANS_SHOW_MORE_PRICE).text.split("£")[1])
+		influenced_sales_price = float(el_id(driver, DASH_TRANS_SHOW_MORE_PRICE).text.split("£")[1].replace(",", "."))
 
 		assert influenced_sales_product_title > 3
 		assert influenced_sales_price > 0

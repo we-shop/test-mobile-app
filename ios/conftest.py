@@ -82,6 +82,17 @@ desired_cap = {
 }
 
 # desired_cap = {
+#   "device" : "iPhone 13",
+#   "os_version" : "15",
+#   "project" : "First Python project", 
+#   "build" : "browserstack-iOS",
+#   "name" : "iOS_tests",
+#   "app_url":"bs://c9233654e295b4b1aadd17f2a1640a043b462d38"
+#   #"appium:app": "C:\\Users\\NEMESIS\\Desktop\\UPW\\weshop\\WeShop.ipa"
+# }
+
+
+# desired_cap = {
 #     # Set your access credentials
 #     "browserstack.user" : "mikevo_e4SQsH",
 #     "browserstack.key" : "vAxMnKJJiYcxmsekXNuZ",

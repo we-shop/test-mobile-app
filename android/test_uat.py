@@ -147,7 +147,7 @@ def atest_inbox_redirect_to_post_and_question_check(debug_model, login_model, in
 	login_model.login_only(selenium)
 	inbox_model.inbox_post_and_question_redirects(selenium)
 
-def atest_dashboard_new_account_check(debug_model, login_model, dashboard_model, selenium):
+def test_dashboard_new_account_check(debug_model, login_model, dashboard_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only_new_acc(selenium)
 	dashboard_model.new_acc_check(selenium)

@@ -10,7 +10,7 @@ import random
 from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
 import pytest
-from locators.product_detail_locators import PRODUCT_MODAL_CONTINUE_BTN
+#from locators.product_detail_locators import PRODUCT_MODAL_CONTINUE_BTN
 from appium.webdriver.common.touch_action import TouchAction
 
 
@@ -184,24 +184,29 @@ def js_by_xpath_button_status(driver, locator):
 	elem = driver.execute_script("return getElementByXpath(arguments[0]).disabled", locator)
 	return elem
 
-
-def send_enter_key_adb(driver):
-	driver.execute_script('mobile: shell', {'command': 'input keyevent', 'args':'KEYCODE_ENTER'}) # send Enter key example (using adb)
-
 def get_correct_text_by_id(driver, locator, text):
 	WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, locator)))
 
-	seconds = 5
+def alert_accept_notifications(driver):
+	try:
+		driver.switch_to.alert.accept()
+	except:
+		pass
 
-	while seconds > 0:
-		el = driver.find_element(By.ID, locator).text
-		if str(text) in el:
-			break
-		else:
-			seconds -=1
+def wait_for_alert(driver):
+	try:
+		WebDriverWait(driver, 1).until(EC.alert_is_present())
+	except:
+		#print(f"{ALERT_IS_NOT_SHOWN}")
+		pass
 
-	if seconds == 0:
-		pytest.fail('Text not found!')
+def handle_notification_alert(driver):
+	try:
+		WebDriverWait(driver, 2).until(EC.alert_is_present())
+	except:
+		pass
+	finally:
+		driver.switch_to.alert.accept()
 
 
 # FILE MANIPUPATION FUNCTIONS
@@ -223,6 +228,66 @@ def clear_data_from_temp_file():
 	file.close()
 
 
+# iOS scrolls
+
+def scroll_down_ios(driver):
+	driver.execute_script('mobile: scroll', {'direction': 'down'})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def send_enter_key_adb(driver):
+	driver.execute_script('mobile: shell', {'command': 'input keyevent', 'args':'KEYCODE_ENTER'}) # send Enter key example (using adb)
+
+
+
+	seconds = 5
+
+	while seconds > 0:
+		el = driver.find_element(By.ID, locator).text
+		if str(text) in el:
+			break
+		else:
+			seconds -=1
+
+	if seconds == 0:
+		pytest.fail('Text not found!')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Solve browser choice
 def select_chrome_browser(driver):
 	try:
@@ -239,7 +304,8 @@ def select_chrome_browser(driver):
 # Passing "Taking you to" window function
 def taking_you_to_win(driver):
 	try:
-		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, PRODUCT_MODAL_CONTINUE_BTN))).click()
+		#WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, PRODUCT_MODAL_CONTINUE_BTN))).click()
+		pass
 	except:
 		print("Taking you to window is not displayed")
 		print(f"Expected window is not displayed: {ERROR}")
@@ -289,3 +355,5 @@ def scroll_down_main(driver):
 		'direction': 'down',
 		'percent': 3.0
 	})	
+
+
