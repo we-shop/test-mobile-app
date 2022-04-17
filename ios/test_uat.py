@@ -20,28 +20,30 @@ def atest_search_request_and_clear_field(login_model, debug_model, search_model,
 	login_model.login_only(selenium)
 	search_model.search_and_clear_field(selenium)
 
-def test_add_and_remove_product_from_wishlist(login_model, debug_model, search_model, product_page_model, selenium):
+# iOS done
+def atest_add_and_remove_product_from_wishlist(login_model, debug_model, search_model, product_page_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	search_model.search_product_and_open_detail_page(selenium)
 	product_page_model.add_product_to_wishlist(selenium)
 
-
-def atest_login_and_logout(login_model, debug_model, selenium):
-	debug_model.switch_to_prod(selenium)
-	#login_model.login_with_assert(selenium)
-	#login_model.logout(selenium)
-
+# iOS done
 def atest_add_product_to_wishlist_and_check_in_profile(login_model, debug_model, search_model, product_page_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	search_model.search_product_and_open_detail_page(selenium)
 	product_page_model.add_product_to_wishlist_and_check_in_profile(selenium)
 
-def atest_open_product_website(debug_model, login_model, product_page_model, selenium):
+
+def test_open_product_website(debug_model, login_model, product_page_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	product_page_model.open_product_website(selenium)
+
+def atest_login_and_logout(login_model, debug_model, selenium):
+	debug_model.switch_to_prod(selenium)
+	#login_model.login_with_assert(selenium)
+	#login_model.logout(selenium)
 
 def atest_add_product_to_post(debug_model, login_model, product_page_model, selenium):
 	debug_model.switch_to_uat(selenium)

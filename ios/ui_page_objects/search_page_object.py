@@ -38,7 +38,7 @@ class SearchPage:
 		recent_search_item_text = el_xpath(driver, RECENT_SEARCH_ITEM_TEXT).text
 		assert recent_search_item_text.lower() == "adidas"
 
-	#iOS done	
+	#iOS done
 	def search_product_and_open_detail_page(self, driver):
 		# search request
 		switch_to_search_menu = acc_id_click(driver, FOOTER_ITEM_SEARCH)

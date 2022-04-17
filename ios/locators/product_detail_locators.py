@@ -8,8 +8,13 @@ ADD_BUTTON_IN_WISHLIST = '(//XCUIElementTypeButton[@name="wishlistItemActionButt
 NAME_OF_WISHLIST_INPUT_FIELD = "wishlistNameTextField"
 SAVE_BTN_NEW_WISHLIST = "saveButton"
 NAME_OF_WISHLIST_PRODUCT_PAGE = '(//XCUIElementTypeStaticText[@name="wishlistItemTitleLabel"])[1]'
+CLOSE_BTN = "Close"
 
-
+WISHLIST_ITEMS_TITLE_LIST = '//XCUIElementTypeCollectionView[@name="wishlistCollectionsView"]/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeStaticText'
+LIST_OF_ITEMS_INSIDE_WISHLIST = '//XCUIElementTypeCollectionView[@name="collectionDetailsCollectionView"]/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeStaticText[1]'
+FEED_PRODUCT_TITLE = 'nameLabel'
+BUY_NOW_BTN = 'defaultOfferBuyButton'
+PRODUCT_MODAL_CONTINUE_BTN = '//XCUIElementTypeButton[contains(@name, "Continue")]'
 
 
 
@@ -26,7 +31,7 @@ NAME_OF_WISHLIST_PRODUCT_PAGE = '(//XCUIElementTypeStaticText[@name="wishlistIte
 
 # WISHLIST_STAR_BUTTON = "com.socialsuperstore.feature_product_detail:id/saveToWishlistBtn"
 # ADD_BUTTON_IN_WISHLIST = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.Button"
-# BACK_BTN = "Navigate up"
+# 
 # PRODUCT_NAME_TITLE = "com.socialsuperstore.feature_product_detail:id/productName" #"com.socialsuperstore:id/toolbarText"
 
 # PRODUCT_NAME_POST_CREATION = "com.socialsuperstore.feature_post_editor:id/name"

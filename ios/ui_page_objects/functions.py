@@ -229,16 +229,14 @@ def clear_data_from_temp_file():
 
 
 # iOS scrolls
-
 def scroll_down_ios(driver):
 	driver.execute_script('mobile: scroll', {'direction': 'down'})
 
-
-
-
-
-
-
+def scroll_on_feed_page_ios(driver):
+	time.sleep(2)
+	action = TouchAction(driver)
+	action.press(x=187, y=600).wait(1000).move_to(x=187, y=178).release().perform()
+	time.sleep(0.3)
 
 
 
@@ -268,26 +266,6 @@ def send_enter_key_adb(driver):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Solve browser choice
 def select_chrome_browser(driver):
 	try:
@@ -302,9 +280,9 @@ def select_chrome_browser(driver):
 		pass
 
 # Passing "Taking you to" window function
-def taking_you_to_win(driver):
+def taking_you_to_win_ios(driver):
 	try:
-		#WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, PRODUCT_MODAL_CONTINUE_BTN))).click()
+		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((MobileBy.XPATH, PRODUCT_MODAL_CONTINUE_BTN))).click()
 		pass
 	except:
 		print("Taking you to window is not displayed")
