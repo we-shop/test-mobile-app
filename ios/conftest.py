@@ -77,7 +77,7 @@ desired_cap = {
   "project" : "First Python project", 
   "build" : "browserstack-iOS",
   "name" : "iOS_tests",
-  "app_url":"bs://c9233654e295b4b1aadd17f2a1640a043b462d38"
+  "app_url":"bs://64cdb538ee26c9d62010a7aa4175c8d33cc5ce69"
   #"appium:app": "C:\\Users\\NEMESIS\\Desktop\\UPW\\weshop\\WeShop.ipa"
 }
 
@@ -116,7 +116,7 @@ desired_cap = {
 def selenium(request):
     webdriver
     selenium = webdriver.Remote(
-      command_executor='https://mikevo_e4SQsH:vAxMnKJJiYcxmsekXNuZ@hub-cloud.browserstack.com/wd/hub',
+      command_executor='https://mika_ajI75Z:3LEmS9BCLDd6zL4uzufk@hub-cloud.browserstack.com/wd/hub',
       desired_capabilities=desired_cap)
 
     yield selenium
