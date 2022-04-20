@@ -77,7 +77,8 @@ desired_cap = {
   "project" : "First Python project", 
   "build" : "browserstack-iOS",
   "name" : "iOS_tests",
-  "app_url":"bs://64cdb538ee26c9d62010a7aa4175c8d33cc5ce69"
+  "app_url":"bs://47d23ff2cf494f157cf2514d4bd988496bbfdb34"
+  # 64cdb538ee26c9d62010a7aa4175c8d33cc5ce69
   #"appium:app": "C:\\Users\\NEMESIS\\Desktop\\UPW\\weshop\\WeShop.ipa"
 }
 

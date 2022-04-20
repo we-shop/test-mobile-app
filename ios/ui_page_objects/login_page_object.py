@@ -127,6 +127,7 @@ class LoginPage:
 			print(current_env)
 			print(F"{ERROR} Something wrong with current env variable")
 
+
 		# making login
 		login_field = acc_id_keys(driver, LOG_FIELD, USERNAME)
 		password_field = acc_id_keys(driver, PASS_FIELD, PASSWORD)
