@@ -46,7 +46,7 @@ desired_cap = {
   "name" : "first_test222",
   "appPackage": "com.socialsuperstore",
   "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
-  "app_url":"bs://576463a96efb0a64e20d5abe7652b5faa671aba4",
+  "app_url":"bs://30685e2517ddd3049429ddb20accdddb77403845",
   "browser" : "Chrome",
   "browserstack.idleTimeout":10,
   "implicit":8000,
@@ -61,7 +61,7 @@ desired_cap = {
 def selenium(request):
     webdriver
     selenium = webdriver.Remote(
-      command_executor='https://mikepasta_PKlm6D:6dpEtxQmpxfyWkB789F5@hub-cloud.browserstack.com/wd/hub',
+      command_executor='https://mika_ajI75Z:3LEmS9BCLDd6zL4uzufk@hub-cloud.browserstack.com/wd/hub',
       desired_capabilities=desired_cap)
 
     yield selenium
