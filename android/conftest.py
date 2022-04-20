@@ -28,7 +28,7 @@ LOGIN_INT = os.getenv("LOGIN_INT")
 PASSWORD_INT = os.getenv("PASSWORD_INT")
 LOGIN_INT_NEW = os.getenv("LOGIN_INT_NEW")
 PASSWORD_INT_NEW = os.getenv("PASSWORD_INT_NEW")
-
+BROWSERSTACK_BUILD_NAME = os.getenv("BROWSERSTACK_BUILD_NAME")
 
 prefs = {"download.default_directory": os.getcwd() + "/"}
 
@@ -43,13 +43,13 @@ prefs = {"download.default_directory": os.getcwd() + "/"}
 
 # caps.setCapability("app", "bs://576463a96efb0a64e20d5abe7652b5faa671aba4")
 
-
+# BROWSERSTACK_BUILD_NAME # browserstack-build-13
 desired_cap = {
   "device" : "Samsung Galaxy A51",
   "os_version" : "10.0",
   "project" : "First Python project2", 
-  "build" : "browserstack-build-13",
-  "name" : "first_test222",
+  "build" : BROWSERSTACK_BUILD_NAME, 
+  "name" : "first_test222", 
   "appPackage": "com.socialsuperstore",
   "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
   "app_url":"bs://30685e2517ddd3049429ddb20accdddb77403845",
