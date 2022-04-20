@@ -3,8 +3,11 @@ import os
 import time
 
 # LIST OF TESTS
+def test_switch_env(debug_model, selenium):
+	debug_model.switch_to_uat(selenium)
+
 #iOS done
-def test_login_and_logout(login_model, debug_model, selenium):
+def atest_login_and_logout(login_model, debug_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_with_assert(selenium)
 	login_model.logout(selenium)

@@ -28,7 +28,7 @@ LOGIN_INT = os.getenv("LOGIN_INT")
 PASSWORD_INT = os.getenv("PASSWORD_INT")
 LOGIN_INT_NEW = os.getenv("LOGIN_INT_NEW")
 PASSWORD_INT_NEW = os.getenv("PASSWORD_INT_NEW")
-BROWSERSTACK_BUILD_NAME = os.getenv("BROWSERSTACK_BUILD_NAME")
+
 
 prefs = {"download.default_directory": os.getcwd() + "/"}
 
@@ -48,8 +48,8 @@ desired_cap = {
   "device" : "Samsung Galaxy A51",
   "os_version" : "10.0",
   "project" : "First Python project2", 
-  "build" : BROWSERSTACK_BUILD_NAME, 
-  "name" : "first_test222", 
+  "build" : 'browserstack-build-13', 
+  "name" : 'test-browserstack-build-13',
   "appPackage": "com.socialsuperstore",
   "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
   "app_url":"bs://30685e2517ddd3049429ddb20accdddb77403845",
@@ -60,6 +60,69 @@ desired_cap = {
   "unicodeKeyboard": True,
   "noReset:": True,
   "resetKeyboard": True }
+
+
+# BS TEMP BLOCK
+username = os.getenv("BROWSERSTACK_USERNAME") # mika_ajI75Z
+access_key = os.getenv("BROWSERSTACK_ACCESS_KEY") # 3LEmS9BCLDd6zL4uzufk
+build_name = os.getenv("BROWSERSTACK_BUILD_NAME") # browserstack-build-13
+#browserstack_local = os.getenv("BROWSERSTACK_LOCAL")
+#browserstack_local_identifier = os.getenv("BROWSERSTACK_LOCAL_IDENTIFIER")
+BROWSERSTACK_BUILD_NAME = os.getenv("BROWSERSTACK_BUILD_NAME")
+
+caps = {
+ "device" : "Samsung Galaxy A51",
+ "os_version" : "10.0",
+ "project" : "First Python project2",
+ 'browser': 'chrome',
+ 'browser_version': 'latest',
+ 'name': 'BStack-Jenkins Sample Test', # test name
+ 'build': build_name, # CI/CD job name using BROWSERSTACK_BUILD_NAME env variable
+ #'browserstack.local': browserstack_local,
+ #'browserstack.localIdentifier': browserstack_local_identifier,
+ 'browserstack.user': username,
+ 'browserstack.key': access_key,
+ "appPackage": "com.socialsuperstore",
+ "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
+ "app_url":"bs://30685e2517ddd3049429ddb20accdddb77403845",
+ "browserstack.idleTimeout":10,
+ "implicit":8000,
+ "autoGrantPermissions": True,
+ "unicodeKeyboard": True,
+ "noReset:": True,
+ "resetKeyboard": True 
+}
+
+  # "device" : "Samsung Galaxy A51",
+  # "os_version" : "10.0",
+  # "project" : "First Python project2", 
+  # "build" : BROWSERSTACK_BUILD_NAME, 
+  # "name" : BROWSERSTACK_BUILD_NAME,
+  # "appPackage": "com.socialsuperstore",
+  # "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
+  # "app_url":"bs://30685e2517ddd3049429ddb20accdddb77403845",
+  # "browser" : "Chrome",
+  # "browserstack.idleTimeout":10,
+  # "implicit":8000,
+  # "autoGrantPermissions": True,
+  # "unicodeKeyboard": True,
+  # "noReset:": True,
+  # "resetKeyboard": True }
+
+
+
+# Customizing appium driver for Browserstack
+# @pytest.fixture(autouse=True)
+# def selenium(request):
+#     webdriver
+#     selenium = webdriver.Remote(
+#       command_executor='http://hub-cloud.browserstack.com/wd/hub/',
+#       desired_capabilities=caps)
+
+#     yield selenium
+#     selenium.quit() # marking test is finished for Browserstack
+#     #selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
+#     clear_data_from_temp_file() # clearing data in temp_data.txt
 
 
 # Customizing appium driver for Browserstack
@@ -74,6 +137,14 @@ def selenium(request):
     selenium.quit() # marking test is finished for Browserstack
     #selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
     clear_data_from_temp_file() # clearing data in temp_data.txt
+
+
+
+
+
+
+
+
 
 # #Customizing appium driver (implicitly waits + app close/kill)
 # @pytest.fixture
