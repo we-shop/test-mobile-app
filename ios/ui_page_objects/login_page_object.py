@@ -129,6 +129,7 @@ class LoginPage:
 
 
 		# making login
+		time.sleep(2)
 		login_field = acc_id_keys(driver, LOG_FIELD, USERNAME)
 		password_field = acc_id_keys(driver, PASS_FIELD, PASSWORD)
 		sign_in_btn_click = acc_id_click(driver, MAKE_LOGIN_BTN)
