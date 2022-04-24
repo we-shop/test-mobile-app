@@ -2,7 +2,7 @@ import pytest
 import os
 
 # LIST OF TESTS
-def test_switch_env(debug_model, selenium):
+def atest_switch_env(debug_model, selenium):
 	debug_model.switch_to_uat(selenium)
 
 def atest_login_and_logout(login_model, debug_model, selenium):
@@ -116,7 +116,6 @@ def atest_post_create_new_question(debug_model, login_model, post_model, seleniu
 	login_model.login_only(selenium)
 	post_model.ask_question(selenium)
 
-	# latest
 def atest_post_create_new_question_edit_delete(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
@@ -127,6 +126,7 @@ def atest_self_question_like_and_comment_check(debug_model, login_model, post_mo
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	post_model.comment_and_like_self_question(selenium)
+
 
 def atest_self_question_comment_edit_and_delete(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)

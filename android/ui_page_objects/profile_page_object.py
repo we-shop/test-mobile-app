@@ -275,8 +275,8 @@ class ProfilePage:
 		# read count of following
 		profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
 
-
-		#switch_to_search_menu = acc_id_click(driver, FOOTER_ITEM_SEARCH)
+		# search for user
+		switch_to_search_menu = acc_id_click(driver, FOOTER_ITEM_SEARCH)
 		click_on_search_btn_in_head_bar = id_click(driver, SEARCH_BTN_HEAD_BAR)
 		make_request_in_search_field = xpath_keys(driver, COLLAPSED_SEARCH_INPUT_FIELD, USER_1)
 		select_suggested_search_item = xpath_click(driver, SELECT_SUGGESTED_ITEM_SEARCH_PROFILE)
@@ -480,8 +480,9 @@ class ProfilePage:
 		click_on_first_wishlist_in_grid = xpath_click(driver, PROFILE_FIRST_ITEM_IN_WISHLIST_GRID)
 
 		# manipulation with likes
-		assert el_id(driver, PROFILE_FIRST_ITEM_TEXT_INSIDE_WISHLIST).is_displayed()
+		assert el_xpath(driver, PROFILE_FIRST_ITEM_TEXT_INSIDE_WISHLIST).is_displayed()
 
+		time.sleep(0.5)
 		read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
 		final_count_of_likes = 0
 
@@ -492,7 +493,7 @@ class ProfilePage:
 			final_count_of_likes = read_likes_in_wishlist + 1
 		elif read_likes_in_wishlist == 1:
 			click_on_like_btn = id_click(driver, LIKES_IN_POST)
-			re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text)
+			re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0]) # added text.split(" ")[0]
 			if re_read_likes_in_wishlist == 0:
 				click_on_like_btn = id_click(driver, LIKES_IN_POST)
 				re_re_read_likes_in_wishlist = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])

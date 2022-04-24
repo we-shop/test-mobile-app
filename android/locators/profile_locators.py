@@ -10,7 +10,7 @@ WISHLIST_LABEL_PROFILE = "com.socialsuperstore:id/profileWishlistsTitle"
 PROFILE_FIRST_AND_LAST_NAME = "com.socialsuperstore:id/nameTextView"
 PROFILE_USERNAME = "com.socialsuperstore:id/usernameTextView"
 PROFILE_BIO = "com.socialsuperstore:id/userDescriptionTextView"
-PROFILE_SETTINGS_BTN = "com.socialsuperstore:id/settingsBtn"
+PROFILE_SETTINGS_BTN = "com.socialsuperstore:id/settings" # old: com.socialsuperstore:id/settingsBtn
 PROFILE_SETTINGS_EDIT_BTN = "com.socialsuperstore.feature_settings:id/editProfileBtn"
 FOOTER_ITEM_HOME = "Home"
 FOOTER_ITEM_DASHBOARD = "Rewards"
@@ -39,15 +39,15 @@ PROFILE_SHARE_BUTTON = "com.socialsuperstore:id/shareButton"
 PROFILE_POST_SHARE_BUTTON = "com.socialsuperstore:id/interactionsShareBtn"
 PRODUCT_SHARE_BUTTON = "com.socialsuperstore:id/shareAction"
 SHARE_WINDOW_COPY_BTN = "android:id/sem_chooser_chip_button1"
-PROFILE_FIRST_ITEM_IN_POSTS_TAB = "//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[2]"
-PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT = "//android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[2]"
+PROFILE_FIRST_ITEM_IN_POSTS_TAB = "(//*[contains(@resource-id, 'cardView')]//androidx.appcompat.widget.LinearLayoutCompat/android.widget.TextView)[1]"
+PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT = "(//*[contains(@resource-id, 'cardView')]//androidx.appcompat.widget.LinearLayoutCompat/android.widget.TextView)[1]"
 PROFILE_FIRST_ITEM_IN_POST_TAB_TEXT_SPECIAL = "//android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[1]"
 PROFILE_FIRST_ITEM_IN_WISHLIST_GRID = "//*[contains(@resource-id, 'titleText')]"
-PROFILE_FIRST_ITEM_TEXT_INSIDE_WISHLIST = "com.socialsuperstore:id/productTitle" #"com.socialsuperstore:id/titleTextView"
-NESTED_PRODUCTS_COUNT_IN_POST = "//android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[1]"
+PROFILE_FIRST_ITEM_TEXT_INSIDE_WISHLIST = "//*[contains(@resource-id, 'toolbar')]/android.widget.TextView" #"com.socialsuperstore:id/productTitle" #"com.socialsuperstore:id/titleTextView"
+NESTED_PRODUCTS_COUNT_IN_POST = "(//*[contains(@resource-id, 'postProductCount')])[1]"
 POST_PRODUCT_TITLE = "com.socialsuperstore:id/productTitle"
 PROFILE_QUESTIONS_TAB = "Questions"
-FIRST_QUESTION_IN_QUEST_TAB = "//android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView[2]"
+FIRST_QUESTION_IN_QUEST_TAB = "//*[contains(@resource-id, 'cardView')]/android.view.ViewGroup"
 PROFILE_FOLLOWERS_TAB_FOLLOWERS_TAB = "Followers"
 PROFILE_FOLLOWERS_TAB_FOLLOWINGS_TAB = "Following"
 PROFILE_FOLLOWERS_TAB_ALL_ITEMS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.CompoundButton"
@@ -106,6 +106,6 @@ BROWSER_URL_BAR = "com.android.chrome:id/url_bar"
 
 # SETINGS > ABOUT
 APP_VERSION_SETTINGS_ABOUT = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.TextView[1]"
-	
+
 #/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView
 #/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView[2]
