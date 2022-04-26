@@ -10,7 +10,7 @@ import random
 from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
 import pytest
-#from locators.product_detail_locators import PRODUCT_MODAL_CONTINUE_BTN
+from locators.product_detail_locators import PRODUCT_MODAL_CONTINUE_BTN
 from appium.webdriver.common.touch_action import TouchAction
 
 
@@ -237,13 +237,6 @@ def scroll_on_feed_page_ios(driver):
 	action = TouchAction(driver)
 	action.press(x=187, y=600).wait(1000).move_to(x=187, y=178).release().perform()
 	time.sleep(0.3)
-
-
-
-
-
-
-
 
 
 

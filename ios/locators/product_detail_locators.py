@@ -15,8 +15,11 @@ LIST_OF_ITEMS_INSIDE_WISHLIST = '//XCUIElementTypeCollectionView[@name="collecti
 FEED_PRODUCT_TITLE = 'nameLabel'
 BUY_NOW_BTN = 'defaultOfferBuyButton'
 PRODUCT_MODAL_CONTINUE_BTN = '//XCUIElementTypeButton[contains(@name, "Continue")]'
+PRODUCT_PAGE_SUB_MENU = "actionButton"
+PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE = '//XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeImage' #"//*[contains(@resource-id, 'com.socialsuperstore.feature_post_editor:id/productImage')]"
 
-
+# //XCUIElementTypeButton[@name="Add to post"]
+# //XCUIElementTypeButton[@name="Ask a question"]
 
 # titleTextView
 # //XCUIElementTypeTextView[@name="titleTextView”]/XCUIElementTypeTextView

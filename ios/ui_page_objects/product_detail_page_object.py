@@ -122,6 +122,7 @@ class ProductDetailPage:
 		# checking correctness of added product to checklist
 		assert get_product_name_from_product_detail_page == GET_PRODUCT_NAME
 
+	# iOS done	
 	def open_product_website(self, driver):
 		# going to detail product page
 		click_on_home_footer_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
@@ -138,26 +139,30 @@ class ProductDetailPage:
 		taking_you_to_win_ios(driver) # passing modal window
 		#select_chrome_browser(driver)
 		time.sleep(5) # to read correct url, theoretically can be removed
-		#page_url = el_id(driver, BROWSER_URL_BAR).text
-		#assert len(page_url) > 10
 
+		page_url = el_acc_id(driver, BROWSER_URL_BAR).text
+		assert len(page_url) > 8
 
+	# iOS in progress
 	def add_product_to_post(self, driver):
 		# going to detail product page
 		click_on_home_footer_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
-		scroll_on_feed_page(driver)
-		click_on_first_product_in_feed = id_click(driver, FEED_PRODUCT_TITLE)
+		#scroll_on_feed_page(driver)
+		scroll_on_feed_page_ios(driver)
+		click_on_first_product_in_feed = acc_id_click(driver, FEED_PRODUCT_TITLE)
 
 		# product detail page steps > add to post
-		read_product_name = el_id(driver, PRODUCT_NAME_PRICE_BLOCK).text
-		open_product_sub_menu = id_click(driver, PRODUCT_PAGE_SUB_MENU)
+		read_product_name = el_acc_id(driver, PRODUCT_NAME_PRICE_BLOCK).text
+		open_product_sub_menu = acc_id_click(driver, PRODUCT_PAGE_SUB_MENU)
 		click_on_add_to_post_sub_menu_item = xpath_click(driver, FOOTER_ITEM_REC_PRODUCT)
 
 		# assert product name on post creation step #1		
 				
 		#assert read_product_name == read_product_name_in_post_creation_step <<< old check, commented, because of bug
 		#read_product_name_in_post_creation_step = el_id(driver, PRODUCT_NAME_POST_CREATION).text <<< old check, commented, because of bug
-		assert el_xpath(driver, PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE).is_displayed()
+		#assert el_xpath(driver, PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE).is_displayed()
+		print(el_xpath(driver, PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE).get_attribute("width"))
+		#PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE
 
 	def add_product_to_question(self, driver):
 		# going to detail product page

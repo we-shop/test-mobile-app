@@ -2,8 +2,8 @@ from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
 
 # LIST OF LOCATORS FOR POST PAGE MODEL
-FOOTER_ITEM_REC_PRODUCT = "//androidx.recyclerview.widget.RecyclerView/android.widget.Button[1]"
-FOOTER_ITEM_ASK_QUESTION = "//androidx.recyclerview.widget.RecyclerView/android.widget.Button[2]"
+FOOTER_ITEM_REC_PRODUCT = "//XCUIElementTypeButton[@name='Add to post']"
+FOOTER_ITEM_ASK_QUESTION = "//XCUIElementTypeButton[@name='Ask a question']"
 SEARCH_PRODUCT_POST_CREATION = "com.socialsuperstore.feature_post_editor:id/search"
 ADD_FIRST_PRODUCT_PLUS_INPUT = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[4]/android.view.ViewGroup/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView[1]"
 SEARCH_RESULT_PRODUCT_ONE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.CheckBox"
