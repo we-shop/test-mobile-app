@@ -16,7 +16,9 @@ FEED_PRODUCT_TITLE = 'nameLabel'
 BUY_NOW_BTN = 'defaultOfferBuyButton'
 PRODUCT_MODAL_CONTINUE_BTN = '//XCUIElementTypeButton[contains(@name, "Continue")]'
 PRODUCT_PAGE_SUB_MENU = "actionButton"
-PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE = '//XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeImage' #"//*[contains(@resource-id, 'com.socialsuperstore.feature_post_editor:id/productImage')]"
+PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE = '//XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[3]/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage'
+PRODUCT_NAME_POST_CREATION = "//XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeOther[3]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther//XCUIElementTypeStaticText[@name]"
+
 
 # //XCUIElementTypeButton[@name="Add to post"]
 # //XCUIElementTypeButton[@name="Ask a question"]

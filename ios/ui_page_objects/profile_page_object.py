@@ -25,15 +25,16 @@ class ProfilePage:
 		self.LOGIN_INT_NEW = LOGIN_INT_NEW
 		self.PASSWORD_INT_NEW = PASSWORD_INT_NEW
 
+	# iOS in done
 	def followings_followers_count(self, driver):
 		# read count of followers and following
-		profile_followers = int(el_id(driver, FOLLOWERS_COUNT).text)
-		profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
+		profile_followers = int(el_xpath(driver, FOLLOWERS_COUNT).text)
+		profile_following = int(el_xpath(driver, FOLLOWINGS_COUNT).text)
 
 		# going to followers/following and reading real count of followers/following
-		click_on_followers_btn = id_click(driver, FOLLOWERS_LABEL_PROFILE)
+		click_on_followers_btn = xpath_click(driver, FOLLOWERS_LABEL_PROFILE)
 		total_count_of_existing_followers = len(elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS))
-		click_on_following_tab = acc_id_click(driver, PROFILE_FOLLOWERS_TAB_FOLLOWINGS_TAB)
+		click_on_following_tab = xpath_click(driver, FOLLOWINGS_LABEL_PROFILE)
 		total_count_of_existing_following = len(elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS))
 
 
@@ -50,6 +51,14 @@ class ProfilePage:
 			assert total_count_of_existing_following >= 7
 		else:	
 			assert profile_following == total_count_of_existing_following
+
+		
+		#print(profile_followers)	
+		#print(total_count_of_existing_followers)
+		#print(profile_following)	
+		#print(total_count_of_existing_following)
+
+
 
 	def OLD_edit_profile(self, driver):
 		# random data
@@ -200,12 +209,12 @@ class ProfilePage:
 
 	def following_count_manipulations_in_profile(self, driver):
 		# read count of followers and following
-		profile_followers = int(el_id(driver, FOLLOWERS_COUNT).text)
-		profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
+		profile_followers = int(el_xpath(driver, FOLLOWERS_COUNT).text)
+		profile_following = int(el_xpath(driver, FOLLOWINGS_COUNT).text)
 
 		# going to followers/following and follow for some followers
-		click_on_followers_btn = id_click(driver, FOLLOWERS_LABEL_PROFILE)
-		find_all_follow_btns = elems_xpath(driver, LIST_OF_ALL_FOLLOW_BTNS)
+		click_on_followers_btn = xpath_click(driver, FOLLOWERS_LABEL_PROFILE)
+		find_all_follow_btns = elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS) #LIST_OF_ALL_FOLLOW_BTNS) 
 
 		follow_count = 0
 		follow_clicked = 0
@@ -240,8 +249,8 @@ class ProfilePage:
 		# going back to profile
 		driver.back()
 		click_on_home_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
-		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
-		re_reading_followings_count = int(el_id(driver, FOLLOWINGS_COUNT).text)
+		click_on_profile_footer_item = acc_id_click(driver, FOOTER_ITEM_PROFILE)
+		re_reading_followings_count = int(el_xpath(driver, FOLLOWINGS_COUNT).text)
 
 		# assertions
 		if follow_clicked > 0:
@@ -251,9 +260,9 @@ class ProfilePage:
 
 		
 		# going to following to make sure that current count match existing count of following
-		click_on_following_btn = id_click(driver, FOLLOWINGS_LABEL_PROFILE)
+		click_on_following_btn = xpath_click(driver, FOLLOWINGS_LABEL_PROFILE)
 		time.sleep(0.6) # obligatory wait to avoid miscalculations of following items
-		calculate_all_following_btns = len(elems_xpath(driver, LIST_OF_ALL_FOLLOW_BTNS))
+		calculate_all_following_btns = len(elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS)) #LIST_OF_ALL_FOLLOW_BTNS))
 
 		# cover vision issue (unable to detect hidden items)
 		if re_reading_followings_count >= 8:

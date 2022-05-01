@@ -32,8 +32,18 @@ FOOTER_ITEM_NEW_POST = '//XCUIElementTypeStaticText[contains(@name, "Questions (
 PROFILE_WISHLIST_TAB = '//XCUIElementTypeStaticText[contains(@name, "Wishlists (")]'
 BROWSER_URL_BAR = "TabBarItemTitle"
 
+FOLLOWERS_COUNT = "(//*[contains(@name, 'followersInfoView')]/XCUIElementTypeStaticText)[1]"
+FOLLOWINGS_COUNT = "(//*[contains(@name, 'followingInfoView')]/XCUIElementTypeStaticText)[1]"
+FOLLOWERS_LABEL_PROFILE = "//XCUIElementTypeStaticText[@name='Followers']"
+FOLLOWINGS_LABEL_PROFILE = "(//XCUIElementTypeStaticText[@name='Following'])[1]"
+PROFILE_FOLLOWERS_TAB_ALL_ITEMS = "(//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText"
 
 
+
+
+FIRST_BTN_IN_FOLLOWERS_TAB = "((//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText)[1]"
+SECOND_BTN_IN_FOLLOWERS_TAB = "((//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText)[2]"
+THIRD_BTN_IN_FOLLOWERS_TAB = "((//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText)[3]"
 
 
 # PROFILE_POSTS_TAB = "Posts"

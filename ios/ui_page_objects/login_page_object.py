@@ -38,6 +38,7 @@ class LoginPage:
 		self.LOGIN_INT_NEW = LOGIN_INT_NEW
 		self.PASSWORD_INT_NEW = PASSWORD_INT_NEW
 
+	# iOS done	
 	def login_only(self, driver):
 		# configuration for credentials according to env
 		current_env = read_data_from_temp_file()[0]
@@ -63,6 +64,7 @@ class LoginPage:
 		handle_notification_alert(driver)
 		update_temp_file(self.LOGIN)
 
+	# iOS done	
 	def login_only_new_acc(self, driver):
 		# configuration for credentials according to env
 		current_env = read_data_from_temp_file()[0]
@@ -82,9 +84,10 @@ class LoginPage:
 		# making login
 		login_field = id_keys(driver, LOG_FIELD, USERNAME)
 		password_field = id_keys(driver, PASS_FIELD, PASSWORD)
-		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
+		sign_in_btn_click = id_click(driver, MAKE_LOGIN_BTN)
 		update_temp_file(self.LOGIN)
 
+	# iOS done	
 	def login_go_to_profile(self, driver):
 		# configuration for credentials according to env
 		current_env = read_data_from_temp_file()[0]
@@ -102,12 +105,13 @@ class LoginPage:
 			print(F"{ERROR} Something wrong with current env variable")
 
 		# making login
-		login_field = id_keys(driver, LOG_FIELD, USERNAME)
-		password_field = id_keys(driver, PASS_FIELD, PASSWORD)
-		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
+		login_field = acc_id_keys(driver, LOG_FIELD, USERNAME)
+		password_field = acc_id_keys(driver, PASS_FIELD, PASSWORD)
+		sign_in_btn_click = acc_id_click(driver, MAKE_LOGIN_BTN)		
 
 		# going to profile settings
-		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
+		handle_notification_alert(driver)
+		click_on_profile_footer_item = acc_id_click(driver, FOOTER_ITEM_PROFILE)
 		update_temp_file(self.LOGIN)
 
 	# iOS done
@@ -144,13 +148,13 @@ class LoginPage:
 
 		assert profile_username_name_text == f"@{USERNAME}"
 
-
+	# iOS done	
 	def login_to_prod(self, driver):
 		# making login to production (without debug step)
 		already_have_acc_btn_click = id_click(driver, ALREADY_HAVE_ACC_LINK)
 		login_field = id_keys(driver, LOG_FIELD, self.LOGIN)
 		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD)
-		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
+		sign_in_btn_click = id_click(driver, MAKE_LOGIN_BTN)
 
 		# commented, because can be various scenarios
 		# # going to profile settings

@@ -239,6 +239,12 @@ def scroll_on_feed_page_ios(driver):
 	time.sleep(0.3)
 
 
+def scroll_on_post_page_ios(driver):
+	time.sleep(2)
+	action = TouchAction(driver)
+	action.press(x=230, y=414).wait(1000).move_to(x=230, y=220).release().perform()
+	time.sleep(0.3)
+
 
 def send_enter_key_adb(driver):
 	driver.execute_script('mobile: shell', {'command': 'input keyevent', 'args':'KEYCODE_ENTER'}) # send Enter key example (using adb)

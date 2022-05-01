@@ -143,7 +143,7 @@ class ProductDetailPage:
 		page_url = el_acc_id(driver, BROWSER_URL_BAR).text
 		assert len(page_url) > 8
 
-	# iOS in progress
+	# iOS in done
 	def add_product_to_post(self, driver):
 		# going to detail product page
 		click_on_home_footer_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
@@ -156,33 +156,44 @@ class ProductDetailPage:
 		open_product_sub_menu = acc_id_click(driver, PRODUCT_PAGE_SUB_MENU)
 		click_on_add_to_post_sub_menu_item = xpath_click(driver, FOOTER_ITEM_REC_PRODUCT)
 
-		# assert product name on post creation step #1		
-				
-		#assert read_product_name == read_product_name_in_post_creation_step <<< old check, commented, because of bug
-		#read_product_name_in_post_creation_step = el_id(driver, PRODUCT_NAME_POST_CREATION).text <<< old check, commented, because of bug
-		#assert el_xpath(driver, PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE).is_displayed()
-		print(el_xpath(driver, PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE).get_attribute("width"))
-		#PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE
+		# assert product name on post creation step #1				
+		assert el_xpath(driver, PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE).is_displayed()
+		scroll_on_post_page_ios(driver)
+		read_product_name_in_post_creation_step = el_xpath(driver, f"//XCUIElementTypeStaticText[@name='{read_product_name}']").text #el_xpath(driver, PRODUCT_NAME_POST_CREATION).text
 
+		# print(read_product_name_in_post_creation_step)
+		# print(read_product_name)
+		assert read_product_name == read_product_name_in_post_creation_step
+
+	# iOS in progress
 	def add_product_to_question(self, driver):
+		random_question_text = "question " + str(random.randint(1000, 10000000))
+
 		# going to detail product page
 		click_on_home_footer_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
-		scroll_on_feed_page(driver)
-		click_on_first_product_in_feed = id_click(driver, FEED_PRODUCT_TITLE)
+		scroll_on_feed_page_ios(driver)
+		click_on_first_product_in_feed = acc_id_click(driver, FEED_PRODUCT_TITLE)
 
 		# product detail page steps > add to question
-		read_product_name = el_id(driver, PRODUCT_NAME_PRICE_BLOCK).text
-		open_product_sub_menu = id_click(driver, PRODUCT_PAGE_SUB_MENU)
+		read_product_name = el_acc_id(driver, PRODUCT_NAME_PRICE_BLOCK).text
+		open_product_sub_menu = acc_id_click(driver, PRODUCT_PAGE_SUB_MENU)
 		click_on_add_to_question_sub_menu_item = xpath_click(driver, FOOTER_ITEM_ASK_QUESTION)
 
 		# assert product name on question creation step #2
-		click_next_btn = id_click(driver, STEP_BTN_ADD_PRODUCT)
-		click_next_btn_again = id_click(driver, STEP_BTN_ADD_PRODUCT)
+		xpath_keys(driver, QUESTION_TEXT_STEP_ONE, random_question_text)
+		click_next_btn = acc_id_click(driver, STEP_BTN_ADD_PRODUCT)
 
+		click_next_btn_again = acc_id_click(driver, STEP_BTN_ADD_PRODUCT)
 
-		#read_product_name_in_question_creation_step = el_id(driver, PRODUCT_NAME_POST_CREATION).text <<< old check, commented, because of bug
-		#assert read_product_name == read_product_name_in_question_creation_step <<< old check, commented, because of bug
+		# assert product name on post creation step #1				
 		assert el_xpath(driver, PRODUCT_NAME_PRODUCTS_TAB_FILLED_IMAGE).is_displayed()
+		scroll_on_post_page_ios(driver)
+		read_product_name_in_post_creation_step = el_xpath(driver, f"//XCUIElementTypeStaticText[@name='{read_product_name}']").text #PRODUCT_NAME_POST_CREATION).text
+
+		#print(read_product_name_in_post_creation_step)
+		#print(read_product_name)
+		assert read_product_name == read_product_name_in_post_creation_step
+
 
 	def open_description_and_terms(self, driver):
 		# read description
