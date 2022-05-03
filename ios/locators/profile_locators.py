@@ -13,6 +13,7 @@ FOOTER_ITEM_PROFILE = "profileTabBarItem"
 # PROFILE ITEMS
 PROFILE_FIRST_N_LAST_NAMES = "nameLabel"
 PROFILE_USERNAME = "usernameLabel"
+PROFILE_BIO = 'InfoLabel'
 PROFILE_SETTINGS_BTN = "settingsFollowButton"
 PROFILE_SETTINGS_EDIT_BTN = "viewProfileButton"
 PROFILE_SETTINGS_MANAGE_CREDS = "Manage your credentials"
@@ -44,6 +45,15 @@ PROFILE_FOLLOWERS_TAB_ALL_ITEMS = "(//XCUIElementTypeButton[@name='followButton'
 FIRST_BTN_IN_FOLLOWERS_TAB = "((//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText)[1]"
 SECOND_BTN_IN_FOLLOWERS_TAB = "((//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText)[2]"
 THIRD_BTN_IN_FOLLOWERS_TAB = "((//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText)[3]"
+
+
+
+PROFILE_EDIT_FIRST_NAME_FIELD = '//XCUIElementTypeTextField[@name="firstNameTextField"]'
+PROFILE_EDIT_LAST_NAME_FIELD = '//XCUIElementTypeTextField[@name="lastNameTextField"]'
+PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES = '//XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeImage[2]'
+PROFILE_EDIT_BIO_FIELD = '//XCUIElementTypeTextView[@name="introductionTextField"]'
+PROFILE_EDIT_SAVE_CHANGES_BTN = '//XCUIElementTypeButton[@name="saveButton"]'
+SUCCESS_MSG_PROFILE = 'Profile details updated successfully.'
 
 
 # PROFILE_POSTS_TAB = "Posts"

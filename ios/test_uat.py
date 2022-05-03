@@ -68,8 +68,8 @@ def atest_profile_check_followers_and_followings_count(login_model, debug_model,
 # 	#login_model.login_with_assert(selenium)
 # 	#login_model.logout(selenium)
 
-# iOS in progress
-def test_profile_follow_unfollow_followers_following_tabs(login_model, debug_model, profile_model, selenium):
+# iOS in done
+def atest_profile_follow_unfollow_followers_following_tabs(login_model, debug_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	profile_model.following_count_manipulations_in_profile(selenium)
@@ -79,7 +79,8 @@ def AAAAAAAAtest_profile_follow_few_users_using_search(login_model, debug_model,
 	login_model.login_go_to_profile(selenium)
 	profile_model.follow_few_users(selenium)
 
-def atest_profile_info_edit(login_model, debug_model, profile_model, selenium):
+# iOS in progress
+def test_profile_info_edit(login_model, debug_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_go_to_profile(selenium)
 	profile_model.edit_profile(selenium)

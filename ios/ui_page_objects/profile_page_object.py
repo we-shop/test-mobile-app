@@ -110,50 +110,59 @@ class ProfilePage:
 		RANDOM_BIO_NAME = rand_letters(12)
 
 		# go to settings > edit
-		click_on_settings_btn = id_click(driver, PROFILE_SETTINGS_BTN)
-		click_on_settings_edit_btn = id_click(driver, PROFILE_SETTINGS_EDIT_BTN)
+		click_on_edit_profile_btn = acc_id_click(driver, PROFILE_SETTINGS_BTN)
+		#click_on_settings_edit_btn = id_click(driver, PROFILE_SETTINGS_EDIT_BTN)
 
+		# COMMENTED, BECAUSE CAMERA UPLOAD WAS CHANGED
 		# temprorary flow is not fully completed [WILL BE FINISHED IN FUTURE > UPLOAD STAGE IS NOT COMPLETED]
 		# profie photo change (open > cancel flow)
-		click_on_profile_photo_change_btn = id_click(driver, PROFILE_EDIT_PHOTO_CHANGE_ICON)
-		click_on_take_photo_in_window = xpath_click(driver, PROFILE_EDIT_PHOTO_CHANGE_TAKE_PHOTO)
-		time.sleep(3) #obligatory wait to open phone camera
-		driver.back()
-		toast_error_msg_get = get_toast_msg(driver)
-		expected_message_one = "Sorry, an error occurred while trying to pick up the image. Please try again or pick up a different image."
-		expected_message_two = "Media unrecognised. Please select a valid image or video and try again."
+		#click_on_profile_photo_change_btn = id_click(driver, PROFILE_EDIT_PHOTO_CHANGE_ICON)
+		#click_on_take_photo_in_window = xpath_click(driver, PROFILE_EDIT_PHOTO_CHANGE_TAKE_PHOTO)
+		#time.sleep(3) #obligatory wait to open phone camera
+		#driver.back()
+
+		#expected_message_one = "Sorry, an error occurred while trying to pick up the image. Please try again or pick up a different image."
+		#expected_message_two = "Media unrecognised. Please select a valid image or video and try again."
 
 		# checking expected error message (2 possible variants)
-		assert toast_error_msg_get == expected_message_one or expected_message_two == expected_message_two
+		#assert toast_error_msg_get == expected_message_one or expected_message_two == expected_message_two
 
 		# editing first/last name
 		edit_first_name_field = xpath_keys(driver, PROFILE_EDIT_FIRST_NAME_FIELD, RANDOM_FIRST_NAME)
 		edit_last_name_field = xpath_keys(driver, PROFILE_EDIT_LAST_NAME_FIELD, RANDOM_LAST_NAME)
 
-		scroll_down_deep(driver)
-		time.sleep(1.2) # obligatory wait, between scrolls
+		scroll_on_feed_page_ios(driver)
+		time.sleep(0.3) # obligatory wait, between scrolls
 
 		# manipulation with "your interests"
 		UNCHECK_BOXES = None
 		total_count_of_interests = len(elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES))
-		total_count_of_checked_interests = len([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "true"])
+		# print([i.get_attribute("wdEnabled") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print([i.get_attribute("wdValue") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print([i.get_attribute("wdSelected") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print([i.get_attribute("enabled") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print([i.get_attribute("wdLabel") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print([i.get_attribute("value") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print("_________")
+		#print(elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES).get_attribute(checked))
+		total_count_of_checked_interests = len([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("selected") == "true"])
 
 		if total_count_of_checked_interests >= 5:
 			UNCHECK_BOXES = True
-			rand_boxes_to_uncheck = random.sample([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "true"], 2)
+			rand_boxes_to_uncheck = random.sample([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("selected") == "true"], 2)
 			for i in rand_boxes_to_uncheck:
 				i.click()
 		elif total_count_of_checked_interests < 3:
-			rand_boxes_to_fill = [i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "false"]
+			rand_boxes_to_fill = [i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("selected") == "false"]
 			for i in rand_boxes_to_fill:
 				i.click()
 		else:
 			UNCHECK_BOXES = False
-			rand_boxes_to_check	= random.sample([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "false"], 2)
+			rand_boxes_to_check	= random.sample([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("selected") == "false"], 2)
 			for i in rand_boxes_to_check:
 				i.click()
 
-		re_read_count_of_checked_interests = len([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "true"])
+		re_read_count_of_checked_interests = len([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("selected") == "true"])
 
 		if UNCHECK_BOXES:
 			assert total_count_of_checked_interests == re_read_count_of_checked_interests + 2
@@ -164,26 +173,34 @@ class ProfilePage:
 		else:
 			assert total_count_of_checked_interests == re_read_count_of_checked_interests - 2		
 		
-		scroll_down_deep(driver)
+		scroll_on_feed_page_ios(driver)
 		time.sleep(1.2) # obligatory wait, between scrolls
 
 		# editing first/last name
+		bio_clear = el_xpath(driver, PROFILE_EDIT_BIO_FIELD).clear()
 		edit_bio_name_field = xpath_keys(driver, PROFILE_EDIT_BIO_FIELD, RANDOM_BIO_NAME)
-		scroll_down_deep(driver)
-		click_on_save_changes_btn = id_click(driver, PROFILE_EDIT_SAVE_CHANGES_BTN)
+		#scroll_down_deep(driver)
+		#driver.hide_keyboard("Done")
+		scroll_on_feed_page_ios(driver)
+		click_on_save_changes_btn = xpath_click(driver, PROFILE_EDIT_SAVE_CHANGES_BTN)
 		
+
+		# assert success message
+		success_msg = el_acc_id(driver, SUCCESS_MSG_PROFILE).text
+		assert success_msg == "Profile details updated successfully."
+
 		# refresh manupulation to see new profile data
-		click_on_back_btn = acc_id_click(driver, BACK_BTN)
-		click_on_footer_home_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
-		click_on_footer_profile_btn = acc_id_click(driver, FOOTER_ITEM_PROFILE)
+		click_on_back_btn = driver.back() #acc_id_click(driver, BACK_BTN)
+		#click_on_footer_home_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
+		#click_on_footer_profile_btn = acc_id_click(driver, FOOTER_ITEM_PROFILE)
 
 		# asserting edited first/last name and bio
-		read_first_and_last_name_text = el_id(driver, PROFILE_FIRST_AND_LAST_NAME).text
-		read_bio_text = el_id(driver, PROFILE_BIO).text
+		read_first_and_last_name_text = el_acc_id(driver, PROFILE_FIRST_N_LAST_NAMES).text
+		read_bio_text = el_acc_id(driver, PROFILE_BIO).text
 		compared_first_and_last_random_names = RANDOM_FIRST_NAME + " " + RANDOM_LAST_NAME
 
 		assert read_first_and_last_name_text == compared_first_and_last_random_names
-		assert read_bio_text == RANDOM_BIO_NAME		
+		assert read_bio_text == RANDOM_BIO_NAME
 
 	def deactivate_account_and_login_after(self, driver):
 		# deactivate account
