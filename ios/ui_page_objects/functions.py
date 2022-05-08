@@ -66,7 +66,7 @@ def el_id_short_wait(driver, locator):
 		#return driver.find_element(By.ID, locator)
 	except:
 		#print(f"Element to find by ID (short wait): {locator} is not found!")
-		print(f"{ERROR}")	
+		print(f"{ERROR}")
 
 def el_xpath_short_wait(driver, locator):
 	try:
@@ -244,6 +244,12 @@ def scroll_on_post_page_ios(driver):
 	action = TouchAction(driver)
 	action.press(x=230, y=414).wait(1000).move_to(x=230, y=220).release().perform()
 	time.sleep(0.3)
+
+def scroll_on_settings_page_ios(driver):
+	time.sleep(2)
+	action = TouchAction(driver)
+	action.press(x=200, y=334).wait(1000).move_to(x=200, y=190).release().perform()
+	time.sleep(0.3)	
 
 
 def send_enter_key_adb(driver):

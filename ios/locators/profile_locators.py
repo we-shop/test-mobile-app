@@ -13,9 +13,9 @@ FOOTER_ITEM_PROFILE = "profileTabBarItem"
 # PROFILE ITEMS
 PROFILE_FIRST_N_LAST_NAMES = "nameLabel"
 PROFILE_USERNAME = "usernameLabel"
-PROFILE_BIO = 'InfoLabel'
-PROFILE_SETTINGS_BTN = "settingsFollowButton"
-PROFILE_SETTINGS_EDIT_BTN = "viewProfileButton"
+PROFILE_BIO = 'infoLabel'
+PROFILE_SETTINGS_BTN = 'profile settings' #"settingsFollowButton"
+PROFILE_SETTINGS_EDIT_BTN = "settingsFollowButton" #"viewProfileButton" 
 PROFILE_SETTINGS_MANAGE_CREDS = "Manage your credentials"
 PROFILE_SETTINGS_NOTIF_N_COM = "Notifications & communication"
 PROFILE_SETTINGS_CONNECT_SOCIAL = "Connect your social media"
@@ -31,7 +31,7 @@ PROFILE_SIGN_OUT_MODAL_YES_BTN = '//XCUIElementTypeButton[@name="Yes"]'
 PROFILE_POSTS_TAB = '//XCUIElementTypeStaticText[contains(@name, "Posts (")]'
 FOOTER_ITEM_NEW_POST = '//XCUIElementTypeStaticText[contains(@name, "Questions (")]'
 PROFILE_WISHLIST_TAB = '//XCUIElementTypeStaticText[contains(@name, "Wishlists (")]'
-BROWSER_URL_BAR = "TabBarItemTitle"
+#BROWSER_URL_BAR = "TabBarItemTitle"
 
 FOLLOWERS_COUNT = "(//*[contains(@name, 'followersInfoView')]/XCUIElementTypeStaticText)[1]"
 FOLLOWINGS_COUNT = "(//*[contains(@name, 'followingInfoView')]/XCUIElementTypeStaticText)[1]"
@@ -40,12 +40,9 @@ FOLLOWINGS_LABEL_PROFILE = "(//XCUIElementTypeStaticText[@name='Following'])[1]"
 PROFILE_FOLLOWERS_TAB_ALL_ITEMS = "(//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText"
 
 
-
-
 FIRST_BTN_IN_FOLLOWERS_TAB = "((//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText)[1]"
 SECOND_BTN_IN_FOLLOWERS_TAB = "((//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText)[2]"
 THIRD_BTN_IN_FOLLOWERS_TAB = "((//XCUIElementTypeButton[@name='followButton'])/XCUIElementTypeStaticText)[3]"
-
 
 
 PROFILE_EDIT_FIRST_NAME_FIELD = '//XCUIElementTypeTextField[@name="firstNameTextField"]'
@@ -53,22 +50,30 @@ PROFILE_EDIT_LAST_NAME_FIELD = '//XCUIElementTypeTextField[@name="lastNameTextFi
 PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES = '//XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeImage[2]'
 PROFILE_EDIT_BIO_FIELD = '//XCUIElementTypeTextView[@name="introductionTextField"]'
 PROFILE_EDIT_SAVE_CHANGES_BTN = '//XCUIElementTypeButton[@name="saveButton"]'
-SUCCESS_MSG_PROFILE = 'Profile details updated successfully.'
-
+SUCCESS_MSG_PROFILE = '//XCUIElementTypeStaticText[@name="Profile details updated successfully."]'
+PROFILE_EDIT_YOUR_BIO_TITLE = "Your bio"
+PROFILE_EDIT_YOUR_DETAILS_TITLE = "Your details"
 
 # PROFILE_POSTS_TAB = "Posts"
 # PROFILE_WISHLIST_TAB = "Wishlists"
 # FOOTER_ITEM_NEW_POST = "New post"
 
+SETTINGS_DEACTIVATE_ACC = "Deactivate your account"
+DEACTIVATE_ACCOUNT_BTN = '//XCUIElementTypeButton[@name="Deactivate your account"]'
+DEACTIVATE_ACC_ACCEPT_IN_MODAL = '//XCUIElementTypeButton[@name="deactivateButton"]'
+READ_WELCOME_TEXT_LOGIN_SCREEN = '//XCUIElementTypeStaticText[@name="We’re so glad to have you around."]'
 
 
+BROWSER_URL_BAR = '//XCUIElementTypeOther[@name="TopBrowserBar"]//XCUIElementTypeButton[@name="URL"]' #"//XCUIElementTypeOther[@name='URL']"
+MENU_TERMS = "Terms of use"
+MENU_POLICY = "Privacy policy"
+MENU_COOKIE = "Cookie policy"
+MENU_ACKNOWLEDGEMENTS = "Acknowledgements"
+MENU_COMMUNITY_GUIDES = "Community Guidelines"
+MENU_DONE_BUTTON_ALL_LEGAL_PAGES = "//XCUIElementTypeButton[@name='Done']"
 
 
-
-
-
-
-
+APP_VERSION_SETTINGS_ABOUT = '//XCUIElementTypeStaticText[contains(@name, "com.socialsuperstore.debug")]'
 
 
 
@@ -92,7 +97,7 @@ SUCCESS_MSG_PROFILE = 'Profile details updated successfully.'
 # WISHLIST_SUB_MENU_DELETE = "(//*[contains(@resource-id, 'actionText')])[1]"
 # WISHLIST_SUB_MENU_EDIT = "(//*[contains(@resource-id, 'actionText')])[2]"
 # WISHLIST_SUB_MENU_CANCEL = "(//*[contains(@resource-id, 'actionText')])[3]"
-# WISHLIST_EDIT_NAME_INPUT = "com.socialsuperstore:id/collectionTitleEditText"
+# WISHLIST_EDIT_NAME_INPUT = "com.socialsup	erstore:id/collectionTitleEditText"
 # WISHLIST_EDIT_IS_PUBLIC_SWITCHER = "com.socialsuperstore:id/collectionPublicCheckBox"
 # WISHLIST_EDIT_SAVE_BUTTON = "com.socialsuperstore:id/submitButton"
 # WISHLIST_NAME_TOOLBAR_TEXT = "com.socialsuperstore:id/toolbarText"	
@@ -165,10 +170,9 @@ SUCCESS_MSG_PROFILE = 'Profile details updated successfully.'
 # COOKIE_POLICY_TITLE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View[2]/android.view.View/android.view.View/android.widget.TextView"
 # ACKNOWLEDGEMENTS_TITLE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View[2]/android.view.View/android.view.View/android.widget.TextView"
 # COMMUNITY_GUIDELINES_TITLE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View[2]/android.view.View/android.view.View/android.widget.TextView"
-# BROWSER_URL_BAR = "com.android.chrome:id/url_bar"
 
 # # SETINGS > ABOUT
-# APP_VERSION_SETTINGS_ABOUT = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.TextView[1]"
+#  = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.TextView[1]"
 	
 # #/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView
 # #/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView[2]
