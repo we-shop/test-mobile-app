@@ -436,26 +436,27 @@ class ProfilePage:
 			print(F"{ERROR} Something wrong with current env variable")
 
 
-		# login_field = id_keys(driver, LOG_FIELD, USERNAME)
-		# password_field = id_keys(driver, PASS_FIELD, PASSWORD)
-		
-		# sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
-
 		login_field = acc_id_keys(driver, LOG_FIELD, USERNAME)
 		password_field = acc_id_keys(driver, PASS_FIELD, PASSWORD)
 		sign_in_btn_click = acc_id_click(driver, MAKE_LOGIN_BTN)
 
 
 		# going to profile settings
+		handle_notification_alert(driver)
 		click_on_profile_footer_item = acc_id_click(driver, FOOTER_ITEM_PROFILE)
 		click_on_settings_btn = acc_id_click(driver, PROFILE_SETTINGS_BTN)
+		scroll_down_ios(driver)
 
 		# going to settings > about and reading app version
-		click_on_about = acc_id_click(driver, PROFILE_SETTINGS_DEBUG_INFO)
-		read_app_version_in_profile_about = el_xpath(driver, APP_VERSION_SETTINGS_ABOUT).text.split(";")[2].replace(" ", "")
+		#click_on_about = acc_id_click(driver, PROFILE_SETTINGS_DEBUG_INFO)
+		read_app_version_in_profile_settings = el_xpath(driver, APP_VERSION_SETTINGS_ABOUT).text.split("(")[1].replace(")", "")
 		read_app_version_from_file = read_data_from_temp_file()[1]
 
-		assert read_app_version_from_file == read_app_version_in_profile_about
+		#print(read_app_version_in_profile_settings)
+		#print(read_app_version_from_file)
+
+		assert read_app_version_from_file == read_app_version_in_profile_settings
+
 
 	def other_user_posts_n_questions(self, driver):
 		# test users

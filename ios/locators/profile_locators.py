@@ -21,6 +21,7 @@ PROFILE_SETTINGS_NOTIF_N_COM = "Notifications & communication"
 PROFILE_SETTINGS_CONNECT_SOCIAL = "Connect your social media"
 PROFILE_SETTINGS_LEGAN_N_TERMS = "Legal & terms"
 PROFILE_SETTINGS_CUST_SUPPORT = "Customer support"
+PROFILE_SETTINGS_BLOCKED_PEOPLE = "Blocked people"
 PROFILE_SETTINGS_DEBUG_INFO = "Debug information"
 PROFILE_SETTINGS_DEBUG_ONBOARD = "Onboarding"
 PROFILE_SETTINGS_DEACT_ACC = "Deactivate your account"
@@ -73,7 +74,7 @@ MENU_COMMUNITY_GUIDES = "Community Guidelines"
 MENU_DONE_BUTTON_ALL_LEGAL_PAGES = "//XCUIElementTypeButton[@name='Done']"
 
 
-APP_VERSION_SETTINGS_ABOUT = '//XCUIElementTypeStaticText[contains(@name, "com.socialsuperstore.debug")]'
+APP_VERSION_SETTINGS_ABOUT = '(//XCUIElementTypeStaticText[contains(@name,"WeShop")])[2]' #'//XCUIElementTypeStaticText[contains(@name, "com.socialsuperstore.debug")]'
 
 
 
