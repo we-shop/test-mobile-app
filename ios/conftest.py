@@ -77,9 +77,21 @@ desired_cap = {
   "project" : "First Python project", 
   "build" : "browserstack-iOS",
   "name" : "iOS_tests",
-  "app_url":"bs://c9233654e295b4b1aadd17f2a1640a043b462d38"
+  "app_url":"bs://656f53461ce084463369c3455b47bb2165d6fc9a"
+  # 64cdb538ee26c9d62010a7aa4175c8d33cc5ce69
   #"appium:app": "C:\\Users\\NEMESIS\\Desktop\\UPW\\weshop\\WeShop.ipa"
 }
+
+# desired_cap = {
+#   "device" : "iPhone 13",
+#   "os_version" : "15",
+#   "project" : "First Python project", 
+#   "build" : "browserstack-iOS",
+#   "name" : "iOS_tests",
+#   "app_url":"bs://c9233654e295b4b1aadd17f2a1640a043b462d38"
+#   #"appium:app": "C:\\Users\\NEMESIS\\Desktop\\UPW\\weshop\\WeShop.ipa"
+# }
+
 
 # desired_cap = {
 #     # Set your access credentials
@@ -105,9 +117,9 @@ desired_cap = {
 def selenium(request):
     webdriver
     selenium = webdriver.Remote(
-      command_executor='https://mikevo_e4SQsH:vAxMnKJJiYcxmsekXNuZ@hub-cloud.browserstack.com/wd/hub',
+      command_executor='https://mikesmiq_u1xngQ:Y96JA9zbr6YLA6su8KRw@hub-cloud.browserstack.com/wd/hub',
       desired_capabilities=desired_cap)
-
+      # mikesmiq_u1xngQ  Y96JA9zbr6YLA6su8KRw
     yield selenium
     selenium.quit() # marking test is finished for Browserstack
     #selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch

@@ -7,7 +7,7 @@ LOG_FIELD = "com.socialsuperstore.feature_native_auth:id/loginEditText"
 PASS_FIELD = "com.socialsuperstore.feature_native_auth:id/passwordEditText"
 SIGN_IN_BTN = "com.socialsuperstore.feature_native_auth:id/continueButton"
 PROFILE_FOOTER_MENU = "Profile"
-SETTINGS_BTN_PROFILE = "com.socialsuperstore:id/settingsBtn"
+SETTINGS_BTN_PROFILE = "com.socialsuperstore:id/settings" # old: com.socialsuperstore:id/settingsBtn
 PROFILE_FIRST_N_LAST_NAMES = "com.socialsuperstore:id/nameTextView"
 PROFILE_USERNAME = "com.socialsuperstore:id/usernameTextView"
 

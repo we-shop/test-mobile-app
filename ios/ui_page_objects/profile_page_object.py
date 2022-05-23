@@ -25,15 +25,16 @@ class ProfilePage:
 		self.LOGIN_INT_NEW = LOGIN_INT_NEW
 		self.PASSWORD_INT_NEW = PASSWORD_INT_NEW
 
+	# iOS in done
 	def followings_followers_count(self, driver):
 		# read count of followers and following
-		profile_followers = int(el_id(driver, FOLLOWERS_COUNT).text)
-		profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
+		profile_followers = int(el_xpath(driver, FOLLOWERS_COUNT).text)
+		profile_following = int(el_xpath(driver, FOLLOWINGS_COUNT).text)
 
 		# going to followers/following and reading real count of followers/following
-		click_on_followers_btn = id_click(driver, FOLLOWERS_LABEL_PROFILE)
+		click_on_followers_btn = xpath_click(driver, FOLLOWERS_LABEL_PROFILE)
 		total_count_of_existing_followers = len(elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS))
-		click_on_following_tab = acc_id_click(driver, PROFILE_FOLLOWERS_TAB_FOLLOWINGS_TAB)
+		click_on_following_tab = xpath_click(driver, FOLLOWINGS_LABEL_PROFILE)
 		total_count_of_existing_following = len(elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS))
 
 
@@ -50,6 +51,14 @@ class ProfilePage:
 			assert total_count_of_existing_following >= 7
 		else:	
 			assert profile_following == total_count_of_existing_following
+
+		
+		#print(profile_followers)	
+		#print(total_count_of_existing_followers)
+		#print(profile_following)	
+		#print(total_count_of_existing_following)
+
+
 
 	def OLD_edit_profile(self, driver):
 		# random data
@@ -93,7 +102,7 @@ class ProfilePage:
 		assert read_first_and_last_name_text == compared_first_and_last_random_names
 		assert read_bio_text == RANDOM_BIO_NAME
 
-
+	# iOS in done
 	def edit_profile(self, driver):
 		# random data
 		RANDOM_FIRST_NAME = rand_letters(7)
@@ -101,50 +110,63 @@ class ProfilePage:
 		RANDOM_BIO_NAME = rand_letters(12)
 
 		# go to settings > edit
-		click_on_settings_btn = id_click(driver, PROFILE_SETTINGS_BTN)
-		click_on_settings_edit_btn = id_click(driver, PROFILE_SETTINGS_EDIT_BTN)
+		click_on_edit_profile_btn = acc_id_click(driver, PROFILE_SETTINGS_BTN)
+		#click_on_settings_edit_btn = id_click(driver, PROFILE_SETTINGS_EDIT_BTN)
 
+		# COMMENTED, BECAUSE CAMERA UPLOAD WAS CHANGED
 		# temprorary flow is not fully completed [WILL BE FINISHED IN FUTURE > UPLOAD STAGE IS NOT COMPLETED]
 		# profie photo change (open > cancel flow)
-		click_on_profile_photo_change_btn = id_click(driver, PROFILE_EDIT_PHOTO_CHANGE_ICON)
-		click_on_take_photo_in_window = xpath_click(driver, PROFILE_EDIT_PHOTO_CHANGE_TAKE_PHOTO)
-		time.sleep(3) #obligatory wait to open phone camera
-		driver.back()
-		toast_error_msg_get = get_toast_msg(driver)
-		expected_message_one = "Sorry, an error occurred while trying to pick up the image. Please try again or pick up a different image."
-		expected_message_two = "Media unrecognised. Please select a valid image or video and try again."
+		#click_on_profile_photo_change_btn = id_click(driver, PROFILE_EDIT_PHOTO_CHANGE_ICON)
+		#click_on_take_photo_in_window = xpath_click(driver, PROFILE_EDIT_PHOTO_CHANGE_TAKE_PHOTO)
+		#time.sleep(3) #obligatory wait to open phone camera
+		#driver.back()
+
+		#expected_message_one = "Sorry, an error occurred while trying to pick up the image. Please try again or pick up a different image."
+		#expected_message_two = "Media unrecognised. Please select a valid image or video and try again."
 
 		# checking expected error message (2 possible variants)
-		assert toast_error_msg_get == expected_message_one or expected_message_two == expected_message_two
+		#assert toast_error_msg_get == expected_message_one or expected_message_two == expected_message_two
 
 		# editing first/last name
+		clear_edit_first_name_field = el_xpath(driver, PROFILE_EDIT_FIRST_NAME_FIELD).clear()
 		edit_first_name_field = xpath_keys(driver, PROFILE_EDIT_FIRST_NAME_FIELD, RANDOM_FIRST_NAME)
+		clear_edit_last_name_field = el_xpath(driver, PROFILE_EDIT_LAST_NAME_FIELD).clear()
 		edit_last_name_field = xpath_keys(driver, PROFILE_EDIT_LAST_NAME_FIELD, RANDOM_LAST_NAME)
 
-		scroll_down_deep(driver)
-		time.sleep(1.2) # obligatory wait, between scrolls
+
+		click_on_your_details_title = acc_id_click(driver, PROFILE_EDIT_YOUR_DETAILS_TITLE)
+		scroll_on_feed_page_ios(driver)
+		time.sleep(0.3) # obligatory wait, between scrolls
 
 		# manipulation with "your interests"
 		UNCHECK_BOXES = None
 		total_count_of_interests = len(elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES))
-		total_count_of_checked_interests = len([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "true"])
+		# print([i.get_attribute("wdEnabled") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print([i.get_attribute("wdValue") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print([i.get_attribute("wdSelected") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print([i.get_attribute("enabled") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print([i.get_attribute("wdLabel") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print([i.get_attribute("value") for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES)])
+		# print("_________")
+		#print(elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES).get_attribute(checked))
+		total_count_of_checked_interests = len([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("selected") == "true"])
 
 		if total_count_of_checked_interests >= 5:
 			UNCHECK_BOXES = True
-			rand_boxes_to_uncheck = random.sample([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "true"], 2)
+			rand_boxes_to_uncheck = random.sample([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("selected") == "true"], 2)
 			for i in rand_boxes_to_uncheck:
 				i.click()
 		elif total_count_of_checked_interests < 3:
-			rand_boxes_to_fill = [i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "false"]
+			rand_boxes_to_fill = [i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("selected") == "false"]
 			for i in rand_boxes_to_fill:
 				i.click()
 		else:
 			UNCHECK_BOXES = False
-			rand_boxes_to_check	= random.sample([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "false"], 2)
+			rand_boxes_to_check	= random.sample([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("selected") == "false"], 2)
 			for i in rand_boxes_to_check:
 				i.click()
 
-		re_read_count_of_checked_interests = len([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("checked") == "true"])
+		re_read_count_of_checked_interests = len([i for i in elems_xpath(driver, PROFILE_EDIT_INTERESTS_ALL_CHECKBOXES) if i.get_attribute("selected") == "true"])
 
 		if UNCHECK_BOXES:
 			assert total_count_of_checked_interests == re_read_count_of_checked_interests + 2
@@ -155,57 +177,81 @@ class ProfilePage:
 		else:
 			assert total_count_of_checked_interests == re_read_count_of_checked_interests - 2		
 		
-		scroll_down_deep(driver)
-		time.sleep(1.2) # obligatory wait, between scrolls
+		#scroll_on_feed_page_ios(driver)
+		#time.sleep(1.2) # obligatory wait, between scrolls
 
 		# editing first/last name
+		bio_clear = el_xpath(driver, PROFILE_EDIT_BIO_FIELD).clear()
 		edit_bio_name_field = xpath_keys(driver, PROFILE_EDIT_BIO_FIELD, RANDOM_BIO_NAME)
-		scroll_down_deep(driver)
-		click_on_save_changes_btn = id_click(driver, PROFILE_EDIT_SAVE_CHANGES_BTN)
+		click_on_bio_title = acc_id_click(driver, PROFILE_EDIT_YOUR_BIO_TITLE) # pointer offset purpose
+
+		scroll_on_feed_page_ios(driver)
+		click_on_save_changes_btn = xpath_click(driver, PROFILE_EDIT_SAVE_CHANGES_BTN)
 		
+
+		# left for DEBUG PURPORSE
+		# assert success message
+		# try:
+		# 	success_msg = el_acc_id(driver, SUCCESS_MSG_PROFILE).text
+		# 	assert success_msg == "Profile details updated successfully."
+		# 	#time.sleep(1.2) # obligatory wait
+		# 	close_success_msg = acc_id_click(driver, SUCCESS_MSG_PROFILE)
+		# except:
+		# 	pass
+
+		success_msg = el_xpath(driver, SUCCESS_MSG_PROFILE).text
+		assert success_msg == "Profile details updated successfully."
+
 		# refresh manupulation to see new profile data
-		click_on_back_btn = acc_id_click(driver, BACK_BTN)
-		click_on_footer_home_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
-		click_on_footer_profile_btn = acc_id_click(driver, FOOTER_ITEM_PROFILE)
+		click_on_back_btn = driver.back() #acc_id_click(driver, BACK_BTN)
+		#click_on_footer_home_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
+		#click_on_footer_profile_btn = acc_id_click(driver, FOOTER_ITEM_PROFILE)
 
 		# asserting edited first/last name and bio
-		read_first_and_last_name_text = el_id(driver, PROFILE_FIRST_AND_LAST_NAME).text
-		read_bio_text = el_id(driver, PROFILE_BIO).text
+		read_first_and_last_name_text = el_acc_id(driver, PROFILE_FIRST_N_LAST_NAMES).text
+		read_bio_text = el_acc_id(driver, PROFILE_BIO).text
 		compared_first_and_last_random_names = RANDOM_FIRST_NAME + " " + RANDOM_LAST_NAME
 
 		assert read_first_and_last_name_text == compared_first_and_last_random_names
-		assert read_bio_text == RANDOM_BIO_NAME		
+		assert read_bio_text == RANDOM_BIO_NAME
 
+	# iOS in done	
 	def deactivate_account_and_login_after(self, driver):
 		# deactivate account
-		click_on_settings_btn = id_click(driver, PROFILE_SETTINGS_BTN)
-		driver.swipe(start_x=94, start_y=2422, end_x=64, end_y=975, duration=650)
-		deactivate_acc_click = xpath_click(driver, SETTINGS_DEACTIVATE_ACC)
-		deactivate_acc_btn_click = id_click(driver, DEACTIVATE_ACCOUNT_BTN)
-		accept_are_you_sure_modal = id_click(driver, DEACTIVATE_ACC_ACCEPT_IN_MODAL)
+		click_on_settings_btn = acc_id_click(driver, PROFILE_SETTINGS_BTN)
+		scroll_on_settings_page_ios(driver)
+		#driver.swipe(start_x=94, start_y=2422, end_x=64, end_y=975, duration=650)
+		deactivate_acc_click = acc_id_click(driver, SETTINGS_DEACTIVATE_ACC)
+		deactivate_acc_btn_click = xpath_click(driver, DEACTIVATE_ACCOUNT_BTN)
+		accept_are_you_sure_modal = xpath_click(driver, DEACTIVATE_ACC_ACCEPT_IN_MODAL)
 
 		# check if user logged out
-		already_have_account_btn_click = id_click(driver, ALREADY_HAVE_ACC_LOGIN_SCREEN)
-		read_welcome_back_text_on_login_screen = el_id(driver, READ_WELCOME_TEXT_LOGIN_SCREEN).text
+		#already_have_account_btn_click = id_click(driver, ALREADY_HAVE_ACC_LOGIN_SCREEN)
+		read_welcome_back_text_on_login_screen = el_xpath(driver, READ_WELCOME_TEXT_LOGIN_SCREEN).text
 
-		assert read_welcome_back_text_on_login_screen == "Welcome back!"
+		assert read_welcome_back_text_on_login_screen == "We’re so glad to have you around."
 
 		# login after deactivation
-		login_field = id_keys(driver, LOG_FIELD, self.LOGIN)
-		password_field = id_keys(driver, PASS_FIELD, self.PASSWORD)
-		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
+		# login_field = id_keys(driver, LOG_FIELD, self.LOGIN)
+		# password_field = id_keys(driver, PASS_FIELD, self.PASSWORD)
+		# sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
+
+		click_on_sign_in_btn = xpath_click(driver, SIGN_IN_BTN)
+		login_field = acc_id_keys(driver, LOG_FIELD, self.LOGIN)
+		password_field = acc_id_keys(driver, PASS_FIELD, self.PASSWORD)
+		sign_in_btn_click = acc_id_click(driver, MAKE_LOGIN_BTN)	
 
 		# going to profile from footer menu (to make sure you are already logged in)
-		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)	
+		click_on_profile_footer_item = acc_id_click(driver, FOOTER_ITEM_PROFILE)
 
 	def following_count_manipulations_in_profile(self, driver):
 		# read count of followers and following
-		profile_followers = int(el_id(driver, FOLLOWERS_COUNT).text)
-		profile_following = int(el_id(driver, FOLLOWINGS_COUNT).text)
+		profile_followers = int(el_xpath(driver, FOLLOWERS_COUNT).text)
+		profile_following = int(el_xpath(driver, FOLLOWINGS_COUNT).text)
 
 		# going to followers/following and follow for some followers
-		click_on_followers_btn = id_click(driver, FOLLOWERS_LABEL_PROFILE)
-		find_all_follow_btns = elems_xpath(driver, LIST_OF_ALL_FOLLOW_BTNS)
+		click_on_followers_btn = xpath_click(driver, FOLLOWERS_LABEL_PROFILE)
+		find_all_follow_btns = elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS) #LIST_OF_ALL_FOLLOW_BTNS) 
 
 		follow_count = 0
 		follow_clicked = 0
@@ -240,8 +286,8 @@ class ProfilePage:
 		# going back to profile
 		driver.back()
 		click_on_home_btn = acc_id_click(driver, FOOTER_ITEM_HOME)
-		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
-		re_reading_followings_count = int(el_id(driver, FOLLOWINGS_COUNT).text)
+		click_on_profile_footer_item = acc_id_click(driver, FOOTER_ITEM_PROFILE)
+		re_reading_followings_count = int(el_xpath(driver, FOLLOWINGS_COUNT).text)
 
 		# assertions
 		if follow_clicked > 0:
@@ -251,9 +297,9 @@ class ProfilePage:
 
 		
 		# going to following to make sure that current count match existing count of following
-		click_on_following_btn = id_click(driver, FOLLOWINGS_LABEL_PROFILE)
+		click_on_following_btn = xpath_click(driver, FOLLOWINGS_LABEL_PROFILE)
 		time.sleep(0.6) # obligatory wait to avoid miscalculations of following items
-		calculate_all_following_btns = len(elems_xpath(driver, LIST_OF_ALL_FOLLOW_BTNS))
+		calculate_all_following_btns = len(elems_xpath(driver, PROFILE_FOLLOWERS_TAB_ALL_ITEMS)) #LIST_OF_ALL_FOLLOW_BTNS))
 
 		# cover vision issue (unable to detect hidden items)
 		if re_reading_followings_count >= 8:
@@ -317,59 +363,60 @@ class ProfilePage:
 		# asserting following counter
 		assert re_reading_profile_following == ((profile_following + follow) - unfollow)
 
-
+	# iOS in done	
 	def info_pages_check(self, driver):
 		# Going to info pages menu
-		click_on_settings_btn = id_click(driver, PROFILE_SETTINGS_BTN)
-		click_on_settings_legal_n_terms_menu = xpath_click(driver, SETTINGS_LEGAL_N_TERMS)
+		click_on_settings_btn = acc_id_click(driver, PROFILE_SETTINGS_BTN)
+		click_on_settings_legal_n_terms_menu = acc_id_click(driver, PROFILE_SETTINGS_LEGAN_N_TERMS)
 
 		# Terms check
-		click_on_menu_terms = xpath_click(driver, MENU_TERMS)
-		select_chrome_browser(driver)
-		page_url_terms = el_id(driver, BROWSER_URL_BAR).text
-		assert page_url_terms == "legal.we.shop/terms-and-conditions"
-		driver.back()
+		click_on_menu_terms = acc_id_click(driver, MENU_TERMS)
+		
+		page_url_terms = el_xpath(driver, BROWSER_URL_BAR).text
+		assert "legal.we.shop" in page_url_terms
+		click_done_btn_to_go_back = xpath_click(driver, MENU_DONE_BUTTON_ALL_LEGAL_PAGES)
+		#print(page_url_terms)
 
 		# Privacy policy check
-		click_on_menu_privacy_policy = xpath_click(driver, MENU_POLICY)
-		select_chrome_browser(driver)
-		page_url_privacy_policy = el_id(driver, BROWSER_URL_BAR).text
-		assert page_url_privacy_policy == "legal.we.shop/privacy-policy"
-		driver.back()
+		click_on_menu_privacy_policy = acc_id_click(driver, MENU_POLICY)
+		page_url_privacy_policy = el_xpath(driver, BROWSER_URL_BAR).text
+		assert "legal.we.shop" in page_url_privacy_policy
+		click_done_btn_to_go_back = xpath_click(driver, MENU_DONE_BUTTON_ALL_LEGAL_PAGES)
+		#print(page_url_privacy_policy)
 
 		# Cookie policy check
-		click_on_menu_cookies = xpath_click(driver, MENU_COOKIE)
-		select_chrome_browser(driver)
-		page_url_cookie = el_id(driver, BROWSER_URL_BAR).text
-		assert page_url_cookie == "help.we.shop/en/article/cookie-policy-pu4kpj/"
-		driver.back()
+		click_on_menu_cookies = acc_id_click(driver, MENU_COOKIE)
+		page_url_cookie = el_xpath(driver, BROWSER_URL_BAR).text
+		assert "help.we.shop" in page_url_cookie
+		click_done_btn_to_go_back = xpath_click(driver, MENU_DONE_BUTTON_ALL_LEGAL_PAGES)
+		#print(page_url_cookie)
 
 		# Acknowledgements check
-		click_on_menu_acknowledgements = xpath_click(driver, MENU_ACKNOWLEDGEMENTS)
-		select_chrome_browser(driver)
-		page_url_acknowledgements = el_id(driver, BROWSER_URL_BAR).text
-		assert page_url_acknowledgements == "help.we.shop/en/article/acknowledgements-7z42ii/?bust=1629990511519"
-		driver.back()
+		click_on_menu_acknowledgements = acc_id_click(driver, MENU_ACKNOWLEDGEMENTS)
+		page_url_acknowledgements = el_xpath(driver, BROWSER_URL_BAR).text
+		assert "help.we.shop" in page_url_acknowledgements
+		click_done_btn_to_go_back = xpath_click(driver, MENU_DONE_BUTTON_ALL_LEGAL_PAGES)
+		#print(page_url_acknowledgements)
 
 		# Community Guidelines check
-		click_on_menu_community_guidelines = xpath_click(driver, MENU_COMMUNITY_GUIDES)
-		select_chrome_browser(driver)
-		page_url_cummunity_guides = el_id(driver, BROWSER_URL_BAR).text
-		assert page_url_cummunity_guides == "help.we.shop/en/article/community-guidelines-m34bm5/"
-		driver.back()
+		click_on_menu_community_guidelines = acc_id_click(driver, MENU_COMMUNITY_GUIDES)
+		page_url_cummunity_guides = el_xpath(driver, BROWSER_URL_BAR).text
+		assert "help.we.shop" in page_url_cummunity_guides
+		click_done_btn_to_go_back = xpath_click(driver, MENU_DONE_BUTTON_ALL_LEGAL_PAGES)
+		#print(page_url_cummunity_guides)
 
+	# iOS in done	
 	def customer_support_page_check(self, driver):
 		# make back, because this test bound with info_pages_check test
 		driver.back()
 
 		# Going to info pages menu
-		click_on_settings_customer_support = xpath_click(driver, SETTINGS_CUSTOMER_SUPPORT)
+		click_on_settings_customer_support = acc_id_click(driver, PROFILE_SETTINGS_CUST_SUPPORT)
 
 		# Customer support check
-		select_chrome_browser(driver)
-		page_url_terms = el_id(driver, BROWSER_URL_BAR).text
-		assert page_url_terms == "help.we.shop/en/"
-		driver.back()
+		page_url_terms = el_xpath(driver, BROWSER_URL_BAR).text
+		assert "help.we.shop" in page_url_terms
+
 	
 
 	def about_version_check(self, driver):
@@ -389,21 +436,27 @@ class ProfilePage:
 			print(F"{ERROR} Something wrong with current env variable")
 
 
-		login_field = id_keys(driver, LOG_FIELD, USERNAME)
-		password_field = id_keys(driver, PASS_FIELD, PASSWORD)
-		
-		sign_in_btn_click = id_click(driver, SIGN_IN_BTN)
+		login_field = acc_id_keys(driver, LOG_FIELD, USERNAME)
+		password_field = acc_id_keys(driver, PASS_FIELD, PASSWORD)
+		sign_in_btn_click = acc_id_click(driver, MAKE_LOGIN_BTN)
+
 
 		# going to profile settings
-		click_on_profile_footer_item = acc_id_click(driver, PROFILE_FOOTER_MENU)
-		click_on_settings_btn = id_click(driver, PROFILE_SETTINGS_BTN)
+		handle_notification_alert(driver)
+		click_on_profile_footer_item = acc_id_click(driver, FOOTER_ITEM_PROFILE)
+		click_on_settings_btn = acc_id_click(driver, PROFILE_SETTINGS_BTN)
+		scroll_down_ios(driver)
 
 		# going to settings > about and reading app version
-		click_on_about = xpath_click(driver, SETTINGS_ABOUT)
-		read_app_version_in_profile_about = el_xpath(driver, APP_VERSION_SETTINGS_ABOUT).text
+		#click_on_about = acc_id_click(driver, PROFILE_SETTINGS_DEBUG_INFO)
+		read_app_version_in_profile_settings = el_xpath(driver, APP_VERSION_SETTINGS_ABOUT).text.split("(")[1].replace(")", "")
 		read_app_version_from_file = read_data_from_temp_file()[1]
 
-		assert read_app_version_from_file == read_app_version_in_profile_about
+		#print(read_app_version_in_profile_settings)
+		#print(read_app_version_from_file)
+
+		assert read_app_version_from_file == read_app_version_in_profile_settings
+
 
 	def other_user_posts_n_questions(self, driver):
 		# test users

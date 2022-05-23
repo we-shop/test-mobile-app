@@ -148,7 +148,7 @@ class LoginPage:
 		toast_msg_incorrect_config = get_toast_msg(driver)
 
 		# asserting toast incorrect credentials message
-		assert toast_msg_incorrect_config == "No user is matching these credentials"
+		assert toast_msg_incorrect_config == "This account doesn’t exist, try checking your details again."
 
 	def logout(self, driver):
 		# sign out

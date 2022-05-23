@@ -70,6 +70,9 @@ class PostPage:
 		re_read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
 		re_read_post_title = el_id(driver, FEED_POST_DESCRIPTION).text
 
+		#print(read_count_of_linear_carousel_items)
+		#print(re_read_count_of_linear_carousel_items)
+
 		assert re_read_count_of_linear_carousel_items == read_count_of_linear_carousel_items - 1
 		assert re_read_post_title == f"edited {read_post_title}"
 
@@ -142,7 +145,8 @@ class PostPage:
 
 		# check if question created (checking title/caption in feed)
 		wait_element = el_id(driver, POST_TIME_AGO_TEXT)
-		scroll_on_feed_page(driver)
+		#scroll_on_feed_page(driver)
+		scroll_on_feed_page_more(driver)
 		get_correct_text_by_id(driver, FEED_POST_DESCRIPTION, QUESTION_ID)
 
 	def question_edit_and_deletion(self, driver):
@@ -151,6 +155,14 @@ class PostPage:
 		read_question_title = el_id(driver, FEED_POST_DESCRIPTION).text.split(" ")[-1]
 		read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
 
+		#scroll_up_on_feed_page(driver)
+		scroll_up_on_feed_page(driver)
+
+		## not obligatory
+		#elem_sub_menu_of_question = el_id(driver, POST_DOTS_SUB_MENU)
+		#scroll_into_view(elem_sub_menu_of_question, driver)
+		#move_to_element(elem_sub_menu_of_question, driver)
+		
 		open_sub_menu_of_question = id_click(driver, POST_DOTS_SUB_MENU)
 		edit_question_sub_menu_click = elems_id(driver, POST_SUB_MENU_ACTION_ITEMS_ID)[0].click()
 
@@ -175,13 +187,16 @@ class PostPage:
 		wait_for_plust_button = el_xpath(driver, PLUS_BUTTON)
 		#time.sleep(1)
 		scroll_up_on_feed_page(driver)
-		scroll_on_feed_page(driver)
+		scroll_on_feed_page_more(driver)
+		#scroll_on_feed_page(driver)
 		#scroll_on_feed_page(driver)
 		#time.sleep(1)
 		print("Passed 1")
 		re_read_count_of_linear_carousel_items = len(elems_xpath(driver, READ_ALL_PRODUCT_LINEAR_LAYOUTS))
 		re_read_question_title = el_id(driver, FEED_POST_DESCRIPTION).text
 
+		print(read_count_of_linear_carousel_items)
+		print(re_read_count_of_linear_carousel_items)
 		assert re_read_count_of_linear_carousel_items == read_count_of_linear_carousel_items - 1
 		assert re_read_question_title == f"edited {read_question_title}"
 
@@ -198,8 +213,10 @@ class PostPage:
 		#go_to_feed = acc_id_click(driver, FOOTER_ITEM_HOME) # refresh purpose
 
 		read_toast_msg = get_toast_msg(driver)
-		scroll_on_feed_page(driver)
-		scroll_on_feed_page(driver)
+		# new scroll here
+		#scroll_on_feed_page(driver)
+		#scroll_on_feed_page(driver)
+		scroll_on_feed_page_more(driver)
 		
 		re_re_read_question_title = el_id(driver, FEED_POST_DESCRIPTION).text
 
@@ -386,7 +403,7 @@ class PostPage:
 	def comment_and_like_self_question(self, driver):
 		switching_to_question_tab = acc_id_click(driver, PROFILE_QUESTIONS_TAB)
 		# manipulation with likes
-		click_on_first_question_in_profile = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POSTS_TAB)
+		click_on_first_question_in_profile = xpath_click(driver, FIRST_QUESTION_IN_QUEST_TAB)
 
 		# checking likes real count (cover case, when like already clicked)
 		read_likes_count = int(el_id(driver, LIKES_IN_POST).text.split(" ")[0])
@@ -441,8 +458,8 @@ class PostPage:
 		# go to profile
 		go_to_profile = acc_id_click(driver, FOOTER_ITEM_PROFILE)
 		click_on_question_tab = acc_id_click(driver, PROFILE_QUESTIONS_TAB) 
-		el_xpath_short_wait(driver, PROFILE_FIRST_ITEM_IN_POSTS_TAB)
-		click_on_first_question_in_profile = xpath_click(driver, PROFILE_FIRST_ITEM_IN_POSTS_TAB)
+		el_xpath_short_wait(driver, FIRST_QUESTION_IN_QUEST_TAB)
+		click_on_first_question_in_profile = xpath_click(driver, FIRST_QUESTION_IN_QUEST_TAB)
 
 		# manipulation with comments
 		read_comments_count = None
@@ -587,25 +604,39 @@ class PostPage:
 		# manipulation with carousel
 		is_carousel = True
 
-		while is_carousel:
-			try:
-				wait_carousel = el_xpath_short_wait_with_fail(driver, FEED_SLIDE_HEADLINE)
-				is_carousel = True
-			except:
-				is_carousel = False
+		# carousel checks
+		scope_carousel_before_swipe = [i.text for i in elems_xpath(driver, FEED_SLIDE_HEADLINE)]
+		read_text_in_first_carousel_item = el_xpath(driver, FEED_SLIDE_HEADLINE).text
+		assert len(read_text_in_first_carousel_item) > 5
 
-			if is_carousel:
-				read_text_in_first_carousel_item = el_xpath(driver, FEED_SLIDE_HEADLINE).text
-				assert len(read_text_in_first_carousel_item) > 5
+		horisontal_carousel_swipe(driver)
 
-				# going to site and check URL
-				click_on_carousel_item = xpath_click(driver, FEED_SLIDE_HEADLINE)
-				select_chrome_browser(driver)
-				page_url_terms = el_id(driver, BROWSER_URL_BAR).text
+		scope_carousel_after_swipe = [b.text for b in elems_xpath(driver, FEED_SLIDE_HEADLINE)]
 
-				assert current_env in page_url_terms
-				assert "search?query=" in page_url_terms
-				driver.back()
+		assert scope_carousel_before_swipe != scope_carousel_after_swipe
+
+
+		# Temprorary commented, because of varios combinations of functionality
+		# this test part was replaced with above block, but probably in future in will be uncommented and re-worked
+		# while is_carousel:
+		# 	try:
+		# 		wait_carousel = el_xpath_short_wait_with_fail(driver, FEED_SLIDE_HEADLINE)
+		# 		is_carousel = True
+		# 	except:
+		# 		is_carousel = False
+
+		# 	if is_carousel:
+		# 		read_text_in_first_carousel_item = el_xpath(driver, FEED_SLIDE_HEADLINE).text
+		# 		assert len(read_text_in_first_carousel_item) > 5
+
+		# 		# going to site and check URL
+		# 		click_on_carousel_item = xpath_click(driver, FEED_SLIDE_HEADLINE)
+		# 		select_chrome_browser(driver)
+		# 		page_url_terms = el_id(driver, BROWSER_URL_BAR).text
+
+		# 		assert current_env in page_url_terms
+		# 		assert "search?query=" in page_url_terms
+		# 		driver.back()
 
 	def flag_post_content(self, driver):
 		current_usr = read_data_from_temp_file()[1]

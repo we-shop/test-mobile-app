@@ -140,6 +140,14 @@ def get_toast_msg(driver):
 	return driver.find_element(MobileBy.XPATH, toast_locator).text
 
 
+def get_toast_msg_short(driver):
+	toast_locator = "/hierarchy/android.widget.Toast"
+	
+	WebDriverWait(driver, 3).until(EC.presence_of_element_located((MobileBy.XPATH, toast_locator)))
+	time.sleep(0.8) # obligatory wait, needed for script pause, between reading of 2 or more toast messages.
+	return driver.find_element(MobileBy.XPATH, toast_locator).text
+
+
 # random letters
 def rand_letters(count):
 	letters = string.ascii_lowercase
@@ -275,12 +283,23 @@ def scroll_on_feed_page(driver):
 	action.press(x=867, y=1574).wait(1000).move_to(x=867, y=344).release().perform()
 	time.sleep(0.3)
 
+def scroll_on_feed_page_more(driver):
+	time.sleep(2)
+	action = TouchAction(driver)
+	action.press(x=537, y=1574).wait(1000).move_to(x=537, y=560).release().perform()
+	time.sleep(0.3)	
+
 def scroll_up_on_feed_page(driver):
 	time.sleep(2)
 	action = TouchAction(driver)
 	action.press(x=867, y=1874).wait(1000).move_to(x=867, y=2455).release().perform()
 	time.sleep(0.3)	
 
+def horisontal_carousel_swipe(driver):
+	time.sleep(2)
+	action = TouchAction(driver)
+	action.press(x=950, y=1240).wait(1000).move_to(x=280, y=1240).release().perform()
+	time.sleep(0.3)
 
 def scroll_down_dashboard(driver):
 	driver.swipe(768, 1423, 768, 1657, 330)
@@ -291,3 +310,37 @@ def scroll_down_main(driver):
 		'direction': 'down',
 		'percent': 3.0
 	})	
+
+
+def move_to_element(elem, driver):
+	actions = ActionChains(driver)
+	actions.move_to_element(elem)
+	actions.perform()
+
+
+def ascroll_into_view(element, driver):
+	driver.execute_script("return arguments[0].scrollIntoView();", element)
+
+
+def scroll_into_view(element, driver):
+	driver.execute_script("mobile: scroll", {"direction": 'up', 'element': element})
+
+
+def round_two_dots(data):
+	data_convert = data.split("£")[1].replace(",", ".")
+	count_of_dots = 0
+
+	for i in data_convert:
+		if i == ".":
+			count_of_dots +=1
+	
+	if count_of_dots == 2:
+		second_part_of_number = "." + data_convert.split(".")[2]
+		return float(data_convert.replace(second_part_of_number, ""))
+	else:
+		return float(data_convert)
+
+# element = driver.find_element_by_id("my-id")
+
+# actions = ActionChains(driver)
+# actions.move_to_element(element).perform()

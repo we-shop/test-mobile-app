@@ -2,14 +2,14 @@ from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
 
 # LIST OF LOCATORS FOR POST PAGE MODEL
-FOOTER_ITEM_REC_PRODUCT = "//androidx.recyclerview.widget.RecyclerView/android.widget.Button[1]"
-FOOTER_ITEM_ASK_QUESTION = "//androidx.recyclerview.widget.RecyclerView/android.widget.Button[2]"
+FOOTER_ITEM_REC_PRODUCT = "//XCUIElementTypeButton[@name='Add to post']"
+FOOTER_ITEM_ASK_QUESTION = "//XCUIElementTypeButton[@name='Ask a question']"
 SEARCH_PRODUCT_POST_CREATION = "com.socialsuperstore.feature_post_editor:id/search"
 ADD_FIRST_PRODUCT_PLUS_INPUT = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[4]/android.view.ViewGroup/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView[1]"
 SEARCH_RESULT_PRODUCT_ONE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.CheckBox"
 SEARCH_RESULT_PRODUCT_TWO = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.CheckBox"
 SEARCH_RESULT_PRODUCT_THREE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.CheckBox"
-STEP_BTN_ADD_PRODUCT = "com.socialsuperstore.feature_post_editor:id/stepBtn"
+STEP_BTN_ADD_PRODUCT = "Next"
 PRODUCT_ADD_FOOTER_ITEM_PRODUCTS = "Products"
 PRODUCT_ADD_FOOTER_ITEM_MEDIA = "Media"
 PRODUCT_ADD_FOOTER_ITEM_CAPTION = "Caption"
@@ -32,8 +32,22 @@ READ_SINGLE_PRODUCT_LINEAR_LAYOUTS = "/hierarchy/android.widget.FrameLayout/andr
 PRODUCT_EDIT_FIRST_CHECKBOX = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.CheckBox"
 POST_USERNAME = "com.socialsuperstore:id/postUserName"
 POST_TIME_AGO_TEXT = "com.socialsuperstore:id/timeAgoTextView"
+QUESTION_TEXT_STEP_ONE = "//XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextView"
 
-QUESTION_TEXT_STEP_ONE = "com.socialsuperstore.feature_post_editor:id/questionTextInputEditText"
+
+
+
+
+
+
+
+
+
+
+
+
+
+#QUESTION_TEXT_STEP_ONE = "com.socialsuperstore.feature_post_editor:id/questionTextInputEditText"
 QUESTION_TEXT_MEDIA_TAB = "com.socialsuperstore.feature_post_editor:id/questionText"
 QUESTION_BREAD_CRUMBS = "com.socialsuperstore:id/currentStep"
 QUESTION_UPLOAD_FROM_LIBRARY = "com.socialsuperstore.feature_post_editor:id/fromGallery"

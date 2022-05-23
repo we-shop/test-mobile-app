@@ -17,11 +17,17 @@ load_dotenv()
 
 # Read from file function
 def get_data(data):
-	return data.split("#")[0]
+  return data.split("#")[0]
 
+LOGIN_URL = os.getenv("LOGIN_URL")
 LOGIN = os.getenv("LOGIN")
 PASSWORD = os.getenv("PASSWORD")
-LOGIN_URL = os.getenv("LOGIN_URL")
+LOGIN_NEW = os.getenv("LOGIN_NEW")
+PASSWORD_NEW = os.getenv("PASSWORD_NEW")
+LOGIN_INT = os.getenv("LOGIN_INT")
+PASSWORD_INT = os.getenv("PASSWORD_INT")
+LOGIN_INT_NEW = os.getenv("LOGIN_INT_NEW")
+PASSWORD_INT_NEW = os.getenv("PASSWORD_INT_NEW")
 
 
 prefs = {"download.default_directory": os.getcwd() + "/"}
@@ -37,16 +43,16 @@ prefs = {"download.default_directory": os.getcwd() + "/"}
 
 # caps.setCapability("app", "bs://576463a96efb0a64e20d5abe7652b5faa671aba4")
 
-
+# BROWSERSTACK_BUILD_NAME # browserstack-build-13
 desired_cap = {
   "device" : "Samsung Galaxy A51",
   "os_version" : "10.0",
   "project" : "First Python project2", 
-  "build" : "browserstack-build-13",
-  "name" : "first_test222",
+  "build" : 'browserstack-build-13', 
+  "name" : 'test-browserstack-build-13',
   "appPackage": "com.socialsuperstore",
   "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
-  "app_url":"bs://576463a96efb0a64e20d5abe7652b5faa671aba4",
+  "app_url":"bs://30685e2517ddd3049429ddb20accdddb77403845",
   "browser" : "Chrome",
   "browserstack.idleTimeout":10,
   "implicit":8000,
@@ -56,18 +62,89 @@ desired_cap = {
   "resetKeyboard": True }
 
 
+# BS TEMP BLOCK
+username = os.getenv("BROWSERSTACK_USERNAME") # mika_ajI75Z
+access_key = os.getenv("BROWSERSTACK_ACCESS_KEY") # 3LEmS9BCLDd6zL4uzufk
+build_name = os.getenv("BROWSERSTACK_BUILD_NAME") # browserstack-build-13
+#browserstack_local = os.getenv("BROWSERSTACK_LOCAL")
+#browserstack_local_identifier = os.getenv("BROWSERSTACK_LOCAL_IDENTIFIER")
+BROWSERSTACK_BUILD_NAME = os.getenv("BROWSERSTACK_BUILD_NAME")
+
+caps = {
+ "device" : "Samsung Galaxy A51",
+ "os_version" : "10.0",
+ "project" : "First Python project2",
+ 'browser': 'chrome',
+ 'browser_version': 'latest',
+ 'name': 'BStack-Jenkins Sample Test', # test name
+ 'build': build_name, # CI/CD job name using BROWSERSTACK_BUILD_NAME env variable
+ #'browserstack.local': browserstack_local,
+ #'browserstack.localIdentifier': browserstack_local_identifier,
+ 'browserstack.user': username,
+ 'browserstack.key': access_key,
+ "appPackage": "com.socialsuperstore",
+ "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
+ "app_url":"bs://30685e2517ddd3049429ddb20accdddb77403845",
+ "browserstack.idleTimeout":10,
+ "implicit":8000,
+ "autoGrantPermissions": True,
+ "unicodeKeyboard": True,
+ "noReset:": True,
+ "resetKeyboard": True 
+}
+
+  # "device" : "Samsung Galaxy A51",
+  # "os_version" : "10.0",
+  # "project" : "First Python project2", 
+  # "build" : BROWSERSTACK_BUILD_NAME, 
+  # "name" : BROWSERSTACK_BUILD_NAME,
+  # "appPackage": "com.socialsuperstore",
+  # "appActivity": "com.socialsuperstore.ui.activity.LauncherActivity",  
+  # "app_url":"bs://30685e2517ddd3049429ddb20accdddb77403845",
+  # "browser" : "Chrome",
+  # "browserstack.idleTimeout":10,
+  # "implicit":8000,
+  # "autoGrantPermissions": True,
+  # "unicodeKeyboard": True,
+  # "noReset:": True,
+  # "resetKeyboard": True }
+
+
+
+# Customizing appium driver for Browserstack
+# @pytest.fixture(autouse=True)
+# def selenium(request):
+#     webdriver
+#     selenium = webdriver.Remote(
+#       command_executor='http://hub-cloud.browserstack.com/wd/hub/',
+#       desired_capabilities=caps)
+
+#     yield selenium
+#     selenium.quit() # marking test is finished for Browserstack
+#     #selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
+#     clear_data_from_temp_file() # clearing data in temp_data.txt
+
+
 # Customizing appium driver for Browserstack
 @pytest.fixture(autouse=True)
 def selenium(request):
     webdriver
     selenium = webdriver.Remote(
-      command_executor='https://mikepasta_PKlm6D:6dpEtxQmpxfyWkB789F5@hub-cloud.browserstack.com/wd/hub',
+      command_executor='https://mika_ajI75Z:3LEmS9BCLDd6zL4uzufk@hub-cloud.browserstack.com/wd/hub',
       desired_capabilities=desired_cap)
 
     yield selenium
     selenium.quit() # marking test is finished for Browserstack
     #selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
     clear_data_from_temp_file() # clearing data in temp_data.txt
+
+
+
+
+
+
+
+
 
 # #Customizing appium driver (implicitly waits + app close/kill)
 # @pytest.fixture
@@ -84,13 +161,13 @@ def selenium(request):
 #FIXTURES PAGE OBJECT
 @pytest.fixture()
 def login_model(request):
-	fixture = LoginPage(LOGIN_URL, LOGIN, PASSWORD)
-	return fixture
+  fixture = LoginPage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW)
+  return fixture
 
 @pytest.fixture()
 def debug_model(request):
-	fixture = DebugPage()
-	return fixture
+  fixture = DebugPage()
+  return fixture
 
 @pytest.fixture()
 def search_model(request):
@@ -104,7 +181,7 @@ def product_page_model(request):
 
 @pytest.fixture()
 def profile_model(request):
-  fixture = ProfilePage(LOGIN_URL, LOGIN, PASSWORD)
+  fixture = ProfilePage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW)
   return fixture
 
 @pytest.fixture()
@@ -117,3 +194,7 @@ def inbox_model(request):
   fixture = InboxPage()
   return fixture
 
+@pytest.fixture()
+def dashboard_model(request):
+  fixture = DashboardPage(LOGIN_URL, LOGIN, PASSWORD, LOGIN_NEW, PASSWORD_NEW, LOGIN_INT, PASSWORD_INT, LOGIN_INT_NEW, PASSWORD_INT_NEW)
+  return fixture
