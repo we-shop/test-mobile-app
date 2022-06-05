@@ -10,9 +10,8 @@ from ui_page_objects.inbox_page_object import InboxPage
 from ui_page_objects.dashboard_page_object import DashboardPage
 from appium import webdriver
 from ui_page_objects.functions import *
-
-
 from dotenv import load_dotenv
+
 
 load_dotenv()
 
