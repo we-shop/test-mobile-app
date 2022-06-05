@@ -21,24 +21,27 @@ class PostPage:
 		PRODUCT_ID = str(random.randint(1000, 10000000))
 
 		# product creation step 1 (search)
-		plus_button_click = xpath_click(driver, PLUS_BUTTON)
-		click_on_footer_new_post_btn = id_click(driver, REC_PRODUCT_PLUS_MENU)
-		add_first_product_click = xpath_click(driver, ADD_FIRST_PRODUCT_PLUS_INPUT)
-		search_product_for_post = id_keys(driver, SEARCH_PRODUCT_POST_CREATION, "Samsung")
+		plus_button_click = acc_id_click(driver, PLUS_BUTTON)
+		click_on_footer_new_post_btn = acc_id_click(driver, REC_PRODUCT_PLUS_MENU)
+		click_in_srch_field = xpath_click(driver, SEARCH_INPUT_POST_CREATION_STEP_ONE)
+		search_product_for_post = xpath_keys(driver, SEARCH_PRODUCT_POST_CREATION, "Samsung")
 		driver.keyevent(66) # additional execution: send_enter_key_adb(driver)
 		fill_radio_btn_product_one = xpath_click(driver, SEARCH_RESULT_PRODUCT_ONE)
 		fill_radio_btn_product_two = xpath_click(driver, SEARCH_RESULT_PRODUCT_TWO)
 		fill_radio_btn_product_three = xpath_click(driver, SEARCH_RESULT_PRODUCT_THREE)
-		done_btn_search_product_result_click = id_click(driver, STEP_BTN_ADD_PRODUCT)
-		acc_id_click(driver, PRODUCT_ADD_FOOTER_ITEM_MEDIA)
+		done_btn_search_product_result_click = acc_id_click(driver, DONE_BTN_ADD_PRODUCT)
+		use_product_image_click = xpath_click(driver, PRODUCT_ADD_FOOTER_ITEM_MEDIA)
 
 		# media step
-		click_use_product_image = id_click(driver, MEDIA_IMAGE_FROM_PRODUCT)
-		next_btn_click = id_click(driver, STEP_BTN_ADD_PRODUCT)
+		click_use_product_image = xpath_click(driver, MEDIA_IMAGE_FROM_PRODUCT)
+		click_done_btn_to_skip_tag_step = acc_id_click(driver, DONE_BTN_ADD_PRODUCT)
+		next_btn_click = acc_id_click(driver, NEXT_BTN_ADD_PRODUCT)
+
+		# NEED TO ADD IMAGE CHECK IN FUTURE
 
 		# caption step and publish
-		enter_text_to_caption_input_field = id_keys(driver, CAPTION_INPUT_FIELD, f"Test caption for new product number {PRODUCT_ID}")
-		publish_btn_click = id_click(driver, PUBLISH_BTN_ADD_PRODUCT)
+		enter_text_to_caption_input_field = xpath_keys(driver, CAPTION_INPUT_FIELD, f"Test caption for new product number {PRODUCT_ID}")
+		publish_btn_click = xpath_click(driver, PUBLISH_BTN_ADD_PRODUCT)
 
 		# check if product created (checking title/caption in feed)
 		wait_element = el_id(driver, POST_TIME_AGO_TEXT)
@@ -92,8 +95,8 @@ class PostPage:
 		QUESTION_ID = str(random.randint(1000, 10000000))
 
 		# question creation step 1 (question title)
-		plus_button_click = xpath_click(driver, PLUS_BUTTON)
-		click_on_footer_new_question_btn = id_click(driver, ASK_QUESTION_PLUS_MENU)
+		plus_button_click = acc_id_click(driver, PLUS_BUTTON)
+		click_on_footer_new_question_btn = acc_id_click(driver, ASK_QUESTION_PLUS_MENU)
 		fill_question_text = id_keys(driver, QUESTION_TEXT_STEP_ONE, f"Test question number {QUESTION_ID}")
 		click_next_btn = id_click(driver, STEP_BTN_ADD_PRODUCT)
 
@@ -121,7 +124,7 @@ class PostPage:
 		assert bread_crumbs_text_step_3 == "3"
 	
 		# question creation step 3 (add product)
-		click_in_srch_field = id_click(driver, SEARCH_PRODUCT_POST_CREATION) # probably temporary step, because of bug
+		click_in_srch_field = id_click(driver, SEARCH_PRODUCT_POST_CREATION)
 		search_product_for_question = id_keys(driver, SEARCH_PRODUCT_POST_CREATION, "Xiaomi")
 		driver.keyevent(66) # additional execution: send_enter_key_adb(driver)
 		fill_radio_btn_product_one = xpath_click(driver, SEARCH_RESULT_PRODUCT_ONE)
