@@ -23,16 +23,25 @@ MEDIA_IMAGE_FROM_PRODUCT = "//XCUIElementTypeButton[@name='Use product image']"
 CAPTION_INPUT_FIELD = "//XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextView"
 PUBLISH_BTN_ADD_PRODUCT = "//XCUIElementTypeButton[@name='Publish']"
 
-# (//XCUIElementTypeButton[@name="inactive checkbox icon"])[1]
-# (//XCUIElementTypeButton[@name="inactive checkbox icon”])[2]
-# (//XCUIElementTypeButton[@name="inactive checkbox icon”])[3]
+# new question
+QUESTION_TEXT_STEP_ONE = "//XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextView" #"//XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextView"
+QUESTION_BREAD_CRUMBS = "//XCUIElementTypeStaticText[@name='pageIndexLabel']"
+QUESTION_UPLOAD_FROM_DESIGNS = "//XCUIElementTypeButton[@name='Popular designs']"
+CUSTOM_BACKGROUND_ITEMS = "//XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeImage"
+SAVE_BTN_BACKGROUND_ITEMS = "Save"
+ALL_TEXT_STYLES = "//XCUIElementTypeCollectionView/XCUIElementTypeCell"
+BACKGROUND_TEXT_COLOUR_TAB = "Text colour"
+DONE_STEP_BTN_ADD_PRODUCT = "Done"
+NEXT_STEP_BTN_ADD_PRODUCT = "Next"
+#CAPTION_INPUT_FIELD_QUEST = "//XCUIElementTypeScrollView/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextView"
+POST_TIME_AGO_TEXT = "com.socialsuperstore:id/timeAgoTextView"
 
 
 # ADD_FIRST_PRODUCT_PLUS_INPUT = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[4]/android.view.ViewGroup/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView[1]"
 # SEARCH_RESULT_PRODUCT_ONE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.CheckBox"
 # SEARCH_RESULT_PRODUCT_TWO = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.CheckBox"
 # SEARCH_RESULT_PRODUCT_THREE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.CheckBox"
-# STEP_BTN_ADD_PRODUCT = "Next"
+
 # PRODUCT_ADD_FOOTER_ITEM_PRODUCTS = "Products"
 # 
 # PRODUCT_ADD_FOOTER_ITEM_CAPTION = "Caption"
@@ -52,8 +61,8 @@ PUBLISH_BTN_ADD_PRODUCT = "//XCUIElementTypeButton[@name='Publish']"
 # READ_SINGLE_PRODUCT_LINEAR_LAYOUTS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.LinearLayout"
 # PRODUCT_EDIT_FIRST_CHECKBOX = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.CheckBox"
 # POST_USERNAME = "com.socialsuperstore:id/postUserName"
-# POST_TIME_AGO_TEXT = "com.socialsuperstore:id/timeAgoTextView"
-QUESTION_TEXT_STEP_ONE = "//XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextView"
+
+
 
 
 
@@ -61,17 +70,14 @@ QUESTION_TEXT_STEP_ONE = "//XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIE
 
 #QUESTION_TEXT_STEP_ONE = "com.socialsuperstore.feature_post_editor:id/questionTextInputEditText"
 # QUESTION_TEXT_MEDIA_TAB = "com.socialsuperstore.feature_post_editor:id/questionText"
-# QUESTION_BREAD_CRUMBS = "com.socialsuperstore:id/currentStep"
+
 # QUESTION_UPLOAD_FROM_LIBRARY = "com.socialsuperstore.feature_post_editor:id/fromGallery"
 # QUESTION_UPLOAD_FROM_CAMERA = "com.socialsuperstore.feature_post_editor:id/fromCamera"
-# QUESTION_UPLOAD_FROM_DESIGNS = "com.socialsuperstore.feature_post_editor:id/fromPopularDesigns"
+
 # QUESTION_REPLY_LABEL = "com.socialsuperstore:id/postQuestionReplyPanel"
-# CUSTOM_BACKGROUND_ITEMS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ImageView"
-# SAVE_BTN_BACKGROUND_ITEMS = "com.socialsuperstore:id/submitLabel"
+
 
 # BACKGROUND_STYLE_AND_SIZE_TAB = "Style & size"
-# BACKGROUND_TEXT_COLOUR_TAB = "Text colour"
-# ALL_TEXT_STYLES = "//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout" #"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout"
 # TEXT_SIZE_BAR = "com.socialsuperstore.feature_post_editor:id/textSizeSeekBar"
 # BACKGROUND_CROP_BTN = "com.socialsuperstore.feature_post_editor:id/cropBtn"
 # BACKGROUND_DELETE_BTN = "com.socialsuperstore.feature_post_editor:id/deleteBtn"

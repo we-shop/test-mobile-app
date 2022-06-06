@@ -129,6 +129,11 @@ def OLDtest_self_post_comment_edit_and_delete_second(debug_model, login_model, p
 	post_model.recommend_product(selenium)
 	post_model.comment_edit_and_delete_in_self_post_second(selenium)
 
+
+
+
+
+# iOS in progress
 def atest_post_create_new_question(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
