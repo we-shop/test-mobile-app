@@ -34,7 +34,8 @@ BACKGROUND_TEXT_COLOUR_TAB = "Text colour"
 DONE_STEP_BTN_ADD_PRODUCT = "Done"
 NEXT_STEP_BTN_ADD_PRODUCT = "Next"
 #CAPTION_INPUT_FIELD_QUEST = "//XCUIElementTypeScrollView/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextView"
-POST_TIME_AGO_TEXT = "com.socialsuperstore:id/timeAgoTextView"
+POST_TIME_AGO_TEXT = "creationDateLabel"
+FEED_POST_DESCRIPTION = "readMoreLabel"
 
 
 # ADD_FIRST_PRODUCT_PLUS_INPUT = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[4]/android.view.ViewGroup/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.ImageView[1]"
@@ -48,7 +49,7 @@ POST_TIME_AGO_TEXT = "com.socialsuperstore:id/timeAgoTextView"
 # MEDIA_IMAGE_FROM_GALLERY = "com.socialsuperstore.feature_post_editor:id/fromGallery"
 
 # MEDIA_IMAGE_FROM_CAMERA = "com.socialsuperstore.feature_post_editor:id/fromCamera"
-# FEED_POST_DESCRIPTION = "com.socialsuperstore:id/postDescription"
+# 
 # POST_DOTS_SUB_MENU = "com.socialsuperstore:id/postActionsBtn"
 # POST_DOTS_SUB_MENU_EDIT_POST = "//androidx.recyclerview.widget.RecyclerView/android.widget.Button[1]"
 # POST_DOTS_SUB_MENU_DELETE_POST = "//androidx.recyclerview.widget.RecyclerView/android.widget.Button[2]"

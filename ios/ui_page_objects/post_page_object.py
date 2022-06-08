@@ -24,10 +24,12 @@ class PostPage:
 		plus_button_click = acc_id_click(driver, PLUS_BUTTON)
 		click_on_footer_new_post_btn = acc_id_click(driver, REC_PRODUCT_PLUS_MENU)
 		click_in_srch_field = xpath_click(driver, SEARCH_INPUT_POST_CREATION_STEP_ONE)
-		search_product_for_post = xpath_keys(driver, SEARCH_PRODUCT_POST_CREATION, "Samsung")
-		driver.keyevent(66) # additional execution: send_enter_key_adb(driver)
-		fill_radio_btn_product_one = xpath_click(driver, SEARCH_RESULT_PRODUCT_ONE)
-		fill_radio_btn_product_two = xpath_click(driver, SEARCH_RESULT_PRODUCT_TWO)
+		search_product_for_post = xpath_keys(driver, SEARCH_PRODUCT_POST_CREATION, "Samsung\n")
+
+
+		#fill_radio_btn_product_one = xpath_click(driver, SEARCH_RESULT_PRODUCT_ONE)
+		#fill_radio_btn_product_two = xpath_click(driver, SEARCH_RESULT_PRODUCT_TWO)
+		
 		fill_radio_btn_product_three = xpath_click(driver, SEARCH_RESULT_PRODUCT_THREE)
 		done_btn_search_product_result_click = acc_id_click(driver, DONE_BTN_ADD_PRODUCT)
 		use_product_image_click = xpath_click(driver, PRODUCT_ADD_FOOTER_ITEM_MEDIA)
@@ -44,9 +46,9 @@ class PostPage:
 		publish_btn_click = xpath_click(driver, PUBLISH_BTN_ADD_PRODUCT)
 
 		# check if product created (checking title/caption in feed)
-		wait_element = el_id(driver, POST_TIME_AGO_TEXT)
-		scroll_on_feed_page(driver)
-		#get_correct_text_by_id(driver, FEED_POST_DESCRIPTION, PRODUCT_ID)
+		wait_element = el_acc_id(driver, POST_TIME_AGO_TEXT)
+		scroll_on_feed_page_ios(driver)
+		get_correct_text_by_acc_id(driver, FEED_POST_DESCRIPTION, PRODUCT_ID)
 
 	def product_edit_and_deletion(self, driver):
 		# starting from opened feed
