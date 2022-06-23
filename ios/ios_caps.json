@@ -1,0 +1,8 @@
+{
+    "device": "iPhone 11",
+    "os_version": "15",
+    "project": "First Python project",
+    "build": "browserstack-iOS",
+    "name": "iOS_tests",
+    "app_url": "bs://92184b546fd5a97078ab68a5cba51db6d4012583"
+}
