@@ -13,9 +13,6 @@ pp = pprint.PrettyPrinter(indent=4)
 # get apps from s3 bucket
 ########################################
 # Local credentials
-ACCESS_KEY = "ASIATYY3OQTPIX4ZFAWX"
-SECRET_KEY = "8ZZD4eoJ2RHjM0wAF0CJHe4CXPto5gEbWg+klkc4"
-SESSION_TOKEN = "IQoJb3JpZ2luX2VjEJn//////////wEaCWV1LXdlc3QtMSJHMEUCIHEHTDJJTlgtRBTbnic2nAHQJoce8nrhNOXfV5cYu6fEAiEAnfzkSyC94cn4FT/SYpyRBwtb8p/9v4GxV1PCMDoTdHoq+AEIwv//////////ARAAGgwyNTkzNjYyMjUxMTgiDLaCxTSIzKQwfIuagSrMASueEKwY3MLIoe5JZAEzykFjdC3plUvNFw7I7s5jw39L25tcTvhC6CXyIgIA1Vumw/t/Kr2vEc92tJpGQwnL3Iy/FvaM1RGDIjF+sy6WDMtth1wrkjnO11rb2s3BuGi29p4juv+4AN15PFE+DejTmsB2KD3qIPN/NY8YUgX2TIX8ZI/7UdYhObficPn3sJ9fP1bktvD5kZanpaqPuzUeIjJleVSMESlTdMChFQ2QcBzRiSGw5UQLjE6xiWO3zqvi2erAx0NesLCzVRpLaDC19JaWBjqYAeqptEvxzRr83mVNwLddcmOe1zpiQCu0zL1H+nKgjYKy4aFN+tct4hw1GdYTlmXJ4XwnkD4ZUh09ef9KIZdY/df1klpFLpvbxVZbe4INZ/DEV+ug6vyoNIiThtg2xjKhCXwaLUeDcLpSZl1baE4ngR/nIJZxS3Hj5qE+8n3wFkD+LJ7eOukefq+3uPWAEh1lvONo7nD1L9ik"
 
 # AWS credentials
 # ACCESS_KEY = os.getenv("ACCESS_KEY_ID")
@@ -51,7 +48,7 @@ def generate_json(bucket_tags):
 	for i in bucket_tags:
 		if "bs_link" in i.get("Key"):
 			app_link.append(i.get("Value"))
-	
+
 
 	desired_cap = {
 	  "device" : "iPhone 11",
