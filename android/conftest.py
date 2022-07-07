@@ -11,6 +11,7 @@ from ui_page_objects.dashboard_page_object import DashboardPage
 from appium import webdriver
 from ui_page_objects.functions import *
 from dotenv import load_dotenv
+import json
 
 
 load_dotenv()
@@ -33,16 +34,37 @@ PASSWORD_INT_NEW = os.getenv("PASSWORD_INT_NEW")
 prefs = {"download.default_directory": os.getcwd() + "/"}
 
 
-#Customizing appium driver (implicitly waits + app close/kill)
-@pytest.fixture
-def selenium(selenium):
-    #selenium = webdriver.Remote(command_executor="http://hub-cloud.browserstack.com/wd/hub", desired_capabilities=desired_caps)
-    selenium.implicitly_wait(7)
+# fetching capabilities
+json_f = open('android_caps.json')
+desired_cap = json.load(json_f)
+json_f.close()
+
+# Customizing appium driver for Browserstack
+@pytest.fixture(autouse=True)
+def selenium(request):
+    webdriver
+    selenium = webdriver.Remote(
+      command_executor='https://mikesmiq_u1xngQ:Y96JA9zbr6YLA6su8KRw@hub-cloud.browserstack.com/wd/hub',
+      desired_capabilities=desired_cap)
+      # mikesmiq_u1xngQ  Y96JA9zbr6YLA6su8KRw
     yield selenium
-    #selenium.remove_app(app_id='com.socialsuperstore') # uninstalling app
-    #selenium.terminate_app('com.socialsuperstore') # put app in background
-    selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
+    selenium.quit() # marking test is finished for Browserstack
+    #selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
     clear_data_from_temp_file() # clearing data in temp_data.txt
+
+
+# OLD DROID
+#Customizing appium driver (implicitly waits + app close/kill)
+# @pytest.fixture
+# def selenium(selenium):
+#     #selenium = webdriver.Remote(command_executor="http://hub-cloud.browserstack.com/wd/hub", desired_capabilities=desired_caps)
+#     selenium.implicitly_wait(7)
+#     yield selenium
+#     #selenium.remove_app(app_id='com.socialsuperstore') # uninstalling app
+#     #selenium.terminate_app('com.socialsuperstore') # put app in background
+#     selenium.close_app() # making app in background, because of pre-sets app restoring in fresh state o next launch
+#     clear_data_from_temp_file() # clearing data in temp_data.txt
+
 
 
 #FIXTURES PAGE OBJECT
