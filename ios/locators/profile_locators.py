@@ -8,7 +8,7 @@ FOOTER_ITEM_DASHBOARD = "rewardsTabBarItem"
 FOOTER_ITEM_SEARCH = "searchTabBarItem"
 FOOTER_ITEM_INBOX = "notificationsTabBarItem"
 FOOTER_ITEM_PROFILE = "profileTabBarItem"
-
+PLUS_BUTTON = "sticky plus button"
 
 # PROFILE ITEMS
 PROFILE_FIRST_N_LAST_NAMES = "nameLabel"
@@ -89,7 +89,6 @@ APP_VERSION_SETTINGS_ABOUT = '(//XCUIElementTypeStaticText[contains(@name,"WeSho
 # PROFILE_SETTINGS_BTN = "com.socialsuperstore:id/settingsBtn"
 # PROFILE_SETTINGS_EDIT_BTN = "com.socialsuperstore.feature_settings:id/editProfileBtn"
 
-# PLUS_BUTTON = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ImageButton"
 # SEARCH_BTN_HEAD_BAR = "com.socialsuperstore:id/search"
 # ADD_NEW_WISHLIST_ITEM_PLUS_ICON = "com.socialsuperstore:id/plusIcon"
 # ADD_NEW_WISHLIST_INPUT_NAME = "com.socialsuperstore:id/wishlistTitleEditText"

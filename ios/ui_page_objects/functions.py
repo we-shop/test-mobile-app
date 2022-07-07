@@ -187,6 +187,14 @@ def js_by_xpath_button_status(driver, locator):
 def get_correct_text_by_id(driver, locator, text):
 	WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, locator)))
 
+
+def get_correct_text_by_acc_id(driver, locator, text):
+	WebDriverWait(driver, 10).until(EC.presence_of_element_located((MobileBy.ACCESSIBILITY_ID, locator)))
+	txt = driver.find_element(MobileBy.ACCESSIBILITY_ID, locator).text
+	assert text in txt
+
+
+
 def alert_accept_notifications(driver):
 	try:
 		driver.switch_to.alert.accept()

@@ -9,7 +9,7 @@ from ui_page_objects.post_page_object import PostPage
 from ui_page_objects.inbox_page_object import InboxPage
 from appium import webdriver
 from ui_page_objects.functions import *
-
+import json
 
 from dotenv import load_dotenv
 
@@ -71,7 +71,7 @@ DROID_desired_cap = {
 #   #"appium:app": "C:\\Users\\NEMESIS\\Desktop\\UPW\\weshop\\WeShop.ipa"
 # }
 
-desired_cap = {
+desired_cap_ios_COMMENTED = {
   "device" : "iPhone 11",
   "os_version" : "15",
   "project" : "First Python project", 
@@ -111,6 +111,10 @@ desired_cap = {
 #     "name" : "first_test"
 # }
 
+# fetching capabilities
+json_f = open('ios_caps.json')
+desired_cap = json.load(json_f)
+json_f.close()
 
 # Customizing appium driver for Browserstack
 @pytest.fixture(autouse=True)

@@ -7,7 +7,7 @@ def atest_switch_env(debug_model, selenium):
 	debug_model.switch_to_uat(selenium)
 
 #iOS done
-def atest_login_and_logout(login_model, debug_model, selenium):
+def test_login_and_logout(login_model, debug_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_with_assert(selenium)
 	login_model.logout(selenium)
@@ -63,11 +63,6 @@ def atest_profile_check_followers_and_followings_count(login_model, debug_model,
 	login_model.login_go_to_profile(selenium)
 	profile_model.followings_followers_count(selenium)
 
-# def atest_login_and_logout(login_model, debug_model, selenium):
-# 	debug_model.switch_to_prod(selenium)
-# 	#login_model.login_with_assert(selenium)
-# 	#login_model.logout(selenium)
-
 # iOS done
 def atest_profile_follow_unfollow_followers_following_tabs(login_model, debug_model, profile_model, selenium):
 	debug_model.switch_to_uat(selenium)
@@ -106,7 +101,7 @@ def atest_profile_about_version_check(debug_model, profile_model, selenium):
 
 
 # iOS in progress
-def test_post_create_new_product(debug_model, login_model, post_model, selenium):
+def AAtest_post_create_new_product(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
 	post_model.recommend_product(selenium)
@@ -134,6 +129,11 @@ def OLDtest_self_post_comment_edit_and_delete_second(debug_model, login_model, p
 	post_model.recommend_product(selenium)
 	post_model.comment_edit_and_delete_in_self_post_second(selenium)
 
+
+
+
+
+# iOS in progress
 def atest_post_create_new_question(debug_model, login_model, post_model, selenium):
 	debug_model.switch_to_uat(selenium)
 	login_model.login_only(selenium)
